@@ -2,18 +2,18 @@
 
 //nested default tab
 const { Tabs,listenForClicks,listenForNestedClicks } = require ('./src/tabsrouter.js');
-//load default sidebar
- Tabs(null,'sidebar','./sidebar/home.htm')
+//load default tabs
+ Tabs(null,'tabs','./tabs/add.htm')
 .then((reply)=>{
 	if(reply=='Success'){
   //Then load default mainview
-	Tabs(null,'main','./mainview/home/default.htm');
+	Tabs(null,'main','./mainview/add/default.htm');
 	}
 })
 .then(()=>{
     //Code for listenening for clicks
-	listenForClicks('.nav','home');
-  listenForNestedClicks('.header-tab','default.htm','.nav');
+	listenForClicks('.tab','add');
+  listenForNestedClicks('.header-tab','default.htm','.tab');
 })
 .catch(error=>console.log(error));
 

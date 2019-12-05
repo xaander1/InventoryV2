@@ -54,7 +54,7 @@ function listenForNestedClicks(commonClass,defaultHtml,commonClass2){
 	let headtags = document.querySelectorAll(commonClass);
 	headtags.forEach(headtag=>{
 			headtag.onclick=event=>{
-				Tabs(commonClass,'sidebar','./sidebar/'+headtag.id+'.htm')
+				Tabs(commonClass,'tabs','./tabs/'+headtag.id+'.htm')
 			 .then((reply)=>{
 				 if(reply=='Success'){
 				 Tabs(null,'main','./mainview/'+headtag.id+'/'+defaultHtml);

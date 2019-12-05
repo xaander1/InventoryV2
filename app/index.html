@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Electron Photonkit Boilerplate</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/photon.min.css">
+    <script type="text/javascript">
+      const { remote } = require('electron')
+    </script>
+  </head>
+  <body>
+    <div class="window">
+      <header class="toolbar toolbar-header">
+
+    <div class="toolbar-actions">
+    <div class="btn-group">
+      <button id="home" class="btn btn-default header-tab active">
+        <span class="icon icon-home"></span>
+      </button>
+      <button id="folder" class="btn btn-default header-tab">
+        <span class="icon icon-folder"></span>
+      </button>
+      <button id="cloud" class="btn btn-default header-tab">
+        <span class="icon icon-cloud"></span>
+      </button>
+      <button id="popup" class="btn btn-default header-tab">
+        <span class="icon icon-popup"></span>
+      </button>
+      <button id="shuffle" class="btn btn-default header-tab">
+        <span class="icon icon-shuffle"></span>
+      </button>
+    </div>
+
+    <button id="filters" class="btn btn-default header-tab">
+      <span class="icon icon-home icon-text"></span>
+      Filters
+    </button>
+      <div class="btn-group pull-right">
+        <button class="btn btn-default" id="maximize">
+          <span class="icon icon-plus-circled"></span>
+        </button>
+      <button class="btn btn-default" id="minimize">
+        <span class="icon icon-minus-circled"></span>
+      </button>
+    <button class="btn btn-default" id="quit">
+      <span class="icon icon-cancel-circled"></span>
+    </button>
+
+  </div>
+  </div>
+      </header>
+
+      <div id="sidebar" class="tab-group">
+      </div>
+
+      <!-- Your app's content goes inside .window-content -->
+      <div class="window-content">
+        <div class="pane-group">
+        <!--   <div id="sidebar" class="pane pane-sm sidebar" style="padding:10px"> -->
+          <!-- Where sidebar content is rendered to -->
+         <!--  </div> -->
+
+          <div id="main" class="pane" style="padding:20px">
+            <!-- Where main content is rendered to -->
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+    <script src="js/index.js"></script>
+  </body>
+</html>

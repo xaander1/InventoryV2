@@ -1,0 +1,24 @@
+  <span id="back" style="text-align:left;margin-left:10px;width:40px;color:green;" class="icon icon-reply"></span>
+    <h3 style="text-align:center" id="Description">Description</h3>
+
+  <p><code>eval()</code> is a function property of the global object.</p>
+
+  <p>The argument of the <code>eval()</code> function is a string. If the string represents an expression, <code>eval()</code> evaluates the expression. If the argument represents one or more JavaScript statements, <code>eval()</code> evaluates the statements. Do not call <code>eval()</code> to evaluate an arithmetic expression; JavaScript evaluates arithmetic expressions automatically.</p>
+
+  <p>If you construct an arithmetic expression as a string, you can use <code>eval()</code> to evaluate it at a later time. For example, suppose you have a variable <code>x</code>. You can postpone evaluation of an expression involving <code>x</code> by assigning the string value of the expression, say "<code>3 * x + 2</code>", to a variable, and then calling <code>eval()</code> at a later point in your script.</p>
+
+  <p>If the argument of <code>eval()</code> is not a string, <code>eval()</code> returns the argument unchanged. In the following example, the <code>String</code> constructor is specified and <code>eval()</code> returns a <code>String</code> object rather than evaluating the string.</p>
+
+
+<style media="screen">
+  code{
+    font-weight: bold;
+  }
+</style>
+<script type="text/javascript">
+//Also supports external scripting
+let btn = document.querySelector('#back');
+btn.onclick=event=>{
+Tabs(null,'main','./mainview/home/default.htm')
+}
+</script>

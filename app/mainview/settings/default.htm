@@ -1,0 +1,117 @@
+<div class="window" style="padding-top: 1.5rem;">
+  <div class="window-content">
+    <div class="pane-group">
+	<div class="pane" style="padding: 1rem;padding-top: 0">
+		<h3><u><span class="icon icon-globe icon-text" style="color:  #7fba00;padding-right:1rem "></span>Regions</u></h3>
+		<div id="reg_body" style="margin:1rem">
+			
+		</div>
+		<button class="btn btn-primary pull-right" id="add_region">Add</button>      
+
+      </div>
+      <div class="pane" style="padding: 2rem;padding-top: 0">
+		<h3><u><span class="icon icon-users icon-text" style="color: #ffb900;padding-right:1rem "></span>Departments</u></h3>
+		<button class="btn btn-primary pull-right">Add</button>   
+	</div>
+      <div class="pane" style="padding: 2rem;padding-top: 0">
+		<h3><u><span class="icon icon-db-shape icon-text" style="color: #00a4ef;padding-right:1rem "></span>Operating System</u></h3>	
+      	<button class="btn btn-primary pull-right">Add</button>  
+      </div>
+       <div class="pane" style="padding: 2rem;padding-top: 0">
+		<h3><u><span class="icon icon-db-shape icon-text" style="color: #f25022;padding-right:1rem "></span>MS Office</u></h3>	
+      	<button class="btn btn-primary pull-right">Add</button> 
+    </div>
+
+  </div>
+</div>
+</div>
+
+
+<script type="text/javascript">
+/*-------------------table body--------------------------------------------*/
+//regions
+var db = new Dexie('regions');
+db.version(1).stores({
+    	 regions: '++id,name'});
+window.iterate_id = { number : 1 };
+db.regions.each(result=>{
+	create_table_row(result);
+});
+
+//
+/*----------------------------------done-------------------------------------------*/
+
+/*--------------------------Button to add more values -----------------------------*/
+let buttonAdd = document.querySelector('#add_region')
+buttonAdd.onclick = event => {
+	var db = new Dexie('regions');
+ 	db.version(1).stores({
+    regions: '++id,name'
+				});
+ 	db.regions.add({
+		name: 'Add region',
+	}).then((id)=>{
+			let fake_result = {
+				id : id,
+				name: "Add region"
+			};
+			
+			create_table_row(fake_result);
+	});
+}
+
+/*--------------------------------------Button End-------------------------*/
+
+/*------------------------------------------Reusables-------------------------*/
+function create_table_row(result) {
+	let table = document.createElement('table');
+	let tbody = document.createElement('tbody');
+	let tr = document.createElement('tr');
+	//let td_anony = document.createElement('td');
+	//td_anony.innerHTML = window.iterate_id.number;
+	let minifragment = document.createDocumentFragment();
+	for (const key of Object.keys(result)) {
+		if(key == '__proto__' || key ==='id'){ continue}
+			let td = document.createElement('td');
+			let input = document.createElement('input');
+			input.value = result[key];
+			input.setAttribute("style","background-color:transparent !important; border:none !important; width:7rem");
+			input.onchange = event =>{
+			let value = event.target.value;
+			if(value){
+			let sanitized_value = parseInt(value);
+			 if(isNaN(sanitized_value)){
+			 db.regions.update(result.id, {[key]:value}).catch(err=>{console.log(err)});
+			}else{
+				db.regions.update(result.id, {[key]:sanitized_value}).catch(err=>{console.log(err)});
+			}
+			} else{
+				db.regions.update(result.id, {[key]:""}).catch(err=>{console.log(err)});
+				event.target.placeholder='Add region';
+			}
+
+			}
+			td.appendChild(input);
+			minifragment.appendChild(td);
+		}
+
+		let td_remove = document.createElement('td');
+		td_remove.innerHTML = 'Remove';
+		td_remove.className ='btn btn-warning';
+
+		td_remove.onclick = event=>{
+			db. regions.delete(result.id);
+			  event.target.parentElement.remove();
+		}
+
+		table.className = 'table table-striped';
+		 table.appendChild(tbody);	
+		 //tr.appendChild(td_anony);	
+		 tr.appendChild(minifragment);
+		 tr.appendChild(td_remove);
+		 tbody.appendChild(tr);
+		 let bd = document.querySelector('#reg_body');
+		 bd.appendChild(table);
+		 //window.iterate_id.number = window.iterate_id.number+1;
+}
+</script>

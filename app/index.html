@@ -5,6 +5,7 @@
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="../css/photon.min.css">
+    <script src="./res/dexie.js"></script>
     <script type="text/javascript">
       const { remote } = require('electron')
     </script>
@@ -56,14 +57,16 @@
       <span class="icon icon-cancel"></span>
     </button>
   </div>
-  <button id="settings" class="btn btn-default pull-right header-tab">
+  <div class="btn-group pull-right">
+  <button id="settings" class="btn btn-default  header-tab">
       <span class="icon icon-cog"></span>
     </button>
+  </div>
 
   </div>
       </header>
 
-      <div id="tabs" class="tab-group">
+      <div id="tabs">
       </div>
 
       <!-- Your app's content goes inside .window-content -->
@@ -84,3 +87,6 @@
     <script src="js/index.js"></script>
   </body>
 </html>
+
+
+

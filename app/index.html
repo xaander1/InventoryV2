@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Electron Photonkit Boilerplate</title>
+    <title>Technician Inventory Pro</title>
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="../css/photon.min.css">
@@ -19,38 +19,47 @@
         <span class="icon icon-plus icon-text"></span>
         Add
       </button>
-      <button id="Computers" class="btn btn-default header-tab">
+      <button id="desktops" class="btn btn-default header-tab">
         <span class="icon icon-monitor icon-text"></span>
-        Computers
+        Desktops
       </button>
-      <button id="cloud" class="btn btn-default header-tab">
+      <button id="laptops" class="btn btn-default header-tab">
         <span class="icon icon-monitor icon-text"></span>
         Laptops
       </button>
-      <button id="popup" class="btn btn-default header-tab">
-        <span class="icon icon-popup"></span>
+    <button id="cameras" class="btn btn-default header-tab">
+        <span class="icon icon-eye icon-text"></span>
+      Cameras
       </button>
-      <button id="shuffle" class="btn btn-default header-tab">
-        <span class="icon icon-shuffle"></span>
+      <button id="routers" class="btn btn-default header-tab">
+        <span class="icon icon-network icon-text"></span>
+      Routers
+      </button>
+      <button id="printers" class="btn btn-default header-tab">
+        <span class="icon icon-print icon-text"></span>
+      Printers
+      </button>
+      <button id="extras" class="btn btn-default header-tab">
+        <span class="icon icon-hourglass icon-text"></span>
+      Extras
       </button>
     </div>
 
-    <button id="filters" class="btn btn-default header-tab">
-      <span class="icon icon-home icon-text"></span>
-      Filters
-    </button>
       <div class="btn-group pull-right">
         <button class="btn btn-default" id="maximize">
-          <span class="icon icon-plus-circled"></span>
+          <span class="icon icon-popup"></span>
         </button>
       <button class="btn btn-default" id="minimize">
-        <span class="icon icon-minus-circled"></span>
+        <span class="icon icon-minus"></span>
       </button>
     <button class="btn btn-default" id="quit">
-      <span class="icon icon-cancel-circled"></span>
+      <span class="icon icon-cancel"></span>
+    </button>
+  </div>
+  <button id="settings" class="btn btn-default pull-right header-tab">
+      <span class="icon icon-cog"></span>
     </button>
 
-  </div>
   </div>
       </header>
 
@@ -64,7 +73,7 @@
           <!-- Where sidebar content is rendered to -->
          <!--  </div> -->
 
-          <div id="main" class="pane" style="padding:20px">
+          <div id="main">
             <!-- Where main content is rendered to -->
           </div>
 

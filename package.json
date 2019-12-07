@@ -1,5 +1,5 @@
 {
-  "name": "Boilerplate-X",
+  "name": "Inventory-pro",
   "version": "1.0.0",
   "description": "Electron Photonkit Boilerplate",
   "main": "app/app.js",
@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "boilerplate"
+    "inventory"
   ],
   "author": "alexander Njogu",
   "license": "MIT",

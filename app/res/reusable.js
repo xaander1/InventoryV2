@@ -6,7 +6,8 @@ db.version(1).stores({
     	 regions: '++id,name',
     	 departments: '++id,name',
     	 os: '++id,name',
-    	 ms_office: '++id,name'
+    	 ms_office: '++id,name',
+    	 tech_name: '++id,name'
     	});
  return db;
  }

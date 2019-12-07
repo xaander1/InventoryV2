@@ -9,7 +9,7 @@
 		<button class="btn btn-primary pull-right" id="add_region">Add</button>      
 
       </div>
-      <div class="pane" style="padding: 2rem;padding-top: 0">
+      <div class="pane" style="padding: 1rem;padding-top: 0">
 		<h3><u><span class="icon icon-users icon-text" style="color: #ffb900;padding-right:1rem "></span>Departments</u></h3>
 		<table class="table-striped" id="dept_body">
 			
@@ -17,7 +17,7 @@
 		<button class="btn btn-primary pull-right" id="add_dept">Add</button>   
 	</div>
 
-      <div class="pane" style="padding: 2rem;padding-top: 0">
+      <div class="pane" style="padding: 1rem;padding-top: 0">
 		<h3><u><span class="icon icon-db-shape icon-text" style="color: #00a4ef;padding-right:1rem "></span>Operating System</u></h3>
 		<table class="table-striped" id="os_body">
 			
@@ -26,7 +26,7 @@
       	<button class="btn btn-primary pull-right" id="add_os">Add</button>  
       </div>
 
-       <div class="pane" style="padding: 2rem;padding-top: 0">
+       <div class="pane" style="padding: 1rem;padding-top: 0">
 		<h3><u><span class="icon icon-db-shape icon-text" style="color: #f25022;padding-right:1rem "></span>MS Office</u></h3>	 
     <table class="table-striped" id="ms_body">
 			
@@ -35,6 +35,23 @@
     </div>
 
   </div>
+
+
+</div>
+<div class="window-content">
+	  <div class="pane-group" style="padding-top: 1.5rem">
+   	<div class="pane" style="padding: 0.8rem;padding-top: 0">
+   				<h3><u><span class="icon icon-user icon-text" style="color: #737373;padding-right:1rem "></span>Technician</u></h3>	 
+    <table class="table-striped" id="tech_body">
+			
+		</table>
+		<button class="btn btn-primary pull-right" id="add_tech">Add</button>
+
+   	</div>
+   	<div class="pane" style="padding: 1rem;padding-top: 0"></div>
+   	<div class="pane" style="padding: 1rem;padding-top: 0"></div>
+   	<div class="pane" style="padding: 1rem;padding-top: 0"></div>
+   </div>
 </div>
 </div>
 
@@ -59,7 +76,10 @@ db.os.each(result=>{
 db.ms_office.each(result=>{
 	create_table_row(result,db,'ms_office','#ms_body');
 });
-
+//Technician
+db.tech_name.each(result=>{
+	create_table_row(result,db,'tech_name','#tech_body');
+});
 
 //
 /*----------------------------------done-------------------------------------------*/
@@ -124,7 +144,20 @@ buttonAdd4.onclick = event => {
 			create_table_row(fake_result,db,'ms_office','#ms_body');
 	});
 }
-
+//Button 5
+let buttonAdd5 = document.querySelector('#add_tech')
+buttonAdd5.onclick = event => {
+ 	db.tech_name.add({
+		name: '',
+	}).then((id)=>{
+			let fake_result = {
+				id : id,
+				name: ""
+			};
+			
+			create_table_row(fake_result,db,'tech_name','#tech_body');
+	});
+}
 /*--------------------------------------Button End-------------------------*/
 
 

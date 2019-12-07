@@ -38,7 +38,6 @@
 </div>
 </div>
 
-
 <script type="text/javascript">
 	 const { init_data} = require('../res/reusable');
 /*-------------------table body--------------------------------------------*/
@@ -155,7 +154,7 @@ function create_table_row(result,db,database_name,sector) {
 			let td = document.createElement('td');
 			let input = document.createElement('input');
 			if(result[key]) input.value = result[key];
-			else input.placeholder="Type here"
+			else input.placeholder="Type here";
 			input.setAttribute("style","background-color:transparent !important; border:none !important; width:7rem");
 			input.onchange = event =>{
 			let value = event.target.value;

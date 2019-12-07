@@ -1,17 +1,18 @@
 <div class="window" style="padding-top: 1.5rem;">
   <div class="window-content">
-    <div class="pane-group">	
+    <div class="pane-group">
+
   	<div class="pane" style="padding: 2rem;padding-top: 0">
   		<h3><u><span class="icon icon-monitor icon-text" style="color:#339933;padding-right:1rem "></span>Desktop Details</u></h3>
    
   	<div class="form-group">
     	<label> Region</label>
-  		<select class="form-control">
+  		<select class="form-control" id="region_select">
   		</select>
   	</div>
 	<div class="form-group">
    		<label>Department</label>
-  		<select class="form-control">
+  		<select class="form-control"  id="dept_select">
   		</select>
  	</div>
 
@@ -53,7 +54,7 @@
   		</div>
   		<div class="form-group">
    			<label>Operating System</label>
-  			<select class="form-control">
+  			<select class="form-control"  id="os_select">
   			</select>
  		</div>
   		<div class="radio">
@@ -70,7 +71,7 @@
   		</div>
   		<div class="form-group">
    			<label>MS Office</label>
-  			<select class="form-control">
+  			<select class="form-control"  id="ms_select">
   			</select>
  		</div>
   		<div class="radio">
@@ -111,10 +112,36 @@
     	<label>UPS Model</label>
     	<input class="form-control" placeholder="e.g MECER -ME-650-VU">
   	</div>
-
- 	 
+      <button class="btn btn-positive pull-right">
+        <span style="color:white" class="icon icon-check icon-text"></span>
+      Save
+      </button>
       </div>
-
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  const { init_data} = require('../res/reusable');
+  var db = init_data(Dexie);
+  let automate = (db,table,id)=>{
+  db[table].each(result=>{
+    for (const key of Object.keys(result)) {
+   if(key == '__proto__' || key ==='id'){ continue}
+  else if(key =='name'){
+    if(result[key]){
+    let btn_region = document.querySelector(id);
+    let opt=document.createElement('option');
+    opt.text = result[key];
+    btn_region.add(opt);}
+  }
+
+
+    }
+  });
+}
+automate(db,'regions','#region_select');
+automate(db,'departments','#dept_select');
+automate(db,'os','#os_select');
+automate(db,'ms_office','#ms_select');
+</script>

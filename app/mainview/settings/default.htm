@@ -3,7 +3,7 @@
     <div class="pane-group">
 	<div class="pane" style="padding: 1rem;padding-top: 0">
 		<h3><u><span class="icon icon-globe icon-text" style="color:  #7fba00;padding-right:1rem "></span>Regions</u></h3>
-		<table class="table-striped" id="reg_body" style="margin:1rem">
+		<table class="table-striped" id="reg_body">
 			
 		</table>
 		<button class="btn btn-primary pull-right" id="add_region">Add</button>      
@@ -16,13 +16,22 @@
 		</table>
 		<button class="btn btn-primary pull-right" id="add_dept">Add</button>   
 	</div>
+
       <div class="pane" style="padding: 2rem;padding-top: 0">
-		<h3><u><span class="icon icon-db-shape icon-text" style="color: #00a4ef;padding-right:1rem "></span>Operating System</u></h3>	
-      	<button class="btn btn-primary pull-right">Add</button>  
+		<h3><u><span class="icon icon-db-shape icon-text" style="color: #00a4ef;padding-right:1rem "></span>Operating System</u></h3>
+		<table class="table-striped" id="os_body">
+			
+		</table>
+
+      	<button class="btn btn-primary pull-right" id="add_os">Add</button>  
       </div>
+
        <div class="pane" style="padding: 2rem;padding-top: 0">
-		<h3><u><span class="icon icon-db-shape icon-text" style="color: #f25022;padding-right:1rem "></span>MS Office</u></h3>	
-      	<button class="btn btn-primary pull-right">Add</button> 
+		<h3><u><span class="icon icon-db-shape icon-text" style="color: #f25022;padding-right:1rem "></span>MS Office</u></h3>	 
+    <table class="table-striped" id="ms_body">
+			
+		</table>
+		<button class="btn btn-primary pull-right" id="add_ms">Add</button>
     </div>
 
   </div>
@@ -31,25 +40,25 @@
 
 
 <script type="text/javascript">
+	 const { init_data} = require('../res/reusable');
 /*-------------------table body--------------------------------------------*/
+var db = init_data(Dexie);
 //regions
-var db = new Dexie('Data');
-db.version(1).stores({
-    	 regions: '++id,name',
-    	 departments: '++id,name'
-    	});
-//window.iterate_id = { number : 1 };
 db.regions.each(result=>{
 	create_table_row(result,db,'regions','#reg_body');
 });
+
 //department
-var db = new Dexie('Data');
-db.version(1).stores({
-		 regions: '++id,name',
-    	 departments: '++id,name'});
-//window.iterate_id = { number : 1 };
 db.departments.each(result=>{
 	create_table_row(result,db,'departments','#dept_body');
+});
+
+//Operating System
+db.os.each(result=>{
+	create_table_row(result,db,'os','#os_body');
+});
+db.ms_office.each(result=>{
+	create_table_row(result,db,'ms_office','#ms_body');
 });
 
 
@@ -59,10 +68,6 @@ db.departments.each(result=>{
 /*--------------------------Button to add more values -----------------------------*/
 let buttonAdd = document.querySelector('#add_region')
 buttonAdd.onclick = event => {
-	var db = new Dexie('Data');
- 	db.version(1).stores({
-    regions: '++id,name'
-				});
  	db.regions.add({
 		name: '',
 	}).then((id)=>{
@@ -76,13 +81,8 @@ buttonAdd.onclick = event => {
 }
 
 //button 2
-
 let buttonAdd2 = document.querySelector('#add_dept')
 buttonAdd2.onclick = event => {
-	var db = new Dexie('Data');
- 	db.version(1).stores({
-    departments: '++id,name'
-				});
  	db.departments.add({
 		name: '',
 	}).then((id)=>{
@@ -92,6 +92,37 @@ buttonAdd2.onclick = event => {
 			};
 			
 			create_table_row(fake_result,db,'departments','#dept_body');
+	});
+}
+
+// Button 3
+
+let buttonAdd3 = document.querySelector('#add_os')
+buttonAdd3.onclick = event => {
+ 	db.os.add({
+		name: '',
+	}).then((id)=>{
+			let fake_result = {
+				id : id,
+				name: ""
+			};
+			
+			create_table_row(fake_result,db,'os','#os_body');
+	});
+}
+
+// Button 4
+let buttonAdd4 = document.querySelector('#add_ms')
+buttonAdd4.onclick = event => {
+ 	db.ms_office.add({
+		name: '',
+	}).then((id)=>{
+			let fake_result = {
+				id : id,
+				name: ""
+			};
+			
+			create_table_row(fake_result,db,'ms_office','#ms_body');
 	});
 }
 

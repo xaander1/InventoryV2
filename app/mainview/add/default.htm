@@ -196,14 +196,17 @@ inputs_values.forEach((item,index)=>{
   }
   
 });
-db.desktop.add(data)
+db.desktops.add(data)
 .then(()=>{
   let getEl_to_clear = document.querySelectorAll('.input');
   getEl_to_clear.forEach((Elem)=>{
-    Elem.value = ""
+    if(Elem.tagName =="SELECT"){ 
+    }else{
+    Elem.value = "";
+  }
   });
   //document.getElementById('add_card').scrollIntoView();
-//new Notification('Computer Added', { body:'New computer added successfully'});
+new Notification('Computer Added', { body:'New computer added successfully'});
 })
 }
 

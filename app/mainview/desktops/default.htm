@@ -17,7 +17,7 @@
  var db = init_data(Dexie);
 let display = document.getElementById('display_body');      
 let fragment = document.createDocumentFragment();   
-db.desktop.each(computer=>{
+db.desktops.each(computer=>{
 let wrapper = document.createElement('div');
 wrapper.setAttribute('class','col-md-4')
 let card = document.createElement('div');

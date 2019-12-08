@@ -26,6 +26,10 @@ card.setAttribute('class','card mb-1');
 card.ondblclick = event => {
 	window.data = computer;
 	//new Tabs('./pages/edit.htm');
+	Tabs('.header-tab','main','./mainview/edit/desktops.htm').then(()=>{
+	document.querySelector('#edit_tab').style.display = 'block';	
+	})
+	
 }
 let card_head = document.createElement('h6');
 card_head.setAttribute('class', ' pl-2 toolbar toolbar-header');

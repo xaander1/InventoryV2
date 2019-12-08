@@ -17,6 +17,7 @@ const Tabs = (commonlink,section,page_to_load)=>{
       scripts[i].parentNode.removeChild(scripts[i]);
     }
   }).then(()=>{
+    document.querySelector('#edit_tab').style.display = 'none';
     if(!commonlink){
       resolve('Success')
     }else{

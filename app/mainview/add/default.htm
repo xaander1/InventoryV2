@@ -79,7 +79,7 @@
     		<label><input type="radio" name="ofc-key" value="not-activated">Not Activated</label>
     	</div>
     	<div class="form-group">
-    		<label>Remaining Storage</label>
+    		<label> <span class="icon icon-drive icon-text"></span> Remaining Storage</label>
    	 		<input class="form-control input" placeholder="e.g 247gb">
   		</div>
         <h3><u><span class="icon icon-print icon-text" style="color:#339933;padding-right:1rem "></span>Printer</u></h3>
@@ -127,9 +127,8 @@
       <label>Log</label>
       <textarea type="date" class="form-control input" rows="7" ></textarea>
     </div>
-      <div class="form-group pull-right">
-      <button class="btn btn-positive">
-        <span style="color:white" class="icon icon-check icon-text"></span>
+      <div class="form-group submit pull-right">
+      <button class="btn btn-primary">
       Save
       </button>
     </div>
@@ -137,6 +136,7 @@
     </div>
   </div>
 </div>
+
 
 <script type="text/javascript">
   const { init_data} = require('../res/reusable');
@@ -180,7 +180,32 @@ for(let i = 0; i < inputs_x.length; i++){
 }
 
 //Module getting the database dirty
-
+let submitbtn = document.querySelector(".submit");
+let datatabe_names = ['region','department','pc_model','pc_serial','monitor_model','monitor_serial','keyboard','mouse','comp_name','os','os_status','processor','ram','ms_office','ms_status','rem_storage','printer_model','printer_serial','scanner_model','scanner_serial','ups_model','tech_name','date','log'];
+submitbtn.onclick = event => {
+let inputs_values = document.querySelectorAll('.input');
+let data = {};
+inputs_values.forEach((item,index)=>{
+  if(datatabe_names[index]=='os_status'){
+  data[datatabe_names[index]] = document.querySelector('input[name="os-key"]:checked').value;
+  }else if(datatabe_names[index]=='ms_status'){
+    data[datatabe_names[index]] = document.querySelector('input[name="ofc-key"]:checked').value;
+  }
+  else{
+  data[datatabe_names[index]] = item.value;  
+  }
+  
+});
+db.desktop.add(data)
+.then(()=>{
+  let getEl_to_clear = document.querySelectorAll('.input');
+  getEl_to_clear.forEach((Elem)=>{
+    Elem.value = ""
+  });
+  //document.getElementById('add_card').scrollIntoView();
+//new Notification('Computer Added', { body:'New computer added successfully'});
+})
+}
 
 
 

@@ -1,1 +1,70 @@
-<p>Hello Pigs</p>
+<div class="window" style="padding-top: 0.1rem;">
+  <div class="window-content">
+  	<div class="pane" style="padding:0.9rem ">
+  	<link rel="stylesheet" type="text/css" href="./css/bootstrap-grid.min.css">
+	<div class ="row" id='display_body'>
+		
+	</div>
+
+</div>
+</div>
+</div>
+<script type="text/javascript">
+	//d-flex justify-content-between align-items-center
+//Dexie Js itialisation
+
+ const { init_data} = require('../res/reusable');
+ var db = init_data(Dexie);
+let display = document.getElementById('display_body');      
+let fragment = document.createDocumentFragment();   
+db.desktop.each(computer=>{
+let wrapper = document.createElement('div');
+wrapper.setAttribute('class','col-md-4')
+let card = document.createElement('div');
+card.setAttribute('class','card mb-1');
+//handle double clicks
+card.ondblclick = event => {
+	window.data = computer;
+	//new Tabs('./pages/edit.htm');
+}
+let card_head = document.createElement('h6');
+card_head.setAttribute('class', ' pl-2 toolbar toolbar-header');
+card_head.innerHTML = computer['comp_name'];
+card.appendChild(card_head);
+let card_body = document.createElement('div');
+card_body.setAttribute('class','card-body p-0');
+let list = document.createElement('ul');
+list.setAttribute('class',' row m-0 p-0');
+list.setAttribute('style', 'list-style: none;');
+let innerfrag = document.createDocumentFragment();
+let display_names =['region','department','pc_model','pc_serial','monitor_model','monitor_serial','keyboard','mouse','comp_name','os','os_status','processor','ram','ms_office','ms_status','rem_storage','printer_model','printer_serial','scanner_model','scanner_serial','ups_model','tech_name','date','log'];
+i = 0;
+for (const key of Object.keys(computer)) {
+	if(computer[key]){
+	if(key =='id' || key=='__proto__'){continue}
+	else if(key == 'log'){
+	let list_element = document.createElement('li');
+	list_element.setAttribute('class', 'col-sm-10 m-0 p-0');
+	list_element.innerHTML = `<strong>${display_names[i]}</strong> : <br>${computer[key]}`;
+	innerfrag.appendChild(list_element); 
+	i++;
+	}else{
+	let list_element = document.createElement('li');
+	list_element.setAttribute('class', 'col-6 m-0 p-0');
+	list_element.innerHTML = ` <strong>${display_names[i]}</strong> : ${computer[key]}`;
+	innerfrag.appendChild(list_element);
+	i++;
+	}	
+}else{
+	i++;
+}
+}
+list.appendChild(innerfrag);
+card_body.appendChild(list);
+card.appendChild(card_body);
+wrapper.appendChild(card);
+fragment.appendChild(wrapper);
+}).then(()=>{
+display.appendChild(fragment);
+});
+</script>

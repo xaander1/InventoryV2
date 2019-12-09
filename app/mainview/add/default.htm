@@ -205,11 +205,14 @@ db.desktops.add(data)
     Elem.value = "";
   }
   });
-  //document.getElementById('add_card').scrollIntoView();
-new Notification('Computer Added', { body:'New computer added successfully'});
+  //document.getElementById('main').scrollIntoView();
+notifier.notify(
+  {
+    title: 'Saved',
+    message: 'Desktop details saved successfully',
+    icon: path.join(__dirname, '../icons/icon.png'), 
+    sound: true,
+  });
 })
 }
-
-
-
 </script>

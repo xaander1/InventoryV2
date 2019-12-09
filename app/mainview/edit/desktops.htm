@@ -227,18 +227,39 @@ submitbtn.onclick = event => {
   });
 
 document.querySelector('#desktops').click();
-  new Notification('Changes Saved', { body:'New changes saved successfully'});
+    notifier.notify(
+  {
+    title: 'Changes Saved',
+    message: 'Desktop changes saved successfully',
+    icon: path.join(__dirname, '../icons/icon.png'), 
+    sound: true,
+  });
+
 }
 //discard
 let btn_discard = document.querySelector(".discard");
 btn_discard.onclick = event =>{
   document.querySelector('#desktops').click();
+  notifier.notify(
+  {
+    title: 'Discard',
+    message: 'Changes Ignored',
+    icon: path.join(__dirname, '../icons/icon.png'), 
+    sound: true,
+  });
 }
 //delete
 let btn_delete = document.querySelector(".delete");
 btn_delete.onclick = event =>{
   db.desktops.delete(window.data['id']);
   document.querySelector('#desktops').click();
+  notifier.notify(
+  {
+    title: 'Deleted',
+    message: 'Desktop details deleted',
+    icon: path.join(__dirname, '../icons/icon.png'), 
+    sound: true,
+  });
 }
 
 

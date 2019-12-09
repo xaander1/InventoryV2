@@ -14,5 +14,8 @@
   "license": "MIT",
   "devDependencies": {
     "electron": "^7.1.2"
+  },
+  "dependencies": {
+    "node-notifier": "^6.0.0"
   }
 }

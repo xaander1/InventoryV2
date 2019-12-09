@@ -33,7 +33,9 @@ card.ondblclick = event => {
 }
 let card_head = document.createElement('h6');
 card_head.setAttribute('class', ' pl-2 toolbar toolbar-header');
-card_head.innerHTML = computer['comp_name'];
+let bold = document.createElement('strong');
+bold.innerHTML = computer['comp_name'];
+card_head.appendChild(bold);
 card.appendChild(card_head);
 let card_body = document.createElement('div');
 card_body.setAttribute('class','card-body p-0');

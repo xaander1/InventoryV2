@@ -10,7 +10,23 @@ db.version(1).stores({
     	 tech_name: '++id,name',
     	 resolutions: '++id,name',
     	 focals: '++id,name',
-    	 desktops:'++id,region,department,pc_model,pc_serial,monitor_model,monitor_serial,keyboard,mouse,comp_name,os,os_status,processor,ram,ms_office,ms_status,rem_storage,printer_model,printer_serial,scanner_model,scanner_serial,ups_model,tech_name,date,log'
+    	 desktops:'++id,region,department,pc_model,pc_serial,monitor_model,monitor_serial,keyboard,mouse,comp_name,os,os_status,processor,ram,ms_office,ms_status,rem_storage,printer_model,printer_serial,scanner_model,scanner_serial,ups_model,tech_name,date,log',
+    	 dvrs:'++id,region,department,dvr_model,dvr_serial,storage',
+    	 cam_ext1:'++id,cam_model,resolution,focal_length,type,number',
+    	 cam_ext2:'++id,cam_model,resolution,focal_length,type,number',
+    	 cam_ext3:'++id,cam_model,resolution,focal_length,type,number',
+    	 cam_ext4:'++id,cam_model,resolution,focal_length,type,number',
+    	 cam_ext5:'++id,cam_model,resolution,focal_length,type,number',
+    	 cam_ext6:'++id,cam_model,resolution,focal_length,type,number',
+    	 cam_ext7:'++id,cam_model,resolution,focal_length,type,number',
+    	 cam_ext8:'++id,cam_model,resolution,focal_length,type,number',
+    	 cam_ext9:'++id,cam_model,resolution,focal_length,type,number',
+    	 cam_ext10:'++id,cam_model,resolution,focal_length,type,number',
+    	 cam_ext11:'++id,cam_model,resolution,focal_length,type,number',
+    	 cam_ext12:'++id,cam_model,resolution,focal_length,type,number',
+    	 cam_ext13:'++id,cam_model,resolution,focal_length,type,number',
+    	 cam_ext14:'++id,cam_model,resolution,focal_length,type,number',
+    	 cam_ext15:'++id,cam_model,resolution,focal_length,type,number',
     	});
  return db;
  }

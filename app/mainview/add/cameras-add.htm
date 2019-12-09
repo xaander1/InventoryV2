@@ -3,7 +3,7 @@
     <div class="pane-group">
 
   	<div class="pane-lg" style="padding: 2rem;padding-top: 0">
-  		<h3><u><span class="icon icon-database icon-text" style="color:#f25022;padding-right:1rem "></span>DVR Details</u></h3>
+  		<h3><u><span class="icon icon-database icon-text" style="color:#f25022;padding-right:1rem "></span>Video Recorder</u></h3>
    
   	<div class="form-group">
     	<label> Region</label>
@@ -15,12 +15,28 @@
   		<select class="form-control input-dvr"  id="dept_select">
   		</select>
  	</div>
+  <div class="form-group">
+      <label>Type</label>
+      <select class="form-control input-dvr">
+        <option>NVR</option>
+        <option>DVR</option>
+      </select>
+  </div>
+    <div class="form-group">
+    <label>Channels</label>
+      <select class="form-control input-dvr">
+        <option>16</option>
+        <option>32</option>
+        <option>64</option>
+        <option>128</option>
+      </select>
+  </div>
 	<div class="form-group">
-    	<label>DVR Model</label>
+    	<label>Model</label>
     	<input class="form-control input-dvr" placeholder="e.g ds-7232hqhi-k2">
   	</div>
   	<div class="form-group">
-    	<label>DVR Serial</label>
+    	<label>Serial</label>
    	 	<input class="form-control input-dvr" placeholder="e.g D07188969">
   	</div>
   	<div class="form-group">
@@ -37,7 +53,9 @@
       <th>Model</th>
       <th>Resolution</th>
       <th>Focal Length</th>
+      <th>MP</th>
       <th>Type</th>
+      <th>Type 2</th>
       <th>Number</th>
     </tr>
   </thead>
@@ -51,11 +69,18 @@
   		<td><select class="form-control input-ext1" id="foc_select">
   			
   		</select></td>
+      <td><select class="form-control input-ext1" id="mp_select">
+        
+      </select></td>
   		<td><select class="form-control input-ext1">
   			<option>Outdoor</option>
   			<option>Indoor</option>
   			<option>Indoor & Outdoor</option>
   		</select></td>
+      <td><select class="form-control input-ext1">
+        <option>IP</option>
+        <option>Analog</option>
+      </select></td>
   		<td><input style="width:3rem " class="form-control input-ext1" type="" name=""></td>
   	</tr>
   	 <tr>
@@ -67,11 +92,18 @@
   		<td><select class="form-control input-ext2" id="foc_select">
   			
   		</select></td>
+      <td><select class="form-control input-ext2" id="mp_select">
+        
+      </select></td>
   		<td><select class="form-control input-ext2">
   			<option>Outdoor</option>
   			<option>Indoor</option>
   			<option>Indoor & Outdoor</option>
   		</select></td>
+      <td><select class="form-control input-ext2">
+        <option>IP</option>
+        <option>Analog</option>
+      </select></td>
   		<td><input style="width:3rem " class="form-control input-ext2" type="" name=""></td>
   	</tr>
   	 <tr>
@@ -83,11 +115,18 @@
   		<td><select class="form-control input-ext3" id="foc_select">
   			
   		</select></td>
+      <td><select class="form-control input-ext3" id="mp_select">
+        
+      </select></td>
   		<td><select class="form-control input-ext3">
   			<option>Outdoor</option>
   			<option>Indoor</option>
   			<option>Indoor & Outdoor</option>
   		</select></td>
+      <td><select class="form-control input-ext3">
+        <option>IP</option>
+        <option>Analog</option>
+      </select></td>
   		<td><input style="width:3rem " class="form-control input-ext3" type="" name=""></td>
   	</tr>
     <tr>
@@ -99,11 +138,18 @@
   		<td><select class="form-control input-ext4" id="foc_select">
   			
   		</select></td>
+      <td><select class="form-control input-ext4" id="mp_select">
+        
+      </select></td>
   		<td><select class="form-control input-ext4">
   			<option>Outdoor</option>
   			<option>Indoor</option>
   			<option>Indoor & Outdoor</option>
   		</select></td>
+      <td><select class="form-control input-ext4">
+        <option>IP</option>
+        <option>Analog</option>
+      </select></td>
   		<td><input style="width:3rem " class="form-control input-ext4" type="" name=""></td>
   	</tr>
   	<tr>
@@ -115,11 +161,18 @@
   		<td><select class="form-control input-ext5" id="foc_select">
   			
   		</select></td>
+      <td><select class="form-control input-ext5" id="mp_select">
+        
+      </select></td>
   		<td><select class="form-control input-ext5">
   			<option>Outdoor</option>
   			<option>Indoor</option>
   			<option>Indoor & Outdoor</option>
   		</select></td>
+      <td><select class="form-control input-ext5">
+        <option>IP</option>
+        <option>Analog</option>
+      </select></td>
   		<td><input style="width:3rem " class="form-control input-ext5" type="" name=""></td>
   	</tr>
   	<tr>
@@ -131,11 +184,18 @@
   		<td><select class="form-control input-ext6" id="foc_select">
   			
   		</select></td>
+      <td><select class="form-control input-ext6" id="mp_select">
+        
+      </select></td>
   		<td><select class="form-control input-ext6">
   			<option>Outdoor</option>
   			<option>Indoor</option>
   			<option>Indoor & Outdoor</option>
   		</select></td>
+      <td><select class="form-control input-ext6">
+        <option>IP</option>
+        <option>Analog</option>
+      </select></td>
   		<td><input style="width:3rem " class="form-control input-ext6" type="" name=""></td>
   	</tr>
   	<tr>
@@ -147,11 +207,18 @@
   		<td><select class="form-control input-ext7" id="foc_select">
   			
   		</select></td>
+      <td><select class="form-control input-ext7" id="mp_select">
+        
+      </select></td>
   		<td><select class="form-control input-ext7">
   			<option>Outdoor</option>
   			<option>Indoor</option>
   			<option>Indoor & Outdoor</option>
   		</select></td>
+      <td><select class="form-control input-ext7">
+        <option>IP</option>
+        <option>Analog</option>
+      </select></td>
   		<td><input style="width:3rem " class="form-control input-ext7" type="" name=""></td>
   	</tr>
   	<tr>
@@ -163,11 +230,18 @@
   		<td><select class="form-control input-ext8" id="foc_select">
   			
   		</select></td>
+      <td><select class="form-control input-ext8" id="mp_select">
+        
+      </select></td>
   		<td><select class="form-control input-ext8">
   			<option>Outdoor</option>
   			<option>Indoor</option>
   			<option>Indoor & Outdoor</option>
   		</select></td>
+      <td><select class="form-control input-ext8">
+        <option>IP</option>
+        <option>Analog</option>
+      </select></td>
   		<td><input style="width:3rem " class="form-control input-ext8" type="" name=""></td>
   	</tr>
   	<tr>
@@ -179,11 +253,18 @@
   		<td><select class="form-control input-ext9" id="foc_select">
   			
   		</select></td>
+      <td><select class="form-control input-ext9" id="mp_select">
+        
+      </select></td>
   		<td><select class="form-control input-ext9">
   			<option>Outdoor</option>
   			<option>Indoor</option>
   			<option>Indoor & Outdoor</option>
   		</select></td>
+      <td><select class="form-control input-ext9">
+        <option>IP</option>
+        <option>Analog</option>
+      </select></td>
   		<td><input style="width:3rem " class="form-control input-ext9" type="" name=""></td>
   	</tr>
   	<tr>
@@ -195,11 +276,18 @@
   		<td><select class="form-control input-ext10" id="foc_select">
   			
   		</select></td>
+      <td><select class="form-control input-ext10" id="mp_select">
+        
+      </select></td>
   		<td><select class="form-control input-ext10">
   			<option>Outdoor</option>
   			<option>Indoor</option>
   			<option>Indoor & Outdoor</option>
   		</select></td>
+      <td><select class="form-control input-ext10">
+        <option>IP</option>
+        <option>Analog</option>
+      </select></td>
   		<td><input style="width:3rem " class="form-control input-ext10" type="" name=""></td>
   	</tr>
   	<tr>
@@ -211,11 +299,18 @@
   		<td><select class="form-control input-ext11" id="foc_select">
   			
   		</select></td>
+      <td><select class="form-control input-ext11" id="mp_select">
+        
+      </select></td>
   		<td><select class="form-control input-ext11">
   			<option>Outdoor</option>
   			<option>Indoor</option>
   			<option>Indoor & Outdoor</option>
   		</select></td>
+      <td><select class="form-control input-ext11">
+        <option>IP</option>
+        <option>Analog</option>
+      </select></td>
   		<td><input style="width:3rem " class="form-control input-ext11" type="" name=""></td>
   	</tr>
   	<tr>
@@ -227,11 +322,18 @@
   		<td><select class="form-control input-ext12" id="foc_select">
   			
   		</select></td>
+      <td><select class="form-control input-ext12" id="mp_select">
+        
+      </select></td>
   		<td><select class="form-control input-ext12">
   			<option>Outdoor</option>
   			<option>Indoor</option>
   			<option>Indoor & Outdoor</option>
   		</select></td>
+      <td><select class="form-control input-ext12">
+        <option>IP</option>
+        <option>Analog</option>
+      </select></td>
   		<td><input style="width:3rem " class="form-control input-ext12" type="" name=""></td>
   	</tr>
   	<tr>
@@ -243,11 +345,18 @@
   		<td><select class="form-control input-ext13" id="foc_select">
   			
   		</select></td>
+      <td><select class="form-control input-ext13" id="mp_select">
+        
+      </select></td>
   		<td><select class="form-control input-ext13">
   			<option>Outdoor</option>
   			<option>Indoor</option>
   			<option>Indoor & Outdoor</option>
   		</select></td>
+      <td><select class="form-control input-ext13">
+        <option>IP</option>
+        <option>Analog</option>
+      </select></td>
   		<td><input style="width:3rem " class="form-control input-ext13" type="" name=""></td>
   	</tr>
   	<tr>
@@ -259,11 +368,18 @@
   		<td><select class="form-control input-ext14" id="foc_select">
   			
   		</select></td>
+      <td><select class="form-control input-ext14" id="mp_select">
+        
+      </select></td>
   		<td><select class="form-control input-ext14">
   			<option>Outdoor</option>
   			<option>Indoor</option>
   			<option>Indoor & Outdoor</option>
   		</select></td>
+      <td><select class="form-control input-ext14">
+        <option>IP</option>
+        <option>Analog</option>
+      </select></td>
   		<td><input style="width:3rem " class="form-control input-ext14" type="" name=""></td>
   	</tr>
   	<tr>
@@ -275,11 +391,18 @@
   		<td><select class="form-control input-ext15" id="foc_select">
   			
   		</select></td>
+      <td><select class="form-control input-ext15" id="mp_select">
+        
+      </select></td>
   		<td><select class="form-control input-ext15">
   			<option>Outdoor</option>
   			<option>Indoor</option>
   			<option>Indoor & Outdoor</option>
   		</select></td>
+      <td><select class="form-control input-ext15">
+        <option>IP</option>
+        <option>Analog</option>
+      </select></td>
   		<td><input style="width:3rem " class="form-control input-ext15" type="" name=""></td>
   	</tr>
   </tbody>
@@ -327,6 +450,7 @@ automate2(db,'regions','#region_select');
 automate2(db,'departments','#dept_select');
 automate2(db,'resolutions','#res_select');
 automate2(db,'focals','#foc_select');
+automate2(db,'megapixels','#mp_select');
 
 let auto_save=(className,dbNames,tableName)=>{
 let inputs = document.querySelectorAll(className);
@@ -349,10 +473,31 @@ let getEl_to_clear = document.querySelectorAll(className);
 
 let submitbtn = document.querySelector(".submit");
 submitbtn.onclick = event => {
-let database_names=['region','department','dvr_model','dvr_serial','storage']
-auto_save('.input-dvr',database_names,'dvrs')
-
-
+let database_names=['region','department','type','channels','model','serial','storage'];
+let database_names2=['cam_model','resolution','focal_length','mp','type','type2','number'];
+auto_save('.input-dvr',database_names,'dvrs');
+auto_save('.input-ext1',database_names2,'cam_ext1');
+auto_save('.input-ext2',database_names2,'cam_ext2');
+auto_save('.input-ext3',database_names2,'cam_ext3');
+auto_save('.input-ext4',database_names2,'cam_ext4');
+auto_save('.input-ext5',database_names2,'cam_ext5');
+auto_save('.input-ext6',database_names2,'cam_ext6');
+auto_save('.input-ext7',database_names2,'cam_ext7');
+auto_save('.input-ext8',database_names2,'cam_ext8');
+auto_save('.input-ext9',database_names2,'cam_ext9');
+auto_save('.input-ext10',database_names2,'cam_ext10');
+auto_save('.input-ext11',database_names2,'cam_ext11');
+auto_save('.input-ext12',database_names2,'cam_ext12');
+auto_save('.input-ext13',database_names2,'cam_ext13');
+auto_save('.input-ext14',database_names2,'cam_ext14');
+auto_save('.input-ext15',database_names2,'cam_ext15');
+notifier.notify(
+  {
+    title: 'Cameras added',
+    message: 'Desktop details saved successfully',
+    icon: path.join(__dirname, '../icons/icon.png'), 
+    sound: true,
+  });
 
 }
 

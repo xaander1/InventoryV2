@@ -41,7 +41,7 @@
 <div class="window-content">
 	  <div class="pane-group" style="padding-top: 1.5rem">
    	<div class="pane" style="padding: 0.8rem;padding-top: 0">
-   				<h3><u><span class="icon icon-user icon-text" style="color: #737373;padding-right:1rem "></span>Technician</u></h3>	 
+   				<h3><u><span class="icon icon-user icon-text" style="color: #737373;padding-right:1rem "></span>Technicians</u></h3>	 
     <table class="table-striped" id="tech_body">
 			
 		</table>
@@ -57,7 +57,7 @@
 
 
    	</div>
-   	<div class="pane" style="padding: 1rem;padding-top: 0">
+   	<div class="pane" style="padding: 0.8rem;padding-top: 0">
 		<h3><u><span class="icon icon-eye icon-text" style="color: aqua;padding-right:1rem "></span>Focal Length</u></h3>	 
     <table class="table-striped" id="foc_body">
 			
@@ -65,7 +65,16 @@
 		<button class="btn btn-primary pull-right" id="add_foc">Add</button>   		
 
    	</div>
-   	<div class="pane" style="padding: 1rem;padding-top: 0"></div>
+   	<div class="pane" style="padding: 0.8rem;padding-top: 0">
+   	<h3><u><span class="icon icon-feather icon-text" style="color:deeppink;padding-right:1rem "></span>Megapixels</u></h3>	 
+    <table class="table-striped" id="mp_body">
+			
+		</table>
+		<button class="btn btn-primary pull-right" id="add_mp">Add</button>   		
+
+   	</div>
+
+   	</div>
    </div>
 </div>
 </div>
@@ -104,7 +113,11 @@ db.focals.each(result=>{
 	create_table_row(result,db,'focals','#foc_body');
 });
 
-//
+//megapixels
+db.megapixels.each(result=>{
+	create_table_row(result,db,'megapixels','#mp_body');
+});
+
 /*----------------------------------done-------------------------------------------*/
 
 /*--------------------------Button to add more values -----------------------------*/
@@ -209,7 +222,20 @@ buttonAdd7.onclick = event => {
 			create_table_row(fake_result,db,'focals','#foc_body');
 	});
 }
-
+//Button8
+let buttonAdd8 = document.querySelector('#add_mp')
+buttonAdd8.onclick = event => {
+ 	db.megapixels.add({
+		name: '',
+	}).then((id)=>{
+			let fake_result = {
+				id : id,
+				name: ""
+			};
+			
+			create_table_row(fake_result,db,'megapixels','#mp_body');
+	});
+}
 
 
 /*--------------------------------------Button End-------------------------*/
@@ -246,12 +272,12 @@ function create_table_row(result,db,database_name,sector) {
 			input.onchange = event =>{
 			let value = event.target.value;
 			if(value){
-			let sanitized_value = parseInt(value);
-			 if(isNaN(sanitized_value)){
-			 db[database_name].update(result.id, {[key]:value}).catch(err=>{console.log(err)});
-			}else{
-				db[database_name].update(result.id, {[key]:sanitized_value}).catch(err=>{console.log(err)});
-			}
+			//let sanitized_value = parseInt(value);
+			//  if(isNaN(sanitized_value)){
+			//  db[database_name].update(result.id, {[key]:value}).catch(err=>{console.log(err)});
+			// }else{
+				db[database_name].update(result.id, {[key]:value}).catch(err=>{console.log(err)});
+			// }
 			} else{
 				db[database_name].update(result.id, {[key]:""}).catch(err=>{console.log(err)});
 				event.target.placeholder='Type here';

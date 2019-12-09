@@ -48,8 +48,23 @@
 		<button class="btn btn-primary pull-right" id="add_tech">Add</button>
 
    	</div>
-   	<div class="pane" style="padding: 1rem;padding-top: 0"></div>
-   	<div class="pane" style="padding: 1rem;padding-top: 0"></div>
+   	<div class="pane" style="padding: 0.8rem;padding-top: 0">
+   				<h3><u><span class="icon icon-eye icon-text" style="color: brown;padding-right:1rem "></span>Resolution</u></h3>	 
+    <table class="table-striped" id="res_body">
+			
+		</table>
+		<button class="btn btn-primary pull-right" id="add_res">Add</button>
+
+
+   	</div>
+   	<div class="pane" style="padding: 1rem;padding-top: 0">
+		<h3><u><span class="icon icon-eye icon-text" style="color: aqua;padding-right:1rem "></span>Focal Length</u></h3>	 
+    <table class="table-striped" id="foc_body">
+			
+		</table>
+		<button class="btn btn-primary pull-right" id="add_foc">Add</button>   		
+
+   	</div>
    	<div class="pane" style="padding: 1rem;padding-top: 0"></div>
    </div>
 </div>
@@ -79,6 +94,14 @@ db.ms_office.each(result=>{
 //Technician
 db.tech_name.each(result=>{
 	create_table_row(result,db,'tech_name','#tech_body');
+});
+//resolutions
+db.resolutions.each(result=>{
+	create_table_row(result,db,'resolutions','#res_body');
+});
+//focal length
+db.focals.each(result=>{
+	create_table_row(result,db,'focals','#foc_body');
 });
 
 //
@@ -158,8 +181,38 @@ buttonAdd5.onclick = event => {
 			create_table_row(fake_result,db,'tech_name','#tech_body');
 	});
 }
-/*--------------------------------------Button End-------------------------*/
+//Button 6
+let buttonAdd6 = document.querySelector('#add_res')
+buttonAdd6.onclick = event => {
+ 	db.resolutions.add({
+		name: '',
+	}).then((id)=>{
+			let fake_result = {
+				id : id,
+				name: ""
+			};
+			
+			create_table_row(fake_result,db,'resolutions','#res_body');
+	});
+}
+//Button 7
+let buttonAdd7 = document.querySelector('#add_foc')
+buttonAdd7.onclick = event => {
+ 	db.focals.add({
+		name: '',
+	}).then((id)=>{
+			let fake_result = {
+				id : id,
+				name: ""
+			};
+			
+			create_table_row(fake_result,db,'focals','#foc_body');
+	});
+}
 
+
+
+/*--------------------------------------Button End-------------------------*/
 
 
 
@@ -188,7 +241,8 @@ function create_table_row(result,db,database_name,sector) {
 			let input = document.createElement('input');
 			if(result[key]) input.value = result[key];
 			else input.placeholder="Type here";
-			input.setAttribute("style","background-color:transparent !important; border:none !important; width:7rem");
+			input.setAttribute("style","background-color:transparent !important;height:1rem;");
+			input.setAttribute("class","form-control");
 			input.onchange = event =>{
 			let value = event.target.value;
 			if(value){

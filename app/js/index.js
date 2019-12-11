@@ -14,13 +14,19 @@ const { Tabs,listenForClicks,listenForNestedClicks } = require ('./src/tabsroute
     //Code for listenening for clicks
 	listenForClicks('.tab','add');
   listenForNestedClicks('.header-tab','default.htm','.tab');
-})
-.catch(error=>console.log(error));
+}).then(()=>{
+
 
 //quit,minimise and maximize
+var window = remote.getCurrentWindow();
+window.on('maximize',()=>{
+  document.querySelector('.accessory').style.display='none';
+});
+window.on('unmaximize',()=>{
+  document.querySelector('.accessory').style.display='block';
+});
 const max = document.querySelector('#maximize');
 max.onclick=()=> {
-  var window = remote.getCurrentWindow();
   if(window.isMaximized()) {
     window.unmaximize();
   } else {
@@ -35,3 +41,8 @@ const quit = document.querySelector('#quit');
 quit.onclick=()=>{
   remote.getCurrentWindow().close();
 }
+
+
+
+})
+.catch(error=>console.log(error));

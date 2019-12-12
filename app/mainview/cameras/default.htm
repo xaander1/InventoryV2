@@ -12,9 +12,9 @@
 <script type="text/javascript">
 	const { init_data} = require('../res/reusable');
  	var db = init_data(Dexie);
+ 	let display = document.createDocumentFragment()
  	db.transaction('rw', db.dvrs, db.cam_ext1,db.cam_ext2,db.cam_ext3,db.cam_ext4,db.cam_ext5,db.cam_ext6,db.cam_ext7,db.cam_ext8,db.cam_ext9,db.cam_ext10,db.cam_ext11,db.cam_ext12,db.cam_ext13,db.cam_ext14,db.cam_ext15, function () {
  	db.dvrs.each(dvr=>{
- 	let display = document.getElementById('display_body');
 	let group = document.createElement('div');
 	group.setAttribute('class','jumbotron m-4 p-4');
 	let row = document.createElement('div');
@@ -109,7 +109,8 @@ setCameraTableRow(dvr['id'],'cam_ext15','15');
 	group.appendChild(row)
 	display.appendChild(group);
  	})
-	
+}).then(()=>{
+document.getElementById('display_body').appendChild(display);
 });
 
 </script>

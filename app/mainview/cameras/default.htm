@@ -1,1 +1,115 @@
-<p>Hello</p>
+<div class="window" style="padding-top: 0.1rem;background-color:#f9f6ef">
+ <!--  <div class="window-content"> -->
+  	<!-- <div class="pane-group" style="padding:0.9rem "> -->
+  	<link rel="stylesheet" type="text/css" href="./css/bootstrap-grid.min.css">
+	<div class ="" id='display_body'>	
+	
+	</div>
+
+<!-- </div> -->
+<!-- </div> -->
+</div>
+<script type="text/javascript">
+	const { init_data} = require('../res/reusable');
+ 	var db = init_data(Dexie);
+ 	db.transaction('rw', db.dvrs, db.cam_ext1,db.cam_ext2,db.cam_ext3,db.cam_ext4,db.cam_ext5,db.cam_ext6,db.cam_ext7,db.cam_ext8,db.cam_ext9,db.cam_ext10,db.cam_ext11,db.cam_ext12,db.cam_ext13,db.cam_ext14,db.cam_ext15, function () {
+ 	db.dvrs.each(dvr=>{
+ 	let display = document.getElementById('display_body');
+	let group = document.createElement('div');
+	group.setAttribute('class','jumbotron m-4 p-4');
+	let row = document.createElement('div');
+	row.setAttribute('class','row');
+	group.setAttribute('style','border:1px solid silver;border-radius:15px;box-shadow: 2px 2px 0.5rem rgba(0,0,0,0.5);background-color:white');
+	let sidebar= document.createElement('div');
+	sidebar.setAttribute('class','pane-sm');
+	let list = document.createElement('ul');
+	list.setAttribute('class','m-0 p-0');
+	list.setAttribute('style', 'list-style: none;');
+	let display_names = ['Region','Department','Type','Channels','Model','Serial','Storage'];
+	i=0;
+	for (const key of Object.keys(dvr)) {
+	if(dvr[key]){
+	if(key =='id' || key=='__proto__'){continue}
+	else{
+	let list_element = document.createElement('li');
+	list_element.setAttribute('class', 'm-0 p-0');
+	list_element.innerHTML = ` <strong>${display_names[i]}</strong> : ${dvr[key]}`;
+	list.appendChild(list_element);
+	i++;
+	} }else{
+		i++;
+	} }
+
+	let minimain= document.createElement('div');
+	minimain.setAttribute('class','pane');
+	//minimain.setAttribute('style','border-left:1px solid silver');
+
+/*---------------------Creating table head elements-------------------*/
+let table = document.createElement('table');
+let thead = document.createElement('thead');
+let tbody = document.createElement('tbody');
+let tr1 = document.createElement('tr');
+table.className = 'table table-bordered table-striped table-sm';
+//table.setAttribute('style','font-size:1vw;');
+thead.className = 'thead-dark';
+thead.appendChild(tr1);
+table.appendChild(thead);
+table.appendChild(tbody);
+//div.appendChild(table);
+let innerContents = ['#','Model', 'Resolution','Focal Length', 'MP', 'Type 1','Type 2','Number'];
+let fragment = document.createDocumentFragment();
+innerContents.forEach( innercontent => {
+	let th = document.createElement('th');
+	th.innerHTML = innercontent;
+	fragment.appendChild(th);
+});
+tr1.appendChild(fragment);
+//thead.appendChild(tr1);
+//table.appendChild(thead);
+minimain.appendChild(table);
+/*-------------------Ending head tag element-------------------------------*/
+let setCameraTableRow = (identity,database,current_id)=>{
+db[database].where('id').equals(identity).each(camera=>{
+if(camera['cam_model'] ||camera['number'] ){
+let tr2 = document.createElement('tr');
+let td = document.createElement('td');
+		td.innerHTML=current_id;
+		tr2.appendChild(td);
+for (const key of Object.keys(camera)) {
+	if(key=='__proto__'||key=='id'){continue}
+	else{
+		let td = document.createElement('td');
+		td.innerHTML=camera[key];
+		tr2.appendChild(td);
+	}
+} 
+tbody.appendChild(tr2);
+}
+});
+}
+setCameraTableRow(dvr['id'],'cam_ext1','1');
+setCameraTableRow(dvr['id'],'cam_ext2','2');
+setCameraTableRow(dvr['id'],'cam_ext3','3');
+setCameraTableRow(dvr['id'],'cam_ext4','4');
+setCameraTableRow(dvr['id'],'cam_ext5','5');
+setCameraTableRow(dvr['id'],'cam_ext6','6');
+setCameraTableRow(dvr['id'],'cam_ext7','7');
+setCameraTableRow(dvr['id'],'cam_ext8','8');
+setCameraTableRow(dvr['id'],'cam_ext9','9');
+setCameraTableRow(dvr['id'],'cam_ext10','10');
+setCameraTableRow(dvr['id'],'cam_ext11','11');
+setCameraTableRow(dvr['id'],'cam_ext12','12');
+setCameraTableRow(dvr['id'],'cam_ext13','13');
+setCameraTableRow(dvr['id'],'cam_ext14','14');
+setCameraTableRow(dvr['id'],'cam_ext15','15');
+
+	sidebar.appendChild(list);
+	row.appendChild(sidebar);
+	row.appendChild(minimain);
+	group.appendChild(row)
+	display.appendChild(group);
+ 	})
+	
+});
+
+</script>

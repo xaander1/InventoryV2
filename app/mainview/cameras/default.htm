@@ -17,6 +17,13 @@
  	db.dvrs.each(dvr=>{
 	let group = document.createElement('div');
 	group.setAttribute('class','jumbotron m-4 p-4');
+	group.ondblclick=()=>{
+	window.dvr_id = dvr['id'];
+	Tabs('.header-tab','main','./mainview/edit/cameras.htm').then(()=>{
+	document.querySelector('#edit_tab').style.display = 'block';	
+	})
+
+	}
 	let row = document.createElement('div');
 	row.setAttribute('class','row');
 	group.setAttribute('style','border:1px solid silver;border-radius:15px;box-shadow: 2px 2px 0.5rem rgba(0,0,0,0.5);background-color:white');

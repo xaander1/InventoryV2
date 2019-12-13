@@ -148,16 +148,16 @@
   const { init_data} = require('../res/reusable');
   var db = init_data(Dexie);
   let automate = (db,table,id)=>{
-  db[table].each(result=>{
-    for (const key of Object.keys(result)) {
-   if(key == '__proto__' || key ==='id'){ continue}
-  else if(key =='name'){
-    if(result[key]){
-    let btn_region = document.querySelector(id);
-    let opt=document.createElement('option');
-    opt.text = result[key];
-    btn_region.add(opt);}
-  }
+    db[table].each(result=>{
+      for (const key of Object.keys(result)) {
+        if(key == '__proto__' || key ==='id'){ continue}
+       else if(key =='name'){
+        if(result[key]){
+          let btn_region = document.querySelector(id);
+          let opt=document.createElement('option');
+          opt.text = result[key];
+          btn_region.add(opt);}
+        }
 
 
     }

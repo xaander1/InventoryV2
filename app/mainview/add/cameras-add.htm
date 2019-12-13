@@ -1,4 +1,4 @@
-<div class="window" style="padding-top: 1.5rem;">
+<div class="window" style="padding-top: 0rem;">
   <div class="window-content">
     <div class="pane-group">
 
@@ -45,12 +45,12 @@
   	</div>
     <div class="form-group">
       <label>Technician Name</label>
-      <select class="form-control input"  id="tech_name_select">
+      <select class="form-control input-dvr"  id="tech_name_select">
       </select>
     </div>
     <div class="form-group">
       <label>Date</label>
-      <input type="date" class="form-control input">
+      <input type="date" class="form-control input-dvr">
     </div>
 
 
@@ -458,6 +458,7 @@ const { init_data} = require('../res/reusable');
 }
 automate2(db,'regions','#region_select');
 automate2(db,'departments','#dept_select');
+automate2(db,'tech_name','#tech_name_select');
 automate2(db,'resolutions','#res_select');
 automate2(db,'focals','#foc_select');
 automate2(db,'megapixels','#mp_select');
@@ -483,7 +484,7 @@ let getEl_to_clear = document.querySelectorAll(className);
 
 let submitbtn = document.querySelector(".submit");
 submitbtn.onclick = event => {
-let database_names=['region','department','type','channels','model','serial','storage'];
+let database_names=['region','department','type','channels','model','serial','storage','tech_name','date'];
 let database_names2=['cam_model','resolution','focal_length','mp','type','type2','number'];
 auto_save('.input-dvr',database_names,'dvrs');
 auto_save('.input-ext1',database_names2,'cam_ext1');

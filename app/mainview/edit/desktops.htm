@@ -147,7 +147,7 @@
 <script type="text/javascript">
   const { init_data} = require('../res/reusable');
   var db = init_data(Dexie);
-  let automate = (db,table,id)=>{
+  let automate = (db,table,id,callback)=>{
     db[table].each(result=>{
       for (const key of Object.keys(result)) {
         if(key == '__proto__' || key ==='id'){ continue}
@@ -161,13 +161,15 @@
 
 
     }
+  }).then(()=>{
+    callback();
   });
 }
-automate(db,'regions','#region_select');
-automate(db,'departments','#dept_select');
-automate(db,'os','#os_select');
-automate(db,'ms_office','#ms_select');
-automate(db,'tech_name','#tech_name_select');
+// automate(db,'regions','#region_select');
+// automate(db,'departments','#dept_select');
+// automate(db,'os','#os_select');
+// automate(db,'ms_office','#ms_select');
+// automate(db,'tech_name','#tech_name_select');
  //When Enter is Pressed
 let inputs_x= document.querySelectorAll('.input');
 for(let i = 0; i < inputs_x.length; i++){
@@ -205,6 +207,26 @@ inputs_values.forEach((item,index)=>{
       document.querySelector('#_d').checked=true;
 
     }
+  }else if(item.id=="region_select"){
+    automate(db,'regions','#region_select',()=>{
+      item.value=window.data[datatabe_names[index]];   
+    });
+  }else if(item.id=="dept_select"){
+    automate(db,'departments','#dept_select',()=>{
+      item.value=window.data[datatabe_names[index]];   
+    });
+  }else if(item.id=="os_select"){
+    automate(db,'os','#os_select',()=>{
+      item.value=window.data[datatabe_names[index]];   
+    });
+  }else if(item.id=="ms_select"){
+    automate(db,'ms_office','#ms_select',()=>{
+      item.value=window.data[datatabe_names[index]];   
+    });
+  }else if(item.id=="tech_name_select"){
+    automate(db,'tech_name','#tech_name_select',()=>{
+      item.value=window.data[datatabe_names[index]];   
+    });
   }
   else{
    item.value=window.data[datatabe_names[index]];  

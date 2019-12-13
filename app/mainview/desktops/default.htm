@@ -1,4 +1,4 @@
-<div class="window" style="padding-top: 0.1rem;">
+<div class="window" style="padding-top: 0.1rem;background-color:#f9f6ef">
   <div class="window-content">
   	<div class="pane" style="padding:0.9rem ">
   	<link rel="stylesheet" type="text/css" href="./css/bootstrap-grid.min.css">
@@ -19,9 +19,11 @@ let display = document.getElementById('display_body');
 let fragment = document.createDocumentFragment();   
 db.desktops.each(computer=>{
 let wrapper = document.createElement('div');
-wrapper.setAttribute('class','col-md-4')
+wrapper.setAttribute('class','col-md-4');
+
 let card = document.createElement('div');
-card.setAttribute('class','card mb-1');
+card.setAttribute('style','border:1px solid silver;border-radius:15px;box-shadow: 2px 2px 0.5rem rgba(0,0,0,0.5)');
+card.setAttribute('class','card m-3 p-2');
 //handle double clicks
 card.ondblclick = event => {
 	window.data = computer;
@@ -31,7 +33,7 @@ card.ondblclick = event => {
 	})
 	
 }
-let card_head = document.createElement('h6');
+let card_head = document.createElement('h4');
 card_head.setAttribute('class', ' pl-2 toolbar toolbar-header');
 let bold = document.createElement('strong');
 bold.innerHTML = computer['comp_name'];
@@ -43,7 +45,7 @@ let list = document.createElement('ul');
 list.setAttribute('class',' row m-0 p-0');
 list.setAttribute('style', 'list-style: none;');
 let innerfrag = document.createDocumentFragment();
-let display_names =['region','department','pc_model','pc_serial','monitor_model','monitor_serial','keyboard','mouse','comp_name','os','os_status','processor','ram','ms_office','ms_status','rem_storage','printer_model','printer_serial','scanner_model','scanner_serial','ups_model','tech_name','date','log'];
+let display_names =['Region','Department','PC Model','PC Serial','Monitor Model','Monitor Serial','Keyboard','Mouse','Computer Name','OS','OS status','Processor','RAM','MS Office','MS status','Remaining Storage','Printer Model','Printer Serial','Scanner Model','Scanner Serial','UPS Model','Technician','Date','Log'];
 i = 0;
 for (const key of Object.keys(computer)) {
 	if(computer[key]){
@@ -51,7 +53,7 @@ for (const key of Object.keys(computer)) {
 	else if(key == 'log'){
 	let list_element = document.createElement('li');
 	list_element.setAttribute('class', 'col-sm-10 m-0 p-0');
-	list_element.innerHTML = `<strong>${display_names[i]}</strong> : <br>${computer[key]}`;
+	list_element.innerHTML = `<strong>${display_names[i]}</strong> : <br><pre style='color: #7fba00'>${computer[key]}</pre`;
 	innerfrag.appendChild(list_element); 
 	i++;
 	}else{

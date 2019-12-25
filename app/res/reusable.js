@@ -12,6 +12,7 @@ db.version(1).stores({
     	 focals: '++id,name',
     	 megapixels: '++id,name',
     	 desktops:'++id,region,department,pc_model,pc_serial,monitor_model,monitor_serial,keyboard,mouse,comp_name,os,os_status,processor,ram,ms_office,ms_status,rem_storage,printer_model,printer_serial,scanner_model,scanner_serial,ups_model,tech_name,date,log',
+         laptops:'++id,region,department,pc_model,pc_serial,keyboard,mouse,comp_name,os,os_status,processor,ram,ms_office,ms_status,rem_storage,printer_model,printer_serial,scanner_model,scanner_serial,tech_name,date,log',
     	 dvrs:'++id,region,department,type,channels,model,serial,storage,tech_name,date',
     	 cam_ext1:'++id,cam_model,resolution,focal_length,mp,type,type2,number',
     	 cam_ext2:'++id,cam_model,resolution,focal_length,mp,type,type2,number',

@@ -439,32 +439,33 @@
 </style>
 
 <script type="text/javascript">
+//get database configurations
 const { init_data} = require('../res/reusable');
   var db = init_data(Dexie);
   
-  let automate2 = (db,table,id,callback)=>{
+/*set values set by user from settings*/
+
+//Ghost code
+/*let automate2 = (db,table,id,callback)=>{
   db[table].each(result=>{
-    for (const key of Object.keys(result)) {
-   if(key == '__proto__' || key ==='id'){ continue}
-  else if(key =='name'){
-    if(result[key]){
-    let btn_regions = document.querySelectorAll(id);
-    	btn_regions.forEach(btn_region=>{
-    	let opt=document.createElement('option');
-    	opt.text = result[key];
-      opt.value = result[key];
-    	btn_region.appendChild(opt);	
-    })
-    
-}
-  }
-
-
+  for (const key of Object.keys(result)) {
+    if(key == '__proto__' || key ==='id'){ continue}
+    else if(key =='name'){
+      if(result[key]){
+        let btn_regions = document.querySelectorAll(id);
+    	   btn_regions.forEach(btn_region=>{
+    	   let opt=document.createElement('option');
+    	   opt.text = result[key];
+          opt.value = result[key];
+    	   btn_region.appendChild(opt);	
+              })   
+      }
     }
+  }
   }).then(()=>{
     callback();
   });
-}
+}*/
 
 // automate2(db,'departments','#dept_select');
 // automate2(db,'tech_name','#tech_name_select');
@@ -474,29 +475,43 @@ const { init_data} = require('../res/reusable');
 
 let database_names=['region','department','type','channels','model','serial','storage','tech_name','date'];
 let database_names2=['cam_model','resolution','focal_length','mp','type','type2','number'];
-let auto_save_reverse=(className,dbNames,tableName)=>{
+
+//Saving files automated
+let auto_save_reverse = (className,dbNames,tableName) => {
+  //set dexie transaction
   db.transaction('rw', db.dvrs, db.cam_ext1,db.cam_ext2,db.cam_ext3,db.cam_ext4,db.cam_ext5,db.cam_ext6,db.cam_ext7,db.cam_ext8,db.cam_ext9,db.cam_ext10,db.cam_ext11,db.cam_ext12,db.cam_ext13,db.cam_ext14,db.cam_ext15,db.regions,db.departments,db.tech_name,db.resolutions,db.focals,db.megapixels, function () {
-  db[tableName].where('id').equals(window.dvr_id).each(results=>{
-  let inputs = document.querySelectorAll(className);
-  inputs.forEach((input,index)=>{
-    if (input.id=='region_select') {
-      automate2(db,'regions','#region_select',()=>{
-      input.value=results[dbNames[index]];   
-      });
-    }else if(input.id=='dept_select'){
-      automate2(db,'departments','#dept_select',()=>{
-        input.value=results[dbNames[index]];
-      });
-    }else if(input.id=='tech_name_select'){
-      db.resolutions.each(result=>{
-          let opt=document.createElement('option');
-          opt.text = result['name'];
-          opt.value = result['name'];
-          input.appendChild(opt);
+    db[tableName].where('id').equals(window.dvr_id).each(results=>{
+    let inputs = document.querySelectorAll(className);
+    inputs.forEach((input,index)=>{
+        if (input.id=='region_select') {
+          db.regions.each(result=>{
+            let opt=document.createElement('option');
+            opt.text = result['name'];
+            opt.value = result['name'];
+            input.appendChild(opt);
 
         }).then(()=>{
         input.value=results[dbNames[index]];});
-    }
+        }else if(input.id=='dept_select'){
+            db.departments.each(result=>{
+            let opt=document.createElement('option');
+            opt.text = result['name'];
+            opt.value = result['name'];
+            input.appendChild(opt);
+
+        }).then(()=>{
+        input.value=results[dbNames[index]];});
+        }
+        else if(input.id=='tech_name_select'){
+          db.tech_name.each(result=>{
+            let opt=document.createElement('option');
+            opt.text = result['name'];
+            opt.value = result['name'];
+            input.appendChild(opt);
+
+        }).then(()=>{
+        input.value=results[dbNames[index]];});
+        }
     else if(input.id=='res_select'){
         db.resolutions.each(result=>{
           let opt=document.createElement('option');

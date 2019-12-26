@@ -1,0 +1,109 @@
+<div class="window" style="padding-top: 1.5rem;">
+  <div class="window-content">
+    <div class="pane-group">
+	  	<div class="pane" style="padding:6rem;padding-top: 0 ">
+	  	<h3><u><span class="icon icon-print icon-text" style="color:#5eb0e5;padding-right:1rem "></span>Printer Details</u></h3>
+   
+  	<div class="form-group">
+    	<label> Region</label>
+  		<select class="form-control input" id="region_select">
+  		</select>
+  	</div>
+	<div class="form-group">
+   		<label>Department</label>
+  		<select class="form-control input"  id="dept_select">
+  		</select>
+ 	</div>
+
+  	<div class="form-group">
+    	<label>Printer Model</label>
+    	<input class="form-control input" placeholder="e.g Belkin F9L1001">
+  	</div>
+
+  	<div class="form-group">
+    	<label>Printer Serial</label>
+   	 	<input class="form-control input" placeholder="e.g 121149GF112874">
+  	</div>
+	  </div>
+	  	
+<div class="pane" style="padding:6rem;padding-top: 0">
+   <h3><u><span class="icon icon-user icon-text" style="color:#5eb0e5;padding-right:1rem "></span>Technician Details</u></h3> 
+    <div class="form-group">
+      <label>Technician Name</label>
+      <select class="form-control input"  id="tech_name_select">
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Date</label>
+      <input type="date" class="form-control input">
+    </div>
+
+    <div class="form-group">
+      <label>Log</label>
+      <textarea type="date" class="form-control input" rows="7" ></textarea>
+    </div>
+
+  <div class="form-group submit pull-right">
+      <button class="btn btn-primary">
+      Save
+      </button>
+    </div>
+
+
+
+</div>
+	</div>
+  </div>
+</div>
+<script type="text/javascript">
+const { init_data} = require('../res/reusable');
+  var db = init_data(Dexie);
+  let automate = (db,table,id)=>{
+  db[table].each(result=>{
+    for (const key of Object.keys(result)) {
+   if(key == '__proto__' || key ==='id'){ continue}
+  else if(key =='name'){
+    if(result[key]){
+    let btn_region = document.querySelector(id);
+    let opt=document.createElement('option');
+    opt.text = result[key];
+    btn_region.add(opt);}
+  }
+
+
+    }
+  });
+}
+automate(db,'regions','#region_select');
+automate(db,'departments','#dept_select');
+automate(db,'tech_name','#tech_name_select');
+let submitbtn = document.querySelector(".submit");
+let datatabe_names = ['region','department','printer_model','printer_serial','tech_name','date','log'];
+
+submitbtn.onclick = event => {
+let inputs_values = document.querySelectorAll('.input');
+let data = {};
+inputs_values.forEach((item,index)=>{
+	 data[datatabe_names[index]] = item.value; 
+});
+db.printers.add(data)
+.then(()=>{
+  let getEl_to_clear = document.querySelectorAll('.input');
+  getEl_to_clear.forEach((Elem)=>{
+    if(Elem.tagName =="SELECT"){ 
+    }else{
+    Elem.value = "";
+  }
+  });
+  //document.getElementById('main').scrollIntoView();
+notifier.notify(
+  {
+    title: 'Saved',
+    message: 'Printer details saved successfully',
+    icon: path.join(__dirname, '../icons/icon.png'), 
+    sound: true,
+  });
+});
+}
+
+</script>

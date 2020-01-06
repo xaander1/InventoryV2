@@ -33,6 +33,10 @@
     	<label>Monitor Serial</label>
    	 	<input class="form-control input" placeholder="e.g HP-6CM313352W">
   	</div>
+    <div class="form-group">
+      <label>IP</label>
+      <input class="form-control input" placeholder="e.g 192.168.124.40">
+    </div>
   	<div class="form-group">
     	<label><span class="icon icon-keyboard icon-text"></span> Keyboard Type</label>
    	 	<input class="form-control input" placeholder="e.g Logitech G213">
@@ -189,7 +193,7 @@ for(let i = 0; i < inputs_x.length; i++){
 
 //Module getting the database dirty
 let submitbtn = document.querySelector(".submit");
-let datatabe_names = ['region','department','pc_model','pc_serial','monitor_model','monitor_serial','keyboard','mouse','comp_name','os','os_status','processor','ram','ms_office','ms_status','rem_storage','printer_model','printer_serial','scanner_model','scanner_serial','ups_model','tech_name','date','log'];
+let datatabe_names = ['region','department','pc_model','pc_serial','monitor_model','monitor_serial','ip','keyboard','mouse','comp_name','os','os_status','processor','ram','ms_office','ms_status','rem_storage','printer_model','printer_serial','scanner_model','scanner_serial','ups_model','tech_name','date','log'];
 let inputs_values = document.querySelectorAll('.input');
 inputs_values.forEach((item,index)=>{
   if(datatabe_names[index]=='os_status'){

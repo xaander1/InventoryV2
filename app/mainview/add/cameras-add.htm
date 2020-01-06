@@ -39,6 +39,10 @@
     	<label>Serial</label>
    	 	<input class="form-control input-dvr" placeholder="e.g D07188969">
   	</div>
+    <div class="form-group">
+      <label>IP</label>
+      <input class="form-control input-dvr" placeholder="e.g 192.168.124.40">
+    </div>
   	<div class="form-group">
     	<label> <span class="icon icon-drive icon-text"></span> Storage</label>
    	 	<input class="form-control input-dvr" placeholder="e.g 2TB">
@@ -484,7 +488,7 @@ let getEl_to_clear = document.querySelectorAll(className);
 
 let submitbtn = document.querySelector(".submit");
 submitbtn.onclick = event => {
-let database_names=['region','department','type','channels','model','serial','storage','tech_name','date'];
+let database_names=['region','department','type','channels','model','serial','ip','storage','tech_name','date'];
 let database_names2=['cam_model','resolution','focal_length','mp','type','type2','number'];
 auto_save('.input-dvr',database_names,'dvrs');
 auto_save('.input-ext1',database_names2,'cam_ext1');

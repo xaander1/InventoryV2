@@ -2258,6 +2258,10 @@ tr:active,
   /*color: #fff;*/
   /*background-color: #116cd6;*/
 }
+.tr-active:active{
+  color: #fff;
+  background-color: #116cd6;
+}
 
 thead tr:active {
   color: #333;
@@ -2351,4 +2355,40 @@ td:last-child {
 .tab-item-fixed {
   flex: none;
   padding: 3px 10px;
+}
+.justify-center{
+  justify-content: center;
+}
+.justify-left{
+  justify-content: flex-start;
+}
+.justify-right{
+  justify-content: flex-end;
+}
+.mt-1{
+  margin-top: 1rem;
+}
+.mt-2{
+  margin-top: 2rem;
+}
+.mb-1{
+  margin-bottom:1rem;
+}
+.mb-2{
+  margin-bottom: 2rem;
+}
+.mr-1{
+  margin-right: 1rem;
+}
+.mr-2{
+  margin-right: 2rem;
+}
+.ml-1{
+  margin-left: 1rem;
+}
+.ml-2{
+  margin-left: 2rem;
+}
+.font5{
+  font-size: 1.5rem
 }

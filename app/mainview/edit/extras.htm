@@ -27,6 +27,10 @@
     	<label>Device Serial</label>
    	 	<input class="form-control input" placeholder="e.g 149GF112874">
   	</div>
+    <div class="form-group">
+      <label>IP</label>
+      <input class="form-control input" placeholder="e.g 192.168.124.40">
+    </div>
 	  </div>
 	  	
 <div class="pane" style="padding:6rem;padding-top: 0">
@@ -108,7 +112,7 @@ for(let i = 0; i < inputs_x.length; i++){
 
 //Module getting the database dirty
 let submitbtn = document.querySelector(".submit");
-let datatabe_names = ['region','department','device_name','device_model','device_serial','tech_name','date','log'];
+let datatabe_names = ['region','department','device_name','device_model','device_serial','ip','tech_name','date','log'];
 let inputs_values = document.querySelectorAll('.input');
 inputs_values.forEach((item,index)=>{
   if(datatabe_names[index]=='os_status'){

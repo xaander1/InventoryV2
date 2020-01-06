@@ -24,6 +24,10 @@
     	<label>Printer Serial</label>
    	 	<input class="form-control input" placeholder="e.g 121149GF112874">
   	</div>
+    <div class="form-group">
+      <label>IP</label>
+      <input class="form-control input" placeholder="e.g 192.168.124.40">
+    </div>
 	  </div>
 	  	
 <div class="pane" style="padding:6rem;padding-top: 0">
@@ -78,7 +82,7 @@ automate(db,'regions','#region_select');
 automate(db,'departments','#dept_select');
 automate(db,'tech_name','#tech_name_select');
 let submitbtn = document.querySelector(".submit");
-let datatabe_names = ['region','department','printer_model','printer_serial','tech_name','date','log'];
+let datatabe_names = ['region','department','printer_model','printer_serial','ip','tech_name','date','log'];
 
 submitbtn.onclick = event => {
 let inputs_values = document.querySelectorAll('.input');

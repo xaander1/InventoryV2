@@ -44,6 +44,10 @@
    	 	<input class="form-control input-dvr" placeholder="e.g 2TB">
   	</div>
     <div class="form-group">
+      <label>IP</label>
+      <input class="form-control input" placeholder="e.g 192.168.124.40">
+    </div>
+    <div class="form-group">
       <label>Technician Name</label>
       <select class="form-control input-dvr"  id="tech_name_select">
       </select>
@@ -473,7 +477,7 @@ const { init_data} = require('../res/reusable');
 // automate2(db,'focals','#foc_select');
 // automate2(db,'megapixels','#mp_select');
 
-let database_names=['region','department','type','channels','model','serial','storage','tech_name','date'];
+let database_names=['region','department','type','channels','model','ip','serial','storage','tech_name','date'];
 let database_names2=['cam_model','resolution','focal_length','mp','type','type2','number'];
 
 //Saving files automated

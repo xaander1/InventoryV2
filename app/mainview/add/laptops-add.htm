@@ -20,7 +20,6 @@
     	<label>Laptop Model</label>
     	<input class="form-control input" placeholder="e.g HP Pavilion">
   	</div>
-
   	<div class="form-group">
     	<label>Laptop Serial</label>
    	 	<input class="form-control input" placeholder="e.g acvn7791g589">
@@ -72,6 +71,10 @@
     		<label><input type="radio" name="ofc-key" value="activated" checked="checked">Activated</label>
     		<label><input type="radio" name="ofc-key" value="not-activated">Not Activated</label>
     	</div>
+      <div class="form-group">
+      <label>IP</label>
+      <input class="form-control input" placeholder="e.g 192.168.124.40">
+    </div>
     	<div class="form-group">
     		<label> <span class="icon icon-drive icon-text"></span> Remaining Storage</label>
    	 		<input class="form-control input" placeholder="e.g 247gb">
@@ -83,15 +86,15 @@
       <input class="form-control input" placeholder="e.g Laserjet Pro M402dne">
     </div>
 
-    <div class="form-group">
-      <label>Printer Serial</label>
-      <input class="form-control input" placeholder="e.g PHC6728322">
-    </div>
- 	 
  </div>
  <!--Third Pane -->
  <div class="pane" style="padding:2rem;padding-top: 0">
-	<h3><u><span class="icon icon-cc-share icon-text" style="color: #4e5851;padding-right:1rem "></span>Scanner</u></h3>
+	<div class="form-group">
+      <label>Printer Serial</label>
+      <input class="form-control input" placeholder="e.g PHC6728322">
+    </div>
+
+  <h3><u><span class="icon icon-cc-share icon-text" style="color: #4e5851;padding-right:1rem "></span>Scanner</u></h3>
 	 <div class="form-group">
     	<label>Scanner Model</label>
     	<input class="form-control input" placeholder="e.g Laserjet Pro M402dne">
@@ -171,7 +174,7 @@ for(let i = 0; i < inputs_x.length; i++){
 
 //Module getting the database dirty
 let submitbtn = document.querySelector(".submit");
-let datatabe_names = ['region','department','pc_model','pc_serial','keyboard','mouse','comp_name','os','os_status','processor','ram','ms_office','ms_status','rem_storage','printer_model','printer_serial','scanner_model','scanner_serial','tech_name','date','log'];
+let datatabe_names = ['region','department','pc_model','pc_serial','keyboard','mouse','comp_name','os','os_status','processor','ram','ms_office','ms_status','ip','rem_storage','printer_model','printer_serial','scanner_model','scanner_serial','tech_name','date','log'];
 submitbtn.onclick = event => {
 let inputs_values = document.querySelectorAll('.input');
 let data = {};

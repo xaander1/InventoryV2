@@ -24,6 +24,10 @@
     	<label>Access Point Serial</label>
    	 	<input class="form-control input" placeholder="e.g 9GF112874">
   	</div>
+    <div class="form-group">
+      <label>IP</label>
+      <input class="form-control input" placeholder="e.g 192.168.124.40">
+    </div>
 
   	<h3><u><span class="icon icon-cloud-thunder icon-text" style="color: #4e5851;padding-right:1rem "></span>UPS</u></h3>
   	<div class="form-group">
@@ -84,7 +88,7 @@ automate(db,'regions','#region_select');
 automate(db,'departments','#dept_select');
 automate(db,'tech_name','#tech_name_select');
 let submitbtn = document.querySelector(".submit");
-let datatabe_names = ['region','department','ap_model','ap_serial','ups_model','tech_name','date','log'];
+let datatabe_names = ['region','department','ap_model','ap_serial','ip','ups_model','tech_name','date','log'];
 
 submitbtn.onclick = event => {
 let inputs_values = document.querySelectorAll('.input');

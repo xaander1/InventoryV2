@@ -3,7 +3,7 @@
   	<div class="pane" style="padding:0.9rem; margin: 0.2rem">
   	<link rel="stylesheet" type="text/css" href="./css/bootstrap-grid.min.css">
 	<button id="sort" class="btn btn-default  header-tab pull-right">
-      <span style="color:#4e5851" class="icon icon-sweden"></span>
+      <span style="color:#4e5851;" class="icon icon-sweden icon-text"></span> <strong>Sort</strong>
     </button>
 	<div class ="row" id='display_body' style="display:flex;">
 		
@@ -92,12 +92,13 @@ btnSort.addEventListener("click", function(){
  if(dispOne.style.display === 'flex' && dispTwo.style.display=='none'){
  	dispOne.setAttribute('style','display:none');
  	dispTwo.setAttribute('style','display:flex');
- 	sweden.setAttribute('style','color:#ee7762');
+ 	btnSort.innerHTML=`<span style="color:#ee7762;" class="icon icon-sweden icon-text"></span> <strong>Unsort</strong>`
+ 	//sweden.setAttribute('style','color:#ee7762');
  	
  }else{
  	dispOne.setAttribute('style','display:flex');
  	dispTwo.setAttribute('style','display:none');
- 	sweden.setAttribute('style','color:#4e5851');
+ 	btnSort.innerHTML=`<span style="color:#4e5851;" class="icon icon-sweden icon-text"></span> <strong>Sort</strong>`
  } 
 });
 

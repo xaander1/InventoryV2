@@ -34,7 +34,8 @@ card.ondblclick = event => {
 	
 }
 let card_head = document.createElement('h4');
-card_head.setAttribute('class', ' pl-2 toolbar toolbar-header');
+card_head.setAttribute('class', ' pl-2 mt-0 toolbar toolbar-header');
+card_head.setAttribute('style','border:1px solid silver;border-radius:10px;box-shadow: 2px 2px 0.5rem rgba(0,0,0,0.5)');
 let bold = document.createElement('strong');
 bold.innerHTML = 'Access Point - ' + computer['ap_model'];
 card_head.appendChild(bold);

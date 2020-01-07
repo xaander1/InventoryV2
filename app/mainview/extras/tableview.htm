@@ -1,0 +1,79 @@
+<div class="window" style="padding-top: 0.1rem;background-color:#f9f6ef">
+  <div class="window-content">
+        <div class="pane-group">
+  	<div class="pane" style="padding:0.9rem ">
+  	<link rel="stylesheet" type="text/css" href="./css/bootstrap-grid.min.css">
+	<table class="table-striped">
+		<thead class="table-head">			
+		</thead>
+		<tbody id='display_body'>
+			
+		</tbody>
+
+	</table>
+	
+
+	<!-- <div class ="row" id='display_body'>
+		
+	</div> -->
+</div>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+	//d-flex justify-content-between align-items-center
+//Dexie Js itialisation
+
+let display_names =['#','Region','Department','Name','Model','Serial','IP','Technician','Date','Log'];
+let leaf = document.createDocumentFragment();
+display_names.forEach(name=>{
+	let th = document.createElement('th');
+	th.innerHTML=name;
+	leaf.appendChild(th);
+
+});
+let table_head = document.querySelector('.table-head');
+table_head.appendChild(leaf);
+
+const { init_data} = require('../res/reusable');
+ var db = init_data(Dexie);
+let display = document.getElementById('display_body');      
+let fragment = document.createDocumentFragment();
+let inc = 1;   
+db.extras.each(computer=>{
+let tr = document.createElement('tr');
+//handle double clicks
+tr.ondblclick = event => {
+	window.data = computer;
+	//new Tabs('./pages/edit.htm');
+	Tabs('.header-tab','main','./mainview/edit/extras.htm').then(()=>{
+	document.querySelector('#edit_tab').style.display = 'block';	
+	})
+	
+}
+let id = document.createElement('th');
+tr.appendChild(id);
+id.innerHTML=inc;
+i = 0;
+for (const key of Object.keys(computer)) {
+	if(computer[key]){
+	if(key =='id' || key=='__proto__'){continue}
+	else{
+	let td = document.createElement('td');
+	td.innerHTML=computer[key];
+	tr.appendChild(td);
+	i++;
+	}	
+}else{
+	let td = document.createElement('td');
+	td.innerHTML='-';
+	tr.appendChild(td);
+	i++;
+}
+}
+inc++;
+fragment.appendChild(tr)
+}).then(()=>{
+display.appendChild(fragment);
+});
+</script>

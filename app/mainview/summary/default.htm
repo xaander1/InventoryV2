@@ -1,0 +1,142 @@
+<div class="window" style="padding-top: 1.5rem;">
+  <div class="window-content">
+    <div class="pane-group">
+	  	<div class="pane" style="padding:6rem;padding-top: 0 ">
+			<h3><u><span class="icon icon icon-vcard icon-text" style="color:#4e5851;padding-right:1rem "></span>Summary</u></h3>
+	  		<table class="mt-2 table-striped">
+	  			<thead>
+	  				<th>#</th>
+	  				<th>Number</th>
+	  			</thead>
+	  			<tbody>
+	  				<tr>
+	  					<th><strong>Desktops</strong></th>
+	  					<td id='desktops'></td>
+	  				</tr>
+					<tr>
+	  					<th><strong>Laptops</strong></th>
+	  					<td id='laptops'></td>
+	  				</tr>
+	  				<tr>
+	  					<th><strong>Printers</strong></th>
+	  					<td id='printers'></td>
+	  				</tr>
+	  				<tr>
+	  					<th><strong>Routers</strong></th>
+	  					<td id='routers'></td>
+	  				</tr>
+	  				<tr>
+	  					<th><strong>Access Points</strong></th>
+	  					<td id='accesspoints'></td>
+	  				</tr>
+	  				<tr>
+	  					<th><strong>Extras</strong></th>
+	  					<td id='accesspoints'></td>
+	  				</tr>
+	  			</tbody>
+	  		</table>
+
+	  	</div>
+	  	<div class="pane" style="padding:3rem;padding-top: 0;">
+	  		<div id="piechart" style="margin-top: 2rem;"></div>
+
+	  	</div>
+	  </div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	const { init_data} = require('../res/reusable');
+ 	var db = init_data(Dexie);
+ 	let _desktops=0;
+ 	let _laptops=0;
+ 	let _dvrs=0;
+ 	let _printers=0;
+ 	let _routers=0;
+ 	let _accesspoints=0;
+ 	let _extras=0;
+ 	db.transaction('rw',db.desktops,db.laptops,db.dvrs,db.printers,db.routers,db.accesspoints,db.extras, function () {
+ 		//count desktops
+ 		db.desktops.count()
+ 		.then((value)=>{
+ 			_desktops+=value;
+ 		});
+ 		//count printers in desktop
+ 		db.desktops.where('printer_model').noneOf('').count()
+ 		.then((value)=>{
+ 			_printers+=value;
+ 		});
+ 		//count laptops
+ 		db.laptops.count()
+ 		.then((value)=>{
+ 			_laptops+=value;
+ 		});
+
+ 		//count printers in laptops
+ 		db.laptops.where('printer_model').noneOf('').count()
+ 		.then((value)=>{
+ 			_printers+=value;
+ 		});
+
+ 		//count dvrs
+ 		db.dvrs.count()
+ 		.then((value)=>{
+ 			_dvrs+=value;
+ 		});
+
+ 		//count printers
+ 		db.printers.count()
+ 		.then((value)=>{
+ 			_printers+=value;
+ 		});
+
+ 		//count routers
+ 		db.routers.count()
+ 		.then((value)=>{
+ 			_routers+=value;
+ 		});
+
+ 		//count accesspoints
+ 		db.accesspoints.count()
+ 		.then((value)=>{
+ 			_accesspoints+=value;
+ 		});
+ 		//count extras
+ 		db.extras.count()
+ 		.then((value)=>{
+ 			_extras+=value;
+ 		});
+
+ 	}).then(()=>{
+
+ 	
+// Load google charts
+				 google.charts.load('current', {'packages':['corechart']});
+				 google.charts.setOnLoadCallback(drawChart);
+
+				// Draw the chart and set the chart values
+				function drawChart() {
+				  var data = google.visualization.arrayToDataTable([
+				  ['Task', 'all devices'],
+				  ['Desktops', _desktops],
+				  ['Laptops', _laptops],
+				  ['Printers', _printers],
+				  ['Routers', _routers],
+				  ['Access Points', _accesspoints],
+				  ['Extras', _extras]
+				]);
+
+				  // Optional; add a title and set the width and height of the chart
+				  var options = {'title':'Devices', 'width':700, 'height':500};
+
+				  // Display the chart inside the <div> element with id="piechart"
+				  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+				  chart.draw(data, options);
+				}
+
+
+
+
+ 	});
+
+</script>

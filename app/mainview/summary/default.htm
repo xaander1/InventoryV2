@@ -11,28 +11,41 @@
 	  			<tbody>
 	  				<tr>
 	  					<th><strong>Desktops</strong></th>
-	  					<td id='desktops'></td>
+	  					<td id='_desktops'></td>
 	  				</tr>
 					<tr>
 	  					<th><strong>Laptops</strong></th>
-	  					<td id='laptops'></td>
+	  					<td id='_laptops'></td>
 	  				</tr>
 	  				<tr>
 	  					<th><strong>Printers</strong></th>
-	  					<td id='printers'></td>
+	  					<td id='_printers'></td>
 	  				</tr>
 	  				<tr>
 	  					<th><strong>Routers</strong></th>
-	  					<td id='routers'></td>
+	  					<td id='_routers'></td>
 	  				</tr>
 	  				<tr>
 	  					<th><strong>Access Points</strong></th>
-	  					<td id='accesspoints'></td>
+	  					<td id='_accesspoints'></td>
 	  				</tr>
 	  				<tr>
 	  					<th><strong>Extras</strong></th>
-	  					<td id='accesspoints'></td>
+	  					<td id='_extras'></td>
 	  				</tr>
+	  				<tr>
+	  					<th style="background-color:#ebebe3" colspan="2" class="text-center" ><strong>Cameras</strong></th>
+	  				</tr>
+	  				<tr>
+	  					<th><strong>DVR's</strong></th>
+	  					<th id="_dvrs"></th>
+	  				</tr>
+
+	  				<tr>
+	  					<th><strong>Cameras</strong></th>
+	  					<th id="_cameras"></th>
+	  				</tr>
+
 	  			</tbody>
 	  		</table>
 
@@ -55,14 +68,15 @@
  	let _routers=0;
  	let _accesspoints=0;
  	let _extras=0;
- 	db.transaction('rw',db.desktops,db.laptops,db.dvrs,db.printers,db.routers,db.accesspoints,db.extras, function () {
+ 	let _cameras=0;
+ 	db.transaction('rw',db.desktops,db.laptops,db.dvrs,db.printers,db.routers,db.accesspoints,db.extras,db.cam_ext1,db.cam_ext2,db.cam_ext3,db.cam_ext4,db.cam_ext5,db.cam_ext6,db.cam_ext7,db.cam_ext8,db.cam_ext9,db.cam_ext10,db.cam_ext11,db.cam_ext12,db.cam_ext13,db.cam_ext14,db.cam_ext15, function () {
  		//count desktops
  		db.desktops.count()
  		.then((value)=>{
  			_desktops+=value;
  		});
  		//count printers in desktop
- 		db.desktops.where('printer_model').noneOf('').count()
+ 		db.desktops.where('printer_model').notEqual('').count()
  		.then((value)=>{
  			_printers+=value;
  		});
@@ -73,7 +87,7 @@
  		});
 
  		//count printers in laptops
- 		db.laptops.where('printer_model').noneOf('').count()
+ 		db.laptops.where('printer_model').notEqual('').count()
  		.then((value)=>{
  			_printers+=value;
  		});
@@ -106,24 +120,79 @@
  		.then((value)=>{
  			_extras+=value;
  		});
+ 		//Count total number of cameras
+ 		db.cam_ext1.where('number').notEqual('').each(cam=>{
+ 			_cameras+=parseInt(cam.number);
+ 		});
+ 		db.cam_ext2.where('number').notEqual('').each(cam=>{
+ 			_cameras+=parseInt(cam.number);
+ 		});
+ 		db.cam_ext3.where('number').notEqual('').each(cam=>{
+ 			_cameras+=parseInt(cam.number);
+ 		});
+ 		db.cam_ext4.where('number').notEqual('').each(cam=>{
+ 			_cameras+=parseInt(cam.number);
+ 		});
+ 		db.cam_ext5.where('number').notEqual('').each(cam=>{
+ 			_cameras+=parseInt(cam.number);
+ 		});
+ 		db.cam_ext6.where('number').notEqual('').each(cam=>{
+ 			_cameras+=parseInt(cam.number);
+ 		});
+ 		db.cam_ext7.where('number').notEqual('').each(cam=>{
+ 			_cameras+=parseInt(cam.number);
+ 		});
+ 		db.cam_ext8.where('number').notEqual('').each(cam=>{
+ 			_cameras+=parseInt(cam.number);
+ 		});
+ 		db.cam_ext9.where('number').notEqual('').each(cam=>{
+ 			_cameras+=parseInt(cam.number);
+ 		});
+ 		db.cam_ext10.where('number').notEqual('').each(cam=>{
+ 			_cameras+=parseInt(cam.number);
+ 		});
+ 		db.cam_ext11.where('number').notEqual('').each(cam=>{
+ 			_cameras+=parseInt(cam.number);
+ 		});
+ 		db.cam_ext12.where('number').notEqual('').each(cam=>{
+ 			_cameras+=parseInt(cam.number);
+ 		});
+ 		db.cam_ext13.where('number').notEqual('').each(cam=>{
+ 			_cameras+=parseInt(cam.number);
+ 		});
+ 		db.cam_ext14.where('number').notEqual('').each(cam=>{
+ 			_cameras+=parseInt(cam.number);
+ 		});
+ 		db.cam_ext15.where('number').notEqual('').each(cam=>{
+ 			_cameras+=parseInt(cam.number);
+ 		});
+ 		
+
 
  	}).then(()=>{
-
- 	
-// Load google charts
+document.querySelector('#_desktops').innerHTML=_desktops;
+document.querySelector('#_laptops').innerHTML=_laptops;
+document.querySelector('#_printers').innerHTML=_printers;
+document.querySelector('#_routers').innerHTML=_routers;
+document.querySelector('#_accesspoints').innerHTML=_accesspoints;
+document.querySelector('#_extras').innerHTML=_extras;
+document.querySelector('#_dvrs').innerHTML=_dvrs;
+document.querySelector('#_cameras').innerHTML=_cameras;
+	// Load google charts
 				 google.charts.load('current', {'packages':['corechart']});
 				 google.charts.setOnLoadCallback(drawChart);
 
 				// Draw the chart and set the chart values
 				function drawChart() {
 				  var data = google.visualization.arrayToDataTable([
-				  ['Task', 'all devices'],
+				  ['Task', 'List all devices'],
 				  ['Desktops', _desktops],
 				  ['Laptops', _laptops],
 				  ['Printers', _printers],
 				  ['Routers', _routers],
 				  ['Access Points', _accesspoints],
-				  ['Extras', _extras]
+				  ['Extras', _extras],
+				  ["DVR's", _dvrs]
 				]);
 
 				  // Optional; add a title and set the width and height of the chart
@@ -133,9 +202,6 @@
 				  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 				  chart.draw(data, options);
 				}
-
-
-
 
  	});
 

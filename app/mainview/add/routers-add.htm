@@ -17,7 +17,7 @@
 
   	<div class="form-group">
     	<label>Router Model</label>
-    	<input class="form-control input" placeholder="e.g Belkin F9L1001">
+    	<input class="form-control input focus_to" placeholder="e.g Belkin F9L1001">
   	</div>
 
   	<div class="form-group">
@@ -105,6 +105,7 @@ db.routers.add(data)
     Elem.value = "";
   }
   });
+  document.querySelector('.focus_to').focus();
   //document.getElementById('main').scrollIntoView();
 notifier.notify(
   {

@@ -34,7 +34,7 @@
   </div>
 	<div class="form-group">
     	<label>Model</label>
-    	<input class="form-control input-dvr" placeholder="e.g ds-7232hqhi-k2">
+    	<input class="form-control input-dvr focus_to" placeholder="e.g ds-7232hqhi-k2">
   	</div>
   	<div class="form-group">
     	<label>Serial</label>
@@ -507,6 +507,7 @@ auto_save('.input-ext12',database_names2,'cam_ext12');
 auto_save('.input-ext13',database_names2,'cam_ext13');
 auto_save('.input-ext14',database_names2,'cam_ext14');
 auto_save('.input-ext15',database_names2,'cam_ext15');
+document.querySelector('.focus_to').focus();
 notifier.notify(
   {
     title: 'Cameras added',

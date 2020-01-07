@@ -18,7 +18,7 @@
 
   	<div class="form-group">
     	<label>PC Model</label>
-    	<input class="form-control input" placeholder="e.g HP Pro 3500 Series">
+    	<input class="form-control input focus_to" placeholder="e.g HP Pro 3500 Series">
   	</div>
 
   	<div class="form-group">
@@ -213,6 +213,7 @@ db.desktops.add(data)
     Elem.value = "";
   }
   });
+  document.querySelector('.focus_to').focus();
   //document.getElementById('main').scrollIntoView();
 notifier.notify(
   {

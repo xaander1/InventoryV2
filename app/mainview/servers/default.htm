@@ -1,0 +1,168 @@
+<div class="window" style="padding-top: 0.1rem;background-color:#f9f6ef">
+  <div class="window-content">
+  	<div class="pane" style="padding:0.9rem ">
+  	<link rel="stylesheet" type="text/css" href="./css/bootstrap-grid.min.css">
+	<button id="sort" class="btn btn-default  header-tab pull-right">
+      <span style="color:#4e5851;" class="icon icon-sweden icon-text"></span> <strong>Sort</strong>
+    </button>
+	<div class ="row" style="display: flex" id='display_body'>
+		
+	</div>
+	<div class ="row" style="display: none;" id='display_body2'>
+		
+	</div>
+
+</div>
+</div>
+</div>
+<script type="text/javascript">
+	//d-flex justify-content-between align-items-center
+//Dexie Js itialisation
+
+ const { init_data} = require('../res/reusable');
+ var db = init_data(Dexie);
+let display = document.getElementById('display_body');      
+let fragment = document.createDocumentFragment();   
+db.servers.each(computer=>{
+let wrapper = document.createElement('div');
+wrapper.setAttribute('class','col-md-4');
+
+let card = document.createElement('div');
+card.setAttribute('style','border:1px solid silver;border-radius:15px;box-shadow: 2px 2px 0.5rem rgba(0,0,0,0.5)');
+card.setAttribute('class','card m-3 pt-0 p-2');
+//handle double clicks
+card.ondblclick = event => {
+	window.data = computer;
+	//new Tabs('./pages/edit.htm');
+	Tabs('.header-tab','main','./mainview/edit/servers.htm').then(()=>{
+	document.querySelector('#edit_tab').style.display = 'block';	
+	})
+	
+}
+let card_head = document.createElement('h4');
+card_head.setAttribute('class', ' pl-2 mt-0 toolbar toolbar-header');
+card_head.setAttribute('style','border:1px solid silver;border-radius:10px;box-shadow: 2px 2px 0.5rem rgba(0,0,0,0.5)');
+let bold = document.createElement('strong');
+bold.innerHTML = computer['comp_name'];
+card_head.appendChild(bold);
+card.appendChild(card_head);
+let card_body = document.createElement('div');
+card_body.setAttribute('class','card-body p-0');
+let list = document.createElement('ul');
+list.setAttribute('class',' row m-0 p-0');
+list.setAttribute('style', 'list-style: none;');
+let innerfrag = document.createDocumentFragment();
+let display_names =['Region','Department','PC Model','PC Serial','Monitor Model','Monitor Serial','IP','Keyboard','Mouse','Computer Name','OS','OS status','Processor','RAM','MS Office','MS status','Remaining Storage','UPS Model','Technician','Date','Log'];
+i = 0;
+for (const key of Object.keys(computer)) {
+	if(computer[key]){
+	if(key =='id' || key=='__proto__'){continue}
+	else if(key == 'log'){
+	let list_element = document.createElement('li');
+	list_element.setAttribute('class', 'col-sm-10 m-0 p-0');
+	list_element.innerHTML = `<strong>${display_names[i]}</strong> : <br><pre style='color: #7fba00'>${computer[key]}</pre`;
+	innerfrag.appendChild(list_element); 
+	i++;
+	}else{
+	let list_element = document.createElement('li');
+	list_element.setAttribute('class', 'col-6 m-0 p-0');
+	list_element.innerHTML = ` <strong>${display_names[i]}</strong> : ${computer[key]}`;
+	innerfrag.appendChild(list_element);
+	i++;
+	}	
+}else{
+	i++;
+}
+}
+list.appendChild(innerfrag);
+card_body.appendChild(list);
+card.appendChild(card_body);
+wrapper.appendChild(card);
+fragment.appendChild(wrapper);
+}).then(()=>{
+display.appendChild(fragment);
+});
+
+//Button toggle
+let btnSort=document.querySelector('#sort');
+let sweden = document.querySelector('.icon-sweden');
+let dispOne=document.querySelector('#display_body');
+let dispTwo=document.querySelector('#display_body2');
+btnSort.addEventListener("click", function(){
+ if(dispOne.style.display === 'flex' && dispTwo.style.display=='none'){
+ 	dispOne.setAttribute('style','display:none');
+ 	dispTwo.setAttribute('style','display:flex');
+ 	btnSort.innerHTML=`<span style="color:#ee7762;" class="icon icon-sweden icon-text"></span> <strong>Unsort</strong>`
+ 	//sweden.setAttribute('style','color:#ee7762');
+ 	
+ }else{
+ 	dispOne.setAttribute('style','display:flex');
+ 	dispTwo.setAttribute('style','display:none');
+ 	btnSort.innerHTML=`<span style="color:#4e5851;" class="icon icon-sweden icon-text"></span> <strong>Sort</strong>`
+ } 
+});
+
+//Second Display
+let display2 = document.getElementById('display_body2');      
+let fragment2 = document.createDocumentFragment();   
+db.servers.orderBy('comp_name').each(computer=>{
+let wrapper = document.createElement('div');
+wrapper.setAttribute('class','col-md-4');
+
+let card = document.createElement('div');
+card.setAttribute('style','border:1px solid silver;border-radius:15px;box-shadow: 2px 2px 0.5rem rgba(0,0,0,0.5)');
+card.setAttribute('class','card m-3 pt-0 p-2');
+//handle double clicks
+card.ondblclick = event => {
+	window.data = computer;
+	//new Tabs('./pages/edit.htm');
+	Tabs('.header-tab','main','./mainview/edit/servers.htm').then(()=>{
+	document.querySelector('#edit_tab').style.display = 'block';	
+	})
+	
+}
+let card_head = document.createElement('h4');
+card_head.setAttribute('class', ' pl-2 mt-0 toolbar toolbar-header');
+card_head.setAttribute('style','border:1px solid silver;border-radius:10px;box-shadow: 2px 2px 0.5rem rgba(0,0,0,0.5)');
+let bold = document.createElement('strong');
+bold.innerHTML = computer['comp_name'];
+card_head.appendChild(bold);
+card.appendChild(card_head);
+let card_body = document.createElement('div');
+card_body.setAttribute('class','card-body p-0');
+let list = document.createElement('ul');
+list.setAttribute('class',' row m-0 p-0');
+list.setAttribute('style', 'list-style: none;');
+let innerfrag = document.createDocumentFragment();
+let display_names =['Region','Department','PC Model','PC Serial','Monitor Model','Monitor Serial','IP','Keyboard','Mouse','Computer Name','OS','OS status','Processor','RAM','MS Office','MS status','Remaining Storage','UPS Model','Technician','Date','Log'];
+i = 0;
+for (const key of Object.keys(computer)) {
+	if(computer[key]){
+	if(key =='id' || key=='__proto__'){continue}
+	else if(key == 'log'){
+	let list_element = document.createElement('li');
+	list_element.setAttribute('class', 'col-sm-10 m-0 p-0');
+	list_element.innerHTML = `<strong>${display_names[i]}</strong> : <br><pre style='color: #7fba00'>${computer[key]}</pre`;
+	innerfrag.appendChild(list_element); 
+	i++;
+	}else{
+	let list_element = document.createElement('li');
+	list_element.setAttribute('class', 'col-6 m-0 p-0');
+	list_element.innerHTML = ` <strong>${display_names[i]}</strong> : ${computer[key]}`;
+	innerfrag.appendChild(list_element);
+	i++;
+	}	
+}else{
+	i++;
+}
+}
+list.appendChild(innerfrag);
+card_body.appendChild(list);
+card.appendChild(card_body);
+wrapper.appendChild(card);
+fragment2.appendChild(wrapper);
+}).then(()=>{
+display2.appendChild(fragment2);
+});
+
+</script>

@@ -18,6 +18,10 @@
 	  					<td id='_laptops'></td>
 	  				</tr>
 	  				<tr>
+	  					<th><strong>Servers</strong></th>
+	  					<td id='_servers'></td>
+	  				</tr>
+	  				<tr>
 	  					<th><strong>Printers</strong></th>
 	  					<td id='_printers'></td>
 	  				</tr>
@@ -63,13 +67,14 @@
  	var db = init_data(Dexie);
  	let _desktops=0;
  	let _laptops=0;
+ 	let _servers=0;
  	let _dvrs=0;
  	let _printers=0;
  	let _routers=0;
  	let _accesspoints=0;
  	let _extras=0;
  	let _cameras=0;
- 	db.transaction('rw',db.desktops,db.laptops,db.dvrs,db.printers,db.routers,db.accesspoints,db.extras,db.cam_ext1,db.cam_ext2,db.cam_ext3,db.cam_ext4,db.cam_ext5,db.cam_ext6,db.cam_ext7,db.cam_ext8,db.cam_ext9,db.cam_ext10,db.cam_ext11,db.cam_ext12,db.cam_ext13,db.cam_ext14,db.cam_ext15, function () {
+ 	db.transaction('rw',db.desktops,db.laptops,db.servers,db.dvrs,db.printers,db.routers,db.accesspoints,db.extras,db.cam_ext1,db.cam_ext2,db.cam_ext3,db.cam_ext4,db.cam_ext5,db.cam_ext6,db.cam_ext7,db.cam_ext8,db.cam_ext9,db.cam_ext10,db.cam_ext11,db.cam_ext12,db.cam_ext13,db.cam_ext14,db.cam_ext15, function () {
  		//count desktops
  		db.desktops.count()
  		.then((value)=>{
@@ -91,6 +96,13 @@
  		.then((value)=>{
  			_printers+=value;
  		});
+
+ 		//count servers
+ 		db.servers.count()
+ 		.then((value)=>{
+ 			_servers+=value;
+ 		});
+
 
  		//count dvrs
  		db.dvrs.count()
@@ -172,6 +184,7 @@
  	}).then(()=>{
 document.querySelector('#_desktops').innerHTML=_desktops;
 document.querySelector('#_laptops').innerHTML=_laptops;
+document.querySelector('#_servers').innerHTML=_servers;
 document.querySelector('#_printers').innerHTML=_printers;
 document.querySelector('#_routers').innerHTML=_routers;
 document.querySelector('#_accesspoints').innerHTML=_accesspoints;
@@ -188,6 +201,7 @@ document.querySelector('#_cameras').innerHTML=_cameras;
 				  ['Task', 'List all devices'],
 				  ['Desktops', _desktops],
 				  ['Laptops', _laptops],
+				  ['Servers', _servers],
 				  ['Printers', _printers],
 				  ['Routers', _routers],
 				  ['Access Points', _accesspoints],

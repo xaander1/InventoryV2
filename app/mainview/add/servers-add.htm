@@ -1,0 +1,203 @@
+<div class="window" style="padding-top: 1.5rem;">
+  <div class="window-content">
+    <div class="pane-group">
+
+  	<div class="pane" style="padding: 2rem;padding-top: 0">
+  		<h3><u><span class="icon icon-monitor icon-text" style="color:#4e5851;padding-right:1rem "></span>Server Details</u></h3>
+   
+  	<div class="form-group">
+    	<label> Region</label>
+  		<select class="form-control input" id="region_select">
+  		</select>
+  	</div>
+	<div class="form-group">
+   		<label>Department</label>
+  		<select class="form-control input"  id="dept_select">
+  		</select>
+ 	</div>
+
+  	<div class="form-group">
+    	<label>PC Model</label>
+    	<input class="form-control input focus_to" placeholder="e.g HP Pro 3500 Series">
+  	</div>
+
+  	<div class="form-group">
+    	<label>PC Serial</label>
+   	 	<input class="form-control input" placeholder="e.g TRF3190RQ2">
+  	</div>
+  	<div class="form-group">
+    	<label>Monitor Model</label>
+   	 	<input class="form-control input" placeholder="e.g HP W19722a">
+  	</div>
+  	<div class="form-group">
+    	<label>Monitor Serial</label>
+   	 	<input class="form-control input" placeholder="e.g HP-6CM313352W">
+  	</div>
+     <div class="form-group">
+      <label>IP</label>
+      <input class="form-control input" placeholder="e.g 192.168.124.40">
+    </div>
+      <div class="form-group">
+      <label><span class="icon icon-keyboard icon-text"></span> Keyboard Type</label>
+      <input class="form-control input" placeholder="e.g Logitech G213">
+    </div>
+ 
+</div>
+ <!--Second Pane-->
+ <div class="pane" style="padding:2rem;padding-top: 0">
+    <div class="form-group">
+      <label><span class="icon icon-mouse icon-text"></span> Mouse Type</label>
+      <input class="form-control input" placeholder="e.g Logitech G502">
+    </div>
+
+  <h3><u><span class="icon icon-shareable icon-text" style="color:#4e5851;padding-right:1rem "></span>Software Checks</u></h3>
+ 	 
+ 		<div class="form-group">
+    		<label>Computer Name</label>
+   	 		<input class="form-control input" placeholder="e.g server-54as">
+  		</div>
+  		<div class="form-group">
+   			<label>Operating System</label>
+  			<select class="form-control input"  id="os_select">
+  			</select>
+ 		</div>
+  		<div class="radio input">
+    		<label><input type="radio" name="os-key" value="activated" checked="checked">Activated</label>
+    		<label><input type="radio" name="os-key" value="not-activated">Not Activated</label>
+    	</div>
+    	<div class="form-group">
+    		<label>Processors</label>
+   	 		<input class="form-control input" placeholder="e.g i3-3220 cpu @ 3.3GHZ">
+  		</div>
+  		<div class="form-group">
+    		<label>RAM Capacity</label>
+   	 		<input class="form-control input" placeholder="e.g 4gb">
+  		</div>
+  		<div class="form-group">
+   			<label>MS Office</label>
+  			<select class="form-control input"  id="ms_select">
+  			</select>
+ 		</div>
+  		<div class="radio input">
+    		<label><input type="radio" name="ofc-key" value="activated" checked="checked">Activated</label>
+    		<label><input type="radio" name="ofc-key" value="not-activated">Not Activated</label>
+    	</div>
+    	<div class="form-group">
+    		<label> <span class="icon icon-drive icon-text"></span> Remaining Storage</label>
+   	 		<input class="form-control input" placeholder="e.g 247gb">
+  		</div>
+      
+ 
+ </div>
+ <!--Third Pane -->
+ <div class="pane" style="padding:2rem;padding-top: 0">
+  	<h3><u><span class="icon icon-cloud-thunder icon-text" style="color:#4e5851;padding-right:1rem "></span>UPS</u></h3>
+  	<div class="form-group">
+    	<label>UPS Model</label>
+    	<input class="form-control input" placeholder="e.g MECER -ME-650-VU">
+  	</div>
+    <h3><u><span class="icon icon-user icon-text" style="color:#4e5851;padding-right:1rem "></span>Technician Details</u></h3> 
+    <div class="form-group">
+      <label>Technician Name</label>
+      <select class="form-control input"  id="tech_name_select">
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Date</label>
+      <input type="date" class="form-control input">
+    </div>
+
+    <div class="form-group">
+      <label>Log</label>
+      <textarea type="date" class="form-control input" rows="7" ></textarea>
+    </div>
+    <div class="form-group submit pull-right">
+      <button class="btn btn-primary">
+      Save
+      </button>
+    </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+  const { init_data} = require('../res/reusable');
+  var db = init_data(Dexie);
+  let automate = (db,table,id)=>{
+  db[table].each(result=>{
+    for (const key of Object.keys(result)) {
+   if(key == '__proto__' || key ==='id'){ continue}
+  else if(key =='name'){
+    if(result[key]){
+    let btn_region = document.querySelector(id);
+    let opt=document.createElement('option');
+    opt.text = result[key];
+    btn_region.add(opt);}
+  }
+
+
+    }
+  });
+}
+automate(db,'regions','#region_select');
+automate(db,'departments','#dept_select');
+automate(db,'os','#os_select');
+automate(db,'ms_office','#ms_select');
+automate(db,'tech_name','#tech_name_select');
+ //When Enter is Pressed
+let inputs_x= document.querySelectorAll('.input');
+for(let i = 0; i < inputs_x.length; i++){
+  //When Enter is pressed move down
+  inputs_x[i].onkeyup=event=>{
+  if(event.keyCode == 13){
+    event.preventDefault();
+    let y=i+1;
+  try{  
+    inputs_x[y].focus();
+  }
+  catch(err){
+    //do nothing 
+  } } }
+
+}
+
+//Module getting the database dirty
+let submitbtn = document.querySelector(".submit");
+let datatabe_names = ['region','department','pc_model','pc_serial','monitor_model','monitor_serial','ip','keyboard','mouse','comp_name','os','os_status','processor','ram','ms_office','ms_status','rem_storage','ups_model','tech_name','date','log'];
+submitbtn.onclick = event => {
+let inputs_values = document.querySelectorAll('.input');
+let data = {};
+inputs_values.forEach((item,index)=>{
+  if(datatabe_names[index]=='os_status'){
+  data[datatabe_names[index]] = document.querySelector('input[name="os-key"]:checked').value;
+  }else if(datatabe_names[index]=='ms_status'){
+    data[datatabe_names[index]] = document.querySelector('input[name="ofc-key"]:checked').value;
+  }
+  else{
+  data[datatabe_names[index]] = item.value;  
+  }
+  
+});
+db.servers.add(data)
+.then(()=>{
+  let getEl_to_clear = document.querySelectorAll('.input');
+  getEl_to_clear.forEach((Elem)=>{
+    if(Elem.tagName =="SELECT"){ 
+    }else{
+    Elem.value = "";
+  }
+  });
+  document.querySelector('.focus_to').focus();
+  //document.getElementById('main').scrollIntoView();
+notifier.notify(
+  {
+    title: 'Saved',
+    message: 'Server details saved successfully',
+    icon: path.join(__dirname, '../icons/icon.png'), 
+    sound: true,
+  });
+})
+}
+</script>

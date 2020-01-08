@@ -2392,3 +2392,8 @@ td:last-child {
 .font5{
   font-size: 1.5rem
 }
+.shadows{
+  border:1px solid silver;
+  border-radius:15px;
+  box-shadow: 2px 2px 0.5rem rgba(0,0,0,0.5)
+}

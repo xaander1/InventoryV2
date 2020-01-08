@@ -15,97 +15,146 @@
 			</thead>
 			</table>
 			<div class ="row" style="display: flex" id='display_body'>
-		
+				
+
 			</div>
+			<div id="notify1" style="display:none">
+			<div style="padding: 15px;margin: 10px;border-radius: 8px;background-color: #ced6e0; transition:1s;">
+        	<p style="margin: 0;padding: 0;color: #fff;font-weight: 300;" ><span class="icon icon-attention icon-text"></span>  <span style=" font-weight: 600 !important;">Oops!</span> Something is wrong with your query</p>
+      		</div>
+      		</div>
+
+			<div id="notify2" style="display:none">
+			<div style="padding: 15px;margin: 10px;border-radius: 8px;background-color: #ced6e0; transition:1s;">
+        	<p style="margin: 0;padding: 0;color: #fff;font-weight: 300;" ><span class="icon icon-alert"></span>  <span style=" font-weight: 600 !important;">Sorry!</span> Didn't find anything</p>
+      		</div>
+      		</div>
+			
 		</div>
 	</div>
 </div>
 </div>
 <script type="text/javascript">
-
+document.querySelector('#notify1').addEventListener("click", function(){
+document.querySelector('#notify1').setAttribute('style','display:none'); 
+});
+document.querySelector('#notify2').addEventListener("click", function(){
+document.querySelector('#notify2').setAttribute('style','display:none'); 
+});
 document.querySelector('#run').addEventListener("click", function(){
 const { init_data} = require('../res/reusable');
 var db = init_data(Dexie);
 let torun = document.querySelector('#query').value;
+if(torun){
 const query =eval(`db.${torun}`);
-let display = document.getElementById('display_body');
-display.innerHTML='';      
 try{
-let fragment = document.createDocumentFragment();   
-query.each(computer=>{
-console.log(computer);
-let wrapper = document.createElement('div');
-wrapper.setAttribute('class','col-md-4');
+query.count()
+ 		.then((value)=>{
+ 			if(value!=0){
+ 				document.querySelector('#notify1').setAttribute('style','display:none');
+ 				document.querySelector('#notify2').setAttribute('style','display:none');
+ 				let display = document.getElementById('display_body');
+							display.innerHTML='';
+							document.querySelector('#notify1').setAttribute('style','display:none')     
+							let fragment = document.createDocumentFragment();   
+							query.each(computer=>{
+							let wrapper = document.createElement('div');
+							wrapper.setAttribute('class','col-md-4');
 
-let card = document.createElement('div');
-card.setAttribute('style','border:1px solid silver;border-radius:15px;box-shadow: 2px 2px 0.5rem rgba(0,0,0,0.5)');
-card.setAttribute('class','card m-3 pt-0 p-2');
-//handle double clicks
-// card.ondblclick = event => {
-// 	window.data = computer;
-// 	//new Tabs('./pages/edit.htm');
-// 	Tabs('.header-tab','main','./mainview/edit/desktops.htm').then(()=>{
-// 	document.querySelector('#edit_tab').style.display = 'block';	
-// 	})
-	
-// }
+							let card = document.createElement('div');
+							card.setAttribute('style','border:1px solid silver;border-radius:0.5rem;box-shadow: 1px 1px 0.3rem rgba(0,0,0,0.3)');
+							card.setAttribute('class','card m-3 pt-0 p-2');
+							//handle double clicks
 
-// let card_head = document.createElement('h4');
-// card_head.setAttribute('class', ' pl-2 mt-0 toolbar toolbar-header');
-// card_head.setAttribute('style','border:1px solid silver;border-radius:10px;box-shadow: 2px 2px 0.5rem rgba(0,0,0,0.5)');
-// let bold = document.createElement('strong');
-// bold.innerHTML = computer['comp_name'];
-// card_head.appendChild(bold);
-// card.appendChild(card_head);
+							let newarr=torun.split('.');
+							if(newarr[0]=='laptops'||newarr[0]=='desktops' || newarr[0]=='servers' || newarr[0]=='routers' || newarr[0]=='accesspoints' || newarr[0]=='printers' || newarr[0]=='extras'){
+							card.ondblclick = event => {
+								window.data = computer;
+								//new Tabs('./pages/edit.htm');
+								Tabs('.header-tab','main','./mainview/edit/'+newarr[0]+'.htm').then(()=>{
+								document.querySelector('#edit_tab').style.display = 'block';	
+								})
+								
+							}
+							} else{
+								card.ondblclick = event => {
+								window.dvr_id = computer['id'];
+								Tabs('.header-tab','main','./mainview/edit/cameras.htm').then(()=>{
+								document.querySelector('#edit_tab').style.display = 'block';	
+								});
+								
+							}
+							}
+							// let card_head = document.createElement('h4');
+							// card_head.setAttribute('class', ' pl-2 mt-0 toolbar toolbar-header');
+							// card_head.setAttribute('style','border:1px solid silver;border-radius:10px;box-shadow: 2px 2px 0.5rem rgba(0,0,0,0.5)');
+							// let bold = document.createElement('strong');
+							// bold.innerHTML = computer['comp_name'];
+							// card_head.appendChild(bold);
+							// card.appendChild(card_head);
 
 
 
 
 
 
-let card_body = document.createElement('div');
-card_body.setAttribute('class','card-body p-0');
-let list = document.createElement('ul');
-list.setAttribute('class',' row m-0 p-0');
-list.setAttribute('style', 'list-style: none;');
-let innerfrag = document.createDocumentFragment();
+							let card_body = document.createElement('div');
+							card_body.setAttribute('class','card-body p-0');
+							let list = document.createElement('ul');
+							list.setAttribute('class',' row m-0 p-0');
+							list.setAttribute('style', 'list-style: none;');
+							let innerfrag = document.createDocumentFragment();
 
-i = 0;
-for (const key of Object.keys(computer)) {
-	if(computer[key]){
-	if(key =='id' || key=='__proto__'){continue}
-	else if(key == 'log'){
-	let list_element = document.createElement('li');
-	list_element.setAttribute('class', 'col-sm-10 m-0 p-0');
-	list_element.innerHTML = `<strong>${key}</strong> : <br><pre style='color: #7fba00'>${computer[key]}</pre`;
-	innerfrag.appendChild(list_element); 
-	i++;
-	}else{
-	let list_element = document.createElement('li');
-	list_element.setAttribute('class', 'col-6 m-0 p-0');
-	list_element.innerHTML = ` <strong>${key}</strong> : ${computer[key]}`;
-	innerfrag.appendChild(list_element);
-	i++;
-	}	
-}else{
-	i++;
-}
-}
-list.appendChild(innerfrag);
-card_body.appendChild(list);
-card.appendChild(card_body);
-wrapper.appendChild(card);
-fragment.appendChild(wrapper);
-}).then(()=>{
-display.appendChild(fragment);
-});
+							i = 0;
+							for (const key of Object.keys(computer)) {
+								if(computer[key]){
+								if(key =='id' || key=='__proto__'){continue}
+								else if(key == 'log'){
+								let list_element = document.createElement('li');
+								list_element.setAttribute('class', 'col-sm-10 m-0 p-0');
+								list_element.innerHTML = `<strong>${key}</strong> : <br><pre style='color: #7fba00'>${computer[key]}</pre`;
+								innerfrag.appendChild(list_element); 
+								i++;
+								}else{
+								let list_element = document.createElement('li');
+								list_element.setAttribute('class', 'col-6 m-0 p-0');
+								list_element.innerHTML = ` <strong>${key}</strong> : ${computer[key]}`;
+								innerfrag.appendChild(list_element);
+								i++;
+								}	
+							}else{
+								i++;
+							}
+							}
+							list.appendChild(innerfrag);
+							card_body.appendChild(list);
+							card.appendChild(card_body);
+							wrapper.appendChild(card);
+							fragment.appendChild(wrapper);
+							}).then(()=>{
+							display.appendChild(fragment);
+							});
 
+
+ 			}else{
+		document.getElementById('display_body').innerHTML='';
+document.querySelector('#notify1').setAttribute('style','display:none')  		
+document.querySelector('#notify2').setAttribute('style','display:block')
+ 			}
+ 		
+ 		});
+
+										
 }catch(err){
+	document.getElementById('display_body').innerHTML='';
+	document.querySelector('#notify2').setAttribute('style','display:none')  
+	document.querySelector('#notify1').setAttribute('style','display:block')  
+							}
 
-let display = document.getElementById('display_body');
-display.innerHTML = `Oops sorry something is wrong with your query`;
+
+}else{
+	document.querySelector('#query').focus();
 }
-
 
 
 });

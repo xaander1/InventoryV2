@@ -44,8 +44,7 @@ quit.onclick=()=>{
 }
 
 //run save pdf
-document.querySelector('#print_to_pdf').addEventListener('click', () => {
- 
+document.querySelector('#print_to_pdf').addEventListener('click', () => { 
 mainProcess.pdfMaxSave();
 
 });

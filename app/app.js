@@ -57,14 +57,15 @@ app.on('ready', function() {
 });
 
 const pdfMaxSave = exports.pdfMaxSave = ()=>{
-  dialog.showSaveDialog(mainWindow,{
+  let options={
       title: 'Save to pdf',
       //defaultPath : '/home/alexander/Desktop',
-      buttonLabel:'save',
+      buttonLabel:'save pdf',
        filters: [
         { name: 'pdf', extensions: ['pdf'] },
-         ] 
-     }).then(response=>{
+         ]
+  }
+  dialog.showSaveDialog(mainWindow,options).then(response=>{
         console.log(response.filePath)
         if(!response.canceled){
           mainWindow.webContents.printToPDF({marginsType: 1,pageSize:{width:680000,height:297000}}).then(data => {

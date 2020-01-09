@@ -2397,8 +2397,14 @@ td:last-child {
   border-radius:15px;
   box-shadow: 2px 2px 0.5rem rgba(0,0,0,0.5)
 }
+.hide{
+  display:none;
+}
 
 @media print
 {
+.printonly{
+  display: block;
+}
 .noprint {display:none;}
 }

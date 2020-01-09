@@ -56,7 +56,7 @@ app.on('ready', function() {
   });
 });
 
-const pdfSave = exports.pdfSave = ()=>{
+const pdfMaxSave = exports.pdfMaxSave = ()=>{
   dialog.showSaveDialog(mainWindow,{
       title: 'Save to pdf',
       //defaultPath : '/home/alexander/Desktop',
@@ -67,7 +67,7 @@ const pdfSave = exports.pdfSave = ()=>{
      }).then(response=>{
         console.log(response.filePath)
         if(!response.canceled){
-          mainWindow.webContents.printToPDF({marginsType: 0,pageSize: 'A4'}).then(data => {
+          mainWindow.webContents.printToPDF({marginsType: 1,pageSize:{width:680000,height:297000}}).then(data => {
             fs.writeFile(response.filePath, data, (error) => {
             if (error) throw error
             console.log('Write PDF successfully.')

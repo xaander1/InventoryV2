@@ -71,7 +71,7 @@ query.count()
 							card.ondblclick = event => {
 								window.data = computer;
 								//new Tabs('./pages/edit.htm');
-								Tabs('.header-tab','main','./mainview/edit/'+newarr[0]+'.htm').then(()=>{
+								Tabs('.header-tab','main','./mainview/edit-cons/'+newarr[0]+'.htm').then(()=>{
 								document.querySelector('#edit_tab').style.display = 'block';	
 								})
 								
@@ -79,7 +79,7 @@ query.count()
 							} else{
 								card.ondblclick = event => {
 								window.dvr_id = computer['id'];
-								Tabs('.header-tab','main','./mainview/edit/cameras.htm').then(()=>{
+								Tabs('.header-tab','main','./mainview/edit-cons/cameras.htm').then(()=>{
 								document.querySelector('#edit_tab').style.display = 'block';	
 								});
 								

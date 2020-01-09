@@ -1,0 +1,657 @@
+<div class="window" style="padding-top: 1.5rem;">
+  <div class="window-content">
+    <div class="pane-group">
+
+  	<div class="pane-lg" style="padding: 2rem;padding-top: 0">
+  		<h3><u><span class="icon icon-database icon-text" style="color:#f25022;padding-right:1rem "></span>Video Recorder</u></h3>
+   
+  	<div class="form-group">
+    	<label> Region</label>
+  		<select class="form-control input-dvr" id="region_select">
+  		</select>
+  	</div>
+  	<div class="form-group">
+   		<label>Department</label>
+  		<select class="form-control input-dvr"  id="dept_select">
+  		</select>
+ 	</div>
+  <div class="form-group">
+      <label>Type</label>
+      <select class="form-control input-dvr">
+        <option>NVR</option>
+        <option>DVR</option>
+      </select>
+  </div>
+    <div class="form-group">
+    <label>Channels</label>
+      <select class="form-control input-dvr">
+        <option>8</option>
+        <option>16</option>
+        <option>32</option>
+        <option>64</option>
+        <option>128</option>
+      </select>
+  </div>
+	<div class="form-group">
+    	<label>Model</label>
+    	<input class="form-control input-dvr" placeholder="e.g ds-7232hqhi-k2">
+  	</div>
+  	<div class="form-group">
+    	<label>Serial</label>
+   	 	<input class="form-control input-dvr" placeholder="e.g D07188969">
+  	</div>
+    <div class="form-group">
+      <label>IP</label>
+      <input class="form-control input-dvr" placeholder="e.g 192.168.124.40">
+    </div>
+  	<div class="form-group">
+    	<label> <span class="icon icon-drive icon-text"></span> Storage</label>
+   	 	<input class="form-control input-dvr" placeholder="e.g 2TB">
+  	</div>
+    <div class="form-group">
+      <label>Technician Name</label>
+      <select class="form-control input-dvr"  id="tech_name_select">
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Date</label>
+      <input type="date" class="form-control input-dvr">
+    </div>
+    
+  </div>
+  	<div class="pane" style="padding: 2rem;padding-top: 0">
+  	<table class="table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Model</th>
+      <th>Resolution</th>
+      <th>Focal Length</th>
+      <th>MP</th>
+      <th>Type</th>
+      <th>Type 2</th>
+      <th>Number</th>
+    </tr>
+  </thead>
+  <tbody>
+  	<tr>
+  		<th>1</th>
+  		<td><input class="form-control input-ext1" type="" name=""></td>
+  		<td><select class="form-control input-ext1" id="res_select">
+  			
+  		</select></td>
+  		<td><select class="form-control input-ext1" id="foc_select">
+  			
+  		</select></td>
+      <td><select class="form-control input-ext1" id="mp_select">
+        
+      </select></td>
+  		<td><select class="form-control input-ext1">
+  			<option>Outdoor</option>
+  			<option>Indoor</option>
+  			<option>Indoor & Outdoor</option>
+  		</select></td>
+      <td><select class="form-control input-ext1">
+        <option>IP</option>
+        <option>Analog HD</option>
+      </select></td>
+  		<td><input style="width:4rem " class="form-control input-ext1" type="number" min="0" step="1"  name=""></td>
+  	</tr>
+  	 <tr>
+  		<th>2</th>
+  		<td><input class="form-control input-ext2" type="" name=""></td>
+  		<td><select class="form-control input-ext2" id="res_select">
+  			
+  		</select></td>
+  		<td><select class="form-control input-ext2" id="foc_select">
+  			
+  		</select></td>
+      <td><select class="form-control input-ext2" id="mp_select">
+        
+      </select></td>
+  		<td><select class="form-control input-ext2">
+  			<option>Outdoor</option>
+  			<option>Indoor</option>
+  			<option>Indoor & Outdoor</option>
+  		</select></td>
+      <td><select class="form-control input-ext2">
+        <option>IP</option>
+        <option>Analog HD</option>
+      </select></td>
+  		<td><input style="width:4rem " class="form-control input-ext2" type="number" min="0" step="1"  name=""></td>
+  	</tr>
+  	 <tr>
+  		<th>3</th>
+  		<td><input class="form-control input-ext3" type="" name=""></td>
+  		<td><select class="form-control input-ext3" id="res_select">
+  			
+  		</select></td>
+  		<td><select class="form-control input-ext3" id="foc_select">
+  			
+  		</select></td>
+      <td><select class="form-control input-ext3" id="mp_select">
+        
+      </select></td>
+  		<td><select class="form-control input-ext3">
+  			<option>Outdoor</option>
+  			<option>Indoor</option>
+  			<option>Indoor & Outdoor</option>
+  		</select></td>
+      <td><select class="form-control input-ext3">
+        <option>IP</option>
+        <option>Analog HD</option>
+      </select></td>
+  		<td><input style="width:4rem " class="form-control input-ext3" type="number" min="0" step="1"  name=""></td>
+  	</tr>
+    <tr>
+  		<th>4</th>
+  		<td><input class="form-control input-ext4" type="" name=""></td>
+  		<td><select class="form-control input-ext4" id="res_select">
+  			
+  		</select></td>
+  		<td><select class="form-control input-ext4" id="foc_select">
+  			
+  		</select></td>
+      <td><select class="form-control input-ext4" id="mp_select">
+        
+      </select></td>
+  		<td><select class="form-control input-ext4">
+  			<option>Outdoor</option>
+  			<option>Indoor</option>
+  			<option>Indoor & Outdoor</option>
+  		</select></td>
+      <td><select class="form-control input-ext4">
+        <option>IP</option>
+        <option>Analog HD</option>
+      </select></td>
+  		<td><input style="width:4rem " class="form-control input-ext4" type="number" min="0" step="1"  name=""></td>
+  	</tr>
+  	<tr>
+  		<th>5</th>
+  		<td><input class="form-control input-ext5" type="" name=""></td>
+  		<td><select class="form-control input-ext5" id="res_select">
+  			
+  		</select></td>
+  		<td><select class="form-control input-ext5" id="foc_select">
+  			
+  		</select></td>
+      <td><select class="form-control input-ext5" id="mp_select">
+        
+      </select></td>
+  		<td><select class="form-control input-ext5">
+  			<option>Outdoor</option>
+  			<option>Indoor</option>
+  			<option>Indoor & Outdoor</option>
+  		</select></td>
+      <td><select class="form-control input-ext5">
+        <option>IP</option>
+        <option>Analog HD</option>
+      </select></td>
+  		<td><input style="width:4rem " class="form-control input-ext5" type="number" min="0" step="1"  name=""></td>
+  	</tr>
+  	<tr>
+  		<th>6</th>
+  		<td><input class="form-control input-ext6" type="" name=""></td>
+  		<td><select class="form-control input-ext6" id="res_select">
+  			
+  		</select></td>
+  		<td><select class="form-control input-ext6" id="foc_select">
+  			
+  		</select></td>
+      <td><select class="form-control input-ext6" id="mp_select">
+        
+      </select></td>
+  		<td><select class="form-control input-ext6">
+  			<option>Outdoor</option>
+  			<option>Indoor</option>
+  			<option>Indoor & Outdoor</option>
+  		</select></td>
+      <td><select class="form-control input-ext6">
+        <option>IP</option>
+        <option>Analog HD</option>
+      </select></td>
+  		<td><input style="width:4rem " class="form-control input-ext6" type="number" min="0" step="1"  name=""></td>
+  	</tr>
+  	<tr>
+  		<th>7</th>
+  		<td><input class="form-control input-ext7" type="" name=""></td>
+  		<td><select class="form-control input-ext7" id="res_select">
+  			
+  		</select></td>
+  		<td><select class="form-control input-ext7" id="foc_select">
+  			
+  		</select></td>
+      <td><select class="form-control input-ext7" id="mp_select">
+        
+      </select></td>
+  		<td><select class="form-control input-ext7">
+  			<option>Outdoor</option>
+  			<option>Indoor</option>
+  			<option>Indoor & Outdoor</option>
+  		</select></td>
+      <td><select class="form-control input-ext7">
+        <option>IP</option>
+        <option>Analog HD</option>
+      </select></td>
+  		<td><input style="width:4rem " class="form-control input-ext7" type="number" min="0" step="1"  name=""></td>
+  	</tr>
+  	<tr>
+  		<th>8</th>
+  		<td><input class="form-control input-ext8" type="" name=""></td>
+  		<td><select class="form-control input-ext8" id="res_select">
+  			
+  		</select></td>
+  		<td><select class="form-control input-ext8" id="foc_select">
+  			
+  		</select></td>
+      <td><select class="form-control input-ext8" id="mp_select">
+        
+      </select></td>
+  		<td><select class="form-control input-ext8">
+  			<option>Outdoor</option>
+  			<option>Indoor</option>
+  			<option>Indoor & Outdoor</option>
+  		</select></td>
+      <td><select class="form-control input-ext8">
+        <option>IP</option>
+        <option>Analog HD</option>
+      </select></td>
+  		<td><input style="width:4rem " class="form-control input-ext8" type="number" min="0" step="1"  name=""></td>
+  	</tr>
+  	<tr>
+  		<th>9</th>
+  		<td><input class="form-control input-ext9" type="" name=""></td>
+  		<td><select class="form-control input-ext9" id="res_select">
+  			
+  		</select></td>
+  		<td><select class="form-control input-ext9" id="foc_select">
+  			
+  		</select></td>
+      <td><select class="form-control input-ext9" id="mp_select">
+        
+      </select></td>
+  		<td><select class="form-control input-ext9">
+  			<option>Outdoor</option>
+  			<option>Indoor</option>
+  			<option>Indoor & Outdoor</option>
+  		</select></td>
+      <td><select class="form-control input-ext9">
+        <option>IP</option>
+        <option>Analog HD</option>
+      </select></td>
+  		<td><input style="width:4rem " class="form-control input-ext9" type="number" min="0" step="1"  name=""></td>
+  	</tr>
+  	<tr>
+  		<th>10</th>
+  		<td><input class="form-control input-ext10" type="" name=""></td>
+  		<td><select class="form-control input-ext10" id="res_select">
+  			
+  		</select></td>
+  		<td><select class="form-control input-ext10" id="foc_select">
+  			
+  		</select></td>
+      <td><select class="form-control input-ext10" id="mp_select">
+        
+      </select></td>
+  		<td><select class="form-control input-ext10">
+  			<option>Outdoor</option>
+  			<option>Indoor</option>
+  			<option>Indoor & Outdoor</option>
+  		</select></td>
+      <td><select class="form-control input-ext10">
+        <option>IP</option>
+        <option>Analog HD</option>
+      </select></td>
+  		<td><input style="width:4rem " class="form-control input-ext10" type="number" min="0" step="1"  name=""></td>
+  	</tr>
+  	<tr>
+  		<th>11</th>
+  		<td><input class="form-control input-ext11" type="" name=""></td>
+  		<td><select class="form-control input-ext11" id="res_select">
+  			
+  		</select></td>
+  		<td><select class="form-control input-ext11" id="foc_select">
+  			
+  		</select></td>
+      <td><select class="form-control input-ext11" id="mp_select">
+        
+      </select></td>
+  		<td><select class="form-control input-ext11">
+  			<option>Outdoor</option>
+  			<option>Indoor</option>
+  			<option>Indoor & Outdoor</option>
+  		</select></td>
+      <td><select class="form-control input-ext11">
+        <option>IP</option>
+        <option>Analog HD</option>
+      </select></td>
+  		<td><input style="width:4rem " class="form-control input-ext11" type="number" min="0" step="1"  name=""></td>
+  	</tr>
+  	<tr>
+  		<th>12</th>
+  		<td><input class="form-control input-ext12" type="" name=""></td>
+  		<td><select class="form-control input-ext12" id="res_select">
+  			
+  		</select></td>
+  		<td><select class="form-control input-ext12" id="foc_select">
+  			
+  		</select></td>
+      <td><select class="form-control input-ext12" id="mp_select">
+        
+      </select></td>
+  		<td><select class="form-control input-ext12">
+  			<option>Outdoor</option>
+  			<option>Indoor</option>
+  			<option>Indoor & Outdoor</option>
+  		</select></td>
+      <td><select class="form-control input-ext12">
+        <option>IP</option>
+        <option>Analog HD</option>
+      </select></td>
+  		<td><input style="width:4rem " class="form-control input-ext12" type="number" min="0" step="1" name=""></td>
+  	</tr>
+  	<tr>
+  		<th>13</th>
+  		<td><input class="form-control input-ext13" type="" name=""></td>
+  		<td><select class="form-control input-ext13" id="res_select">
+  			
+  		</select></td>
+  		<td><select class="form-control input-ext13" id="foc_select">
+  			
+  		</select></td>
+      <td><select class="form-control input-ext13" id="mp_select">
+        
+      </select></td>
+  		<td><select class="form-control input-ext13">
+  			<option>Outdoor</option>
+  			<option>Indoor</option>
+  			<option>Indoor & Outdoor</option>
+  		</select></td>
+      <td><select class="form-control input-ext13">
+        <option>IP</option>
+        <option>Analog HD</option>
+      </select></td>
+  		<td><input style="width:4rem " class="form-control input-ext13" type="number" min="0" step="1" name=""></td>
+  	</tr>
+  	<tr>
+  		<th>14</th>
+  		<td><input class="form-control input-ext14" type="" name=""></td>
+  		<td><select class="form-control input-ext14" id="res_select">
+  			
+  		</select></td>
+  		<td><select class="form-control input-ext14" id="foc_select">
+  			
+  		</select></td>
+      <td><select class="form-control input-ext14" id="mp_select">
+        
+      </select></td>
+  		<td><select class="form-control input-ext14">
+  			<option>Outdoor</option>
+  			<option>Indoor</option>
+  			<option>Indoor & Outdoor</option>
+  		</select></td>
+      <td><select class="form-control input-ext14">
+        <option>IP</option>
+        <option>Analog HD</option>
+      </select></td>
+  		<td><input style="width:4rem " class="form-control input-ext14" type="number" min="0" step="1" name=""></td>
+  	</tr>
+  	<tr>
+  		<th>15</th>
+  		<td><input class="form-control input-ext15" type="" name=""></td>
+  		<td><select class="form-control input-ext15" id="res_select">
+  			
+  		</select></td>
+  		<td><select class="form-control input-ext15" id="foc_select">
+  			
+  		</select></td>
+      <td><select class="form-control input-ext15" id="mp_select">
+        
+      </select></td>
+  		<td><select class="form-control input-ext15">
+  			<option>Outdoor</option>
+  			<option>Indoor</option>
+  			<option>Indoor & Outdoor</option>
+  		</select></td>
+      <td><select class="form-control input-ext15">
+        <option>IP</option>
+        <option>Analog HD</option>
+      </select></td>
+  		<td><input style="width:4rem " class="form-control input-ext15" type="number" min="0" step="1"  name=""></td>
+  	</tr>
+  </tbody>
+</table>
+  	<div class="form-group pull-right" style="margin-top:1rem">
+      <button class="btn btn-primary submit">
+      Save Changes
+      </button>
+      </button>
+        <button class="btn btn-positive discard">
+      Cancel
+      </button>
+        <button class="btn btn-negative delete">
+      Delete
+      </button>
+    </div>
+
+  	</div>
+</div>
+</div>
+</div>
+<style type="text/css">
+	
+
+</style>
+
+<script type="text/javascript">
+//get database configurations
+const { init_data} = require('../res/reusable');
+  var db = init_data(Dexie);
+  
+/*set values set by user from settings*/
+
+//Ghost code
+/*let automate2 = (db,table,id,callback)=>{
+  db[table].each(result=>{
+  for (const key of Object.keys(result)) {
+    if(key == '__proto__' || key ==='id'){ continue}
+    else if(key =='name'){
+      if(result[key]){
+        let btn_regions = document.querySelectorAll(id);
+    	   btn_regions.forEach(btn_region=>{
+    	   let opt=document.createElement('option');
+    	   opt.text = result[key];
+          opt.value = result[key];
+    	   btn_region.appendChild(opt);	
+              })   
+      }
+    }
+  }
+  }).then(()=>{
+    callback();
+  });
+}*/
+
+// automate2(db,'departments','#dept_select');
+// automate2(db,'tech_name','#tech_name_select');
+// automate2(db,'resolutions','#res_select');
+// automate2(db,'focals','#foc_select');
+// automate2(db,'megapixels','#mp_select');
+
+let database_names=['region','department','type','channels','model','serial','ip','storage','tech_name','date'];
+let database_names2=['cam_model','resolution','focal_length','mp','type','type2','number'];
+
+//Saving files automated
+let auto_save_reverse = (className,dbNames,tableName) => {
+  //set dexie transaction
+  db.transaction('rw', db.dvrs, db.cam_ext1,db.cam_ext2,db.cam_ext3,db.cam_ext4,db.cam_ext5,db.cam_ext6,db.cam_ext7,db.cam_ext8,db.cam_ext9,db.cam_ext10,db.cam_ext11,db.cam_ext12,db.cam_ext13,db.cam_ext14,db.cam_ext15,db.regions,db.departments,db.tech_name,db.resolutions,db.focals,db.megapixels, function () {
+    db[tableName].where('id').equals(window.dvr_id).each(results=>{
+    let inputs = document.querySelectorAll(className);
+    inputs.forEach((input,index)=>{
+        if (input.id=='region_select') {
+          db.regions.each(result=>{
+            let opt=document.createElement('option');
+            opt.text = result['name'];
+            opt.value = result['name'];
+            input.appendChild(opt);
+
+        }).then(()=>{
+        input.value=results[dbNames[index]];});
+        }else if(input.id=='dept_select'){
+            db.departments.each(result=>{
+            let opt=document.createElement('option');
+            opt.text = result['name'];
+            opt.value = result['name'];
+            input.appendChild(opt);
+
+        }).then(()=>{
+        input.value=results[dbNames[index]];});
+        }
+        else if(input.id=='tech_name_select'){
+          db.tech_name.each(result=>{
+            let opt=document.createElement('option');
+            opt.text = result['name'];
+            opt.value = result['name'];
+            input.appendChild(opt);
+
+        }).then(()=>{
+        input.value=results[dbNames[index]];});
+        }
+    else if(input.id=='res_select'){
+        db.resolutions.each(result=>{
+          let opt=document.createElement('option');
+          opt.text = result['name'];
+          opt.value = result['name'];
+          input.appendChild(opt);
+
+        }).then(()=>{
+        input.value=results[dbNames[index]];});
+    }else if(input.id=='foc_select'){
+      db.focals.each(result=>{
+          let opt=document.createElement('option');
+          opt.text = result['name'];
+          opt.value = result['name'];
+          input.appendChild(opt);
+
+        }).then(()=>{
+        input.value=results[dbNames[index]];});
+    }else if(input.id=='mp_select'){
+      db.megapixels.each(result=>{
+          let opt=document.createElement('option');
+          opt.text = result['name'];
+          opt.value = result['name'];
+          input.appendChild(opt);
+
+        }).then(()=>{
+        input.value=results[dbNames[index]];});
+    }
+    else{input.value=results[dbNames[index]];}  
+  });
+
+  });
+  });
+}
+auto_save_reverse('.input-dvr',database_names,'dvrs');
+auto_save_reverse('.input-ext1',database_names2,'cam_ext1');
+auto_save_reverse('.input-ext2',database_names2,'cam_ext2');
+auto_save_reverse('.input-ext3',database_names2,'cam_ext3');
+auto_save_reverse('.input-ext4',database_names2,'cam_ext4');
+auto_save_reverse('.input-ext5',database_names2,'cam_ext5');
+auto_save_reverse('.input-ext6',database_names2,'cam_ext6');
+auto_save_reverse('.input-ext7',database_names2,'cam_ext7');
+auto_save_reverse('.input-ext8',database_names2,'cam_ext8');
+auto_save_reverse('.input-ext9',database_names2,'cam_ext9');
+auto_save_reverse('.input-ext10',database_names2,'cam_ext10');
+auto_save_reverse('.input-ext11',database_names2,'cam_ext11');
+auto_save_reverse('.input-ext12',database_names2,'cam_ext12');
+auto_save_reverse('.input-ext13',database_names2,'cam_ext13');
+auto_save_reverse('.input-ext14',database_names2,'cam_ext14');
+auto_save_reverse('.input-ext15',database_names2,'cam_ext15');
+
+
+
+//auto save function
+let auto_save=(className,dbNames,tableName)=>{
+  let inputs = document.querySelectorAll(className);
+  let data = {};
+  inputs.forEach((input,index)=>{
+      data[dbNames[index]] = input.value;  
+});
+db[tableName].update(window.dvr_id,data)
+.then(()=>{
+});
+}
+
+//saving Changes
+let submitbtn = document.querySelector(".submit");
+submitbtn.onclick = event => {
+auto_save('.input-dvr',database_names,'dvrs');
+auto_save('.input-ext1',database_names2,'cam_ext1');
+auto_save('.input-ext2',database_names2,'cam_ext2');
+auto_save('.input-ext3',database_names2,'cam_ext3');
+auto_save('.input-ext4',database_names2,'cam_ext4');
+auto_save('.input-ext5',database_names2,'cam_ext5');
+auto_save('.input-ext6',database_names2,'cam_ext6');
+auto_save('.input-ext7',database_names2,'cam_ext7');
+auto_save('.input-ext8',database_names2,'cam_ext8');
+auto_save('.input-ext9',database_names2,'cam_ext9');
+auto_save('.input-ext10',database_names2,'cam_ext10');
+auto_save('.input-ext11',database_names2,'cam_ext11');
+auto_save('.input-ext12',database_names2,'cam_ext12');
+auto_save('.input-ext13',database_names2,'cam_ext13');
+auto_save('.input-ext14',database_names2,'cam_ext14');
+auto_save('.input-ext15',database_names2,'cam_ext15');
+
+document.querySelector('#console').click();
+    notifier.notify(
+  {
+    title: 'Changes Saved',
+    message: 'Camera changes saved successfully',
+    icon: path.join(__dirname, '../icons/icon.png'), 
+    sound: true,
+  });
+}
+//discard
+let btn_discard = document.querySelector(".discard");
+btn_discard.onclick = event =>{
+  document.querySelector('#console').click();
+  notifier.notify(
+  {
+    title: 'Discard',
+    message: 'Changes Ignored',
+    icon: path.join(__dirname, '../icons/icon.png'), 
+    sound: true,
+  });
+}
+
+//delete
+let btn_delete = document.querySelector(".delete");
+btn_delete.onclick = event =>{
+  db.dvrs.delete(window.dvr_id);
+  db.cam_ext1.delete(window.dvr_id);
+  db.cam_ext2.delete(window.dvr_id);
+  db.cam_ext3.delete(window.dvr_id);
+  db.cam_ext4.delete(window.dvr_id);
+  db.cam_ext5.delete(window.dvr_id);
+  db.cam_ext6.delete(window.dvr_id);
+  db.cam_ext7.delete(window.dvr_id);
+  db.cam_ext8.delete(window.dvr_id);
+  db.cam_ext9.delete(window.dvr_id);
+  db.cam_ext10.delete(window.dvr_id);
+  db.cam_ext11.delete(window.dvr_id);
+  db.cam_ext12.delete(window.dvr_id);
+  db.cam_ext13.delete(window.dvr_id);
+  db.cam_ext14.delete(window.dvr_id);
+  db.cam_ext15.delete(window.dvr_id);
+  document.querySelector('#console').click();
+  notifier.notify(
+  {
+    title: 'Deleted',
+    message: 'Cameras details deleted',
+    icon: path.join(__dirname, '../icons/icon.png'), 
+    sound: true,
+  });
+}
+
+
+</script>

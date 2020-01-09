@@ -1,0 +1,210 @@
+<div class="window" style="padding-top: 1.5rem;">
+  <div class="window-content">
+    <div class="pane-group">
+	  	<div class="pane" style="padding:6rem;padding-top: 0 ">
+	  	<h3><u><span class="icon icon-hourglass icon-text" style="color:#4e5851;padding-right:1rem "></span>Device Details</u></h3>
+   
+  	<div class="form-group">
+    	<label> Region</label>
+  		<select class="form-control input" id="region_select">
+  		</select>
+  	</div>
+	<div class="form-group">
+   		<label>Department</label>
+  		<select class="form-control input"  id="dept_select">
+  		</select>
+ 	</div>
+<div class="form-group">
+      <label>Device Name</label>
+      <input class="form-control input" placeholder="e.g Shredder">
+    </div>
+    <div class="form-group">
+    	<label>Device Model</label>
+    	<input class="form-control input" placeholder="e.g Fellowes Power Shredder 91c">
+  	</div>
+
+  	<div class="form-group">
+    	<label>Device Serial</label>
+   	 	<input class="form-control input" placeholder="e.g 149GF112874">
+  	</div>
+    <div class="form-group">
+      <label>IP</label>
+      <input class="form-control input" placeholder="e.g 192.168.124.40">
+    </div>
+	  </div>
+	  	
+<div class="pane" style="padding:6rem;padding-top: 0">
+   <h3><u><span class="icon icon-user icon-text" style="color:#4e5851;padding-right:1rem "></span>Technician Details</u></h3> 
+    <div class="form-group">
+      <label>Technician Name</label>
+      <select class="form-control input"  id="tech_name_select">
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Date</label>
+      <input type="date" class="form-control input">
+    </div>
+
+    <div class="form-group">
+      <label>Log</label>
+      <textarea type="date" class="form-control input" rows="7" ></textarea>
+    </div>
+
+  <div class="form-group  pull-right">
+      <button class="btn btn-primary submit">
+      Save Changes
+      </button>
+        <button class="btn btn-positive discard">
+      Cancel
+      </button>
+        <button class="btn btn-negative delete">
+      Delete
+      </button>
+    </div>
+
+
+</div>
+	</div>
+  </div>
+</div>
+<script type="text/javascript">
+ const { init_data} = require('../res/reusable');
+  var db = init_data(Dexie);
+  let automate = (db,table,id,callback)=>{
+    db[table].each(result=>{
+      for (const key of Object.keys(result)) {
+        if(key == '__proto__' || key ==='id'){ continue}
+       else if(key =='name'){
+        if(result[key]){
+          let btn_region = document.querySelector(id);
+          let opt=document.createElement('option');
+          opt.text = result[key];
+          btn_region.add(opt);}
+        }
+
+
+    }
+  }).then(()=>{
+    callback();
+  });
+}
+// automate(db,'regions','#region_select');
+// automate(db,'departments','#dept_select');
+// automate(db,'os','#os_select');
+// automate(db,'ms_office','#ms_select');
+// automate(db,'tech_name','#tech_name_select');
+ //When Enter is Pressed
+let inputs_x= document.querySelectorAll('.input');
+for(let i = 0; i < inputs_x.length; i++){
+  //When Enter is pressed move down
+  inputs_x[i].onkeyup=event=>{
+  if(event.keyCode == 13){
+    event.preventDefault();
+    let y=i+1;
+  try{  
+    inputs_x[y].focus();
+  }
+  catch(err){
+    //do nothing 
+  } } }
+
+}
+
+//Module getting the database dirty
+let submitbtn = document.querySelector(".submit");
+let datatabe_names = ['region','department','device_name','device_model','device_serial','ip','tech_name','date','log'];
+let inputs_values = document.querySelectorAll('.input');
+inputs_values.forEach((item,index)=>{
+  if(datatabe_names[index]=='os_status'){
+  //data[datatabe_names[index]] = document.querySelector('input[name="os-key"]:checked').value;
+    if (window.data[datatabe_names[index]]=='activated') {
+      document.querySelector('#_a').checked=true;
+    }else{
+      document.querySelector('#_b').checked=true;
+    }
+  }else if(datatabe_names[index]=='ms_status'){
+    //data[datatabe_names[index]] = document.querySelector('input[name="ofc-key"]:checked').value;
+    if (window.data[datatabe_names[index]]=='activated') {
+      document.querySelector('#_c').checked=true;
+    }else{
+      document.querySelector('#_d').checked=true;
+
+    }
+  }else if(item.id=="region_select"){
+    automate(db,'regions','#region_select',()=>{
+      item.value=window.data[datatabe_names[index]];   
+    });
+  }else if(item.id=="dept_select"){
+    automate(db,'departments','#dept_select',()=>{
+      item.value=window.data[datatabe_names[index]];   
+    });
+  }else if(item.id=="os_select"){
+    automate(db,'os','#os_select',()=>{
+      item.value=window.data[datatabe_names[index]];   
+    });
+  }else if(item.id=="ms_select"){
+    automate(db,'ms_office','#ms_select',()=>{
+      item.value=window.data[datatabe_names[index]];   
+    });
+  }else if(item.id=="tech_name_select"){
+    automate(db,'tech_name','#tech_name_select',()=>{
+      item.value=window.data[datatabe_names[index]];   
+    });
+  }
+  else{
+   item.value=window.data[datatabe_names[index]];  
+  }
+  
+});
+
+//save changes
+submitbtn.onclick = event => {
+  inputs_values.forEach((item,index)=>{
+       if(datatabe_names[index]=='os_status'){
+        let checked_val=document.querySelector('input[name="os-key"]:checked').value;
+       db.extras.update( window.data['id'], {[datatabe_names[index]]:checked_val})
+       }else if(datatabe_names[index]=='ms_status'){
+         let checked_val=document.querySelector('input[name="ofc-key"]:checked').value;
+       db.extras.update( window.data['id'], {[datatabe_names[index]]:checked_val})
+       }else{
+     db.extras.update( window.data['id'], {[datatabe_names[index]]:item.value})
+   }
+  });
+
+document.querySelector('#console').click();
+    notifier.notify(
+  {
+    title: 'Changes Saved',
+    message: 'Device changes saved successfully',
+    icon: path.join(__dirname, '../icons/icon.png'), 
+    sound: true,
+  });
+
+}
+//discard
+let btn_discard = document.querySelector(".discard");
+btn_discard.onclick = event =>{
+  document.querySelector('#console').click();
+  notifier.notify(
+  {
+    title: 'Discard',
+    message: 'Changes Ignored',
+    icon: path.join(__dirname, '../icons/icon.png'), 
+    sound: true,
+  });
+}
+//delete
+let btn_delete = document.querySelector(".delete");
+btn_delete.onclick = event =>{
+  db.extras.delete(window.data['id']);
+  document.querySelector('#console').click();
+  notifier.notify(
+  {
+    title: 'Deleted',
+    message: 'Device details deleted',
+    icon: path.join(__dirname, '../icons/icon.png'), 
+    sound: true,
+  });
+}
+
+</script>

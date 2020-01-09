@@ -1,6 +1,7 @@
 
 const { app,Menu, BrowserWindow, dialog, ipcMain, Notification,shell } = require("electron")
 //Menu.setApplicationMenu(false)
+const fs = require('fs');
 // var app = require('app');  // Module to control application life.
 // var BrowserWindow = require('browser-window');  // Module to create native browser window.
 
@@ -54,3 +55,27 @@ app.on('ready', function() {
     mainWindow = null;
   });
 });
+
+const pdfSave = exports.pdfSave = ()=>{
+  dialog.showSaveDialog(mainWindow,{
+      title: 'Save to pdf',
+      //defaultPath : '/home/alexander/Desktop',
+      buttonLabel:'save',
+       filters: [
+        { name: 'pdf', extensions: ['pdf'] },
+         ] 
+     }).then(response=>{
+        console.log(response.filePath)
+        if(!response.canceled){
+          mainWindow.webContents.printToPDF({marginsType: 0,pageSize: 'A4'}).then(data => {
+            fs.writeFile(response.filePath, data, (error) => {
+            if (error) throw error
+            console.log('Write PDF successfully.')
+          })
+          }).catch(error => {
+            console.log(error)
+          }) 
+        }
+
+});
+}

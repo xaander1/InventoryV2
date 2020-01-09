@@ -1,4 +1,5 @@
 //ES6 javascript promises
+const mainProcess = remote.require('./app.js');
 
 //nested default tab
 const { Tabs,listenForClicks,listenForNestedClicks } = require ('./src/tabsrouter.js');
@@ -42,6 +43,12 @@ quit.onclick=()=>{
   remote.getCurrentWindow().close();
 }
 
+//run save pdf
+document.querySelector('#print_to_pdf').addEventListener('click', () => {
+ 
+mainProcess.pdfSave();
+
+});
 
 
 })

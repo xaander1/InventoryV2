@@ -2,10 +2,6 @@
   <div class="window-content">
         <div class="pane-group">
   	<div class="pane" style="padding:0.9rem ">
-
-      <span id="print_to_pdf_max"  style="color:#4e5851;" class="icon icon-print icon-text pull-right mr-2 mb-2 "></span> 
-
-
 	<table class="table-striped">
 		<thead class="table-head">			
 		</thead>
@@ -24,8 +20,9 @@
 </div>
 </div>
 <script type="text/javascript">
-	//Remove default print
-document.querySelector('.to-pdf').id='print_to_pdf_max'
+//Remove default print
+document.querySelector('#print_to_pdf').className = document.querySelector('#print_to_pdf').className.replace("show","hide");
+document.querySelector('#print_to_pdf_hidden').className = document.querySelector('#print_to_pdf_hidden').className.replace("hide","show");
 
 
 let display_names =['#','Region','Department','PC Model','PC Serial','Monitor Model','Monitor Serial','IP','Keyboard','Mouse','Computer Name','OS','OS status','Processor','RAM','MS Office','MS status','Remaining Storage','UPS Model','Technician','Date','Log'];

@@ -93,7 +93,7 @@ const pdfSave = exports.pdfSave = ()=>{
   dialog.showSaveDialog(mainWindow,options).then(response=>{
         console.log(response.filePath)
         if(!response.canceled){
-          mainWindow.webContents.printToPDF({marginsType: 1,pageSize:'A4'}).then(data => {
+          mainWindow.webContents.printToPDF({marginsType: 1,pageSize:'A3'}).then(data => {
             fs.writeFile(response.filePath, data, (error) => {
             if (error) throw error
             console.log('Write PDF successfully.')

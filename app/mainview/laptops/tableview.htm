@@ -21,7 +21,8 @@
 </div>
 <script type="text/javascript">
 //Remove default print
-document.querySelector('#print_to_pdf').setAttribute('style','display:none');
+document.querySelector('#print_to_pdf').className = document.querySelector('#print_to_pdf').className.replace("show","hide");
+document.querySelector('#print_to_pdf_hidden').className = document.querySelector('#print_to_pdf_hidden').className.replace("hide","show");
 
 let display_names =['#','Region','Department','PC Model','PC Serial','Keyboard','Mouse','Computer Name','OS','OS status','Processor','RAM','MS Office','MS status','IP','Remaining Storage','Printer Model','Printer Serial','Printer IP','Scanner Model','Scanner Serial','Technician','Date','Log'];
 let leaf = document.createDocumentFragment();

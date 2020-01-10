@@ -45,8 +45,8 @@ const { init_data} = require('../res/reusable');
 var db = init_data(Dexie);
 let torun = document.querySelector('#query').value;
 if(torun){
-const query =eval(`db.${torun}`);
 try{
+const query =eval(`db.${torun}`);
 query.count()
  		.then((value)=>{
  			if(value!=0){

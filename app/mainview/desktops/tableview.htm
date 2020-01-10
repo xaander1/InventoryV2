@@ -20,8 +20,10 @@
 </div>
 </div>
 <script type="text/javascript">
-	//d-flex justify-content-between align-items-center
-//Dexie Js itialisation
+
+//Remove default print
+document.querySelector('#print_to_pdf').className = document.querySelector('#print_to_pdf').className.replace("show","hide");
+document.querySelector('#print_to_pdf_hidden').className = document.querySelector('#print_to_pdf_hidden').className.replace("hide","show");
 
 let display_names =['#','Region','Department','PC Model','PC Serial','Monitor Model','Monitor Serial','IP','Keyboard','Mouse','Computer Name','OS','OS status','Processor','RAM','MS Office','MS status','Remaining Storage','Printer Model','Printer Serial','Printer IP','Scanner Model','Scanner Serial','UPS Model','Technician','Date','Log'];
 let leaf = document.createDocumentFragment();

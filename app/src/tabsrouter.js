@@ -1,5 +1,8 @@
 const Tabs = (commonlink,section,page_to_load)=>{
   return new Promise(function(resolve, reject) {
+    document.querySelector('#print_to_pdf').className = document.querySelector('#print_to_pdf').className.replace("hide", "show");
+    document.querySelector('#print_to_pdf_hidden').className = document.querySelector('#print_to_pdf_hidden').className.replace("show", "hide");
+          //fetch api
           fetch(page_to_load)
           .then(data => data.text())
           .then(html=> {

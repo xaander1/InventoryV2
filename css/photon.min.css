@@ -2400,6 +2400,12 @@ td:last-child {
 .hide{
   display:none;
 }
+.show{
+   display:block;
+}
+.show-flex{
+   display:flex;
+}
 
 @media print
 {

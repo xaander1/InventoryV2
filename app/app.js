@@ -80,3 +80,28 @@ const pdfMaxSave = exports.pdfMaxSave = ()=>{
 
 });
 }
+
+const pdfSave = exports.pdfSave = ()=>{
+  let options={
+      title: 'Save to pdf',
+      //defaultPath : '/home/alexander/Desktop',
+      buttonLabel:'save pdf',
+       filters: [
+        { name: 'pdf', extensions: ['pdf'] },
+         ]
+  }
+  dialog.showSaveDialog(mainWindow,options).then(response=>{
+        console.log(response.filePath)
+        if(!response.canceled){
+          mainWindow.webContents.printToPDF({marginsType: 1,pageSize:'A4'}).then(data => {
+            fs.writeFile(response.filePath, data, (error) => {
+            if (error) throw error
+            console.log('Write PDF successfully.')
+          })
+          }).catch(error => {
+            console.log(error)
+          }) 
+        }
+
+});
+}

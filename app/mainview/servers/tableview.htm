@@ -2,6 +2,10 @@
   <div class="window-content">
         <div class="pane-group">
   	<div class="pane" style="padding:0.9rem ">
+
+      <span id="print_to_pdf_max"  style="color:#4e5851;" class="icon icon-print icon-text pull-right mr-2 mb-2 "></span> 
+
+
 	<table class="table-striped">
 		<thead class="table-head">			
 		</thead>
@@ -20,8 +24,9 @@
 </div>
 </div>
 <script type="text/javascript">
-	//d-flex justify-content-between align-items-center
-//Dexie Js itialisation
+	//Remove default print
+document.querySelector('.to-pdf').id='print_to_pdf_max'
+
 
 let display_names =['#','Region','Department','PC Model','PC Serial','Monitor Model','Monitor Serial','IP','Keyboard','Mouse','Computer Name','OS','OS status','Processor','RAM','MS Office','MS status','Remaining Storage','UPS Model','Technician','Date','Log'];
 let leaf = document.createDocumentFragment();

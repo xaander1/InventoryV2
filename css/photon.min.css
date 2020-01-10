@@ -2418,6 +2418,32 @@ td:last-child {
 .shad,.card:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2) !important;
 }
+.bg-no-colour{
+  background-color: transparent;
+}
+
+.modern_search{
+  display: inline-block;
+  width: 100%;
+  min-height: 25px;
+  padding: 5px 10px;
+  font-size: 13px;
+  line-height: 1.6;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  /*border-radius: 4px;*/
+  outline: none;
+  border-top: 0px;
+  border-right: 0px;
+  border-left: 0px;
+  transition: 1s;
+}
+.modern_search:focus{
+  border-top: 0px;
+  border-right: 0px;
+  border-left: 0px;
+  border-bottom:2px solid green;
+}
 
 @media print
 {

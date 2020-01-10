@@ -2,14 +2,19 @@
   <div class="window-content">
     <div class="pane-group">
 	  	<div class="pane" style="padding:4rem;padding-top: 0 ">
+			<div class="show-flex noprint">	
+				<button id="help" class="btn btn-default ml-auto header-tab mb-1">
+      			<span style="color:#4e5851;" class="icon icon-lifebuoy icon-text"></span> <strong>Help</strong>
+    </button>
+		</div>
+
 			<h3 class="text-center"><u><span class="icon icon icon-code icon-text" style="color:#4e5851;padding-right:1rem "></span>Advanced Queries</u></h3>
-			<table class="table-striped mb-2">
-				<thead>
-				<tr>
-					<th colspan="3"><input class="form-control" type="" name="query" id="query"></th>
-					<th style="width:4rem"><button class="btn btn-default" id="run">
-        				<span class="icon icon-search"></span>
-      				</button></th>
+			<table style="background-color: transparent;width: 50%;margin-left:22%; " class= "mb-2">
+				<thead style="background-color: transparent;border-bottom: 0px;">
+				<tr style="background-color: transparent;border-bottom: 0px">
+					<th colspan="3" style="border-bottom: 0px"><input type="search" class="modern_search" name="query" id="query"></th>
+					<th style="width:4rem;border-bottom: 0px">
+        				<span style="font-size: 1.5rem" id="run" class="icon icon-search"></span></th>
 				</tr>
 			</thead>
 			</table>
@@ -17,6 +22,8 @@
 				
 
 			</div>
+
+			
 			<div id="notify1" style="display:none">
 			<div style="padding: 15px;margin: 10px;border-radius: 8px;background-color: #ced6e0; transition:1s;">
         	<p style="margin: 0;padding: 0;color: #fff;font-weight: 300;" ><span class="icon icon-attention icon-text"></span>  <span style=" font-weight: 600 !important;">Oops!</span> Something is wrong with your query</p>
@@ -28,12 +35,66 @@
         	<p style="margin: 0;padding: 0;color: #fff;font-weight: 300;" ><span class="icon icon-alert"></span>  <span style=" font-weight: 600 !important;">Sorry!</span> Didn't find anything</p>
       		</div>
       		</div>
+
+
+      		<div class ="row selectable-text" style="display: none" id='display_body2'>
+      				<div class="col-md-12">
+      				<h3>Database Tables</h3>	
+      				</div>
+      				<div class="col-sm-6">
+      					<h4><strong>Table:</strong> desktops</h4>
+						<p style="overflow-wrap: break-word;-webkit-user-select: text;">
+						++id, region, department, pc_model, pc_serial, monitor_model, monitor_serial, ip,keyboard, mouse,comp_name, os, os_status, processor, ram, ms_office, ms_status, rem_storage, printer_model, printer_serial, printer_ip, scanner_model, scanner_serial, ups_model, tech_name, date, log
+						</p>
+						
+						<h4><strong>Table:</strong> servers</h4>
+						<p style="overflow-wrap: break-word;-webkit-user-select: text;">
+						++id, region, department, pc_model, pc_serial, monitor_model, monitor_serial, ip, keyboard, mouse, comp_name, os, os_status, processor, ram, ms_office, ms_status, rem_storage, ups_model, tech_name, date, log
+						</p>
+
+						<h4><strong>Table:</strong> accesspoints</h4>
+						<p style="overflow-wrap: break-word;-webkit-user-select: text;">
+						++id, region, department, ap_model, ap_serial, ip, ups_model, tech_name, date, log
+						</p>
+
+						<h4><strong>Table:</strong> extras</h4>
+						<p style="overflow-wrap: break-word;-webkit-user-select: text;">
+						++id, region, department, device_name, device_model, device_serial, ip,tech_name, date, log
+						</p>
+						
+
+
+      				</div>
+      				<div class="col-sm-6 selectable-text">
+      					<h4><strong>Table:</strong> laptops</h4>
+						<p style="overflow-wrap: break-word;-webkit-user-select: text;">
+							++id, region, department, pc_model, pc_serial, keyboard, mouse, comp_name, os, os_status, processor, ram, ms_office, ms_status, ip, rem_storage, printer_model, printer_serial, printer_ip, scanner_model, scanner_serial, tech_name, date, log
+						</p>
+      				<h4><strong>Table:</strong> routers</h4>
+						<p style="overflow-wrap: break-word;-webkit-user-select: text;">
+							++id, region, department, router_model, router_serial, ip, ups_model, tech_name, date
+						</p>
+
+						<h4><strong>Table:</strong> printers</h4>
+						<p style="overflow-wrap: break-word;-webkit-user-select: text;">
+						++id, region, department, printer_model, printer_serial, ip, tech_name, date,log
+					</p>
+
+					<h4><strong>Table:</strong>dvrs</h4>
+						<p style="overflow-wrap: break-word;-webkit-user-select: text;">
+						++id, region, department, type, channels, model, serial, ip, storage, tech_name, date
+						</p>
+
+      				</div>
+     
+			</div>
 			
 		</div>
 	</div>
 </div>
 </div>
 <script type="text/javascript">
+document.querySelector('#query').value=stateQuery;
 document.querySelector('#notify1').addEventListener("click", function(){
 document.querySelector('#notify1').setAttribute('style','display:none'); 
 });
@@ -44,6 +105,7 @@ document.querySelector('#run').addEventListener("click", function(){
 const { init_data} = require('../res/reusable');
 var db = init_data(Dexie);
 let torun = document.querySelector('#query').value;
+stateQuery=torun;
 if(torun){
 try{
 const query =eval(`db.${torun}`);
@@ -131,6 +193,11 @@ query.count()
 							wrapper.appendChild(card);
 							fragment.appendChild(wrapper);
 							}).then(()=>{
+							let dispOne=document.querySelector('#display_body');
+							let dispTwo=document.querySelector('#display_body2');
+							dispOne.setAttribute('style','display:flex');
+ 							dispTwo.setAttribute('style','display:none');
+ 							document.querySelector('#help').innerHTML=`<span style="color:#4e5851;" class="icon icon-lifebuoy icon-text"></span> <strong>Help</strong>`	
 							display.appendChild(fragment);
 							});
 
@@ -146,9 +213,9 @@ document.querySelector('#notify2').setAttribute('style','display:block')
 										
 }catch(err){
 	document.getElementById('display_body').innerHTML='';
-	document.querySelector('#notify2').setAttribute('style','display:none')  
-	document.querySelector('#notify1').setAttribute('style','display:block')  
-							}
+	document.querySelector('#notify2').setAttribute('style','display:none');  
+	document.querySelector('#notify1').setAttribute('style','display:block');  
+				}
 
 
 }else{
@@ -157,5 +224,26 @@ document.querySelector('#notify2').setAttribute('style','display:block')
 
 
 });
+
+
+//Button toggle
+let btnHelp=document.querySelector('#help');
+let dispOne=document.querySelector('#display_body');
+let dispTwo=document.querySelector('#display_body2');
+btnHelp.addEventListener("click", function(){
+ if(dispOne.style.display === 'flex' && dispTwo.style.display=='none'){
+ 	dispOne.setAttribute('style','display:none');
+ 	dispTwo.setAttribute('style','display:flex');
+ 	btnHelp.innerHTML=`<span style="color:#ee7762;" class="icon icon-lifebuoy icon-text"></span> <strong>Help</strong>`
+ 	//sweden.setAttribute('style','color:#ee7762');
+ 	
+ }else{
+ 	dispOne.setAttribute('style','display:flex');
+ 	dispTwo.setAttribute('style','display:none');
+ 	btnHelp.innerHTML=`<span style="color:#4e5851;" class="icon icon-lifebuoy icon-text"></span> <strong>Help</strong>`
+ } 
+});
+
+
 
 </script>

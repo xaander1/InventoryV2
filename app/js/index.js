@@ -1,6 +1,6 @@
 //ES6 javascript promises
 const mainProcess = remote.require('./app.js');
-
+var stateQuery="";
 //nested default tab
 const { Tabs,listenForClicks,listenForNestedClicks } = require ('./src/tabsrouter.js');
 //load default tabs
@@ -16,8 +16,6 @@ const { Tabs,listenForClicks,listenForNestedClicks } = require ('./src/tabsroute
 	listenForClicks('.tab','add');
   listenForNestedClicks('.header-tab','default.htm','.tab');
 }).then(()=>{
-
-
 //quit,minimise and maximize
 var window = remote.getCurrentWindow();
 window.on('maximize',()=>{

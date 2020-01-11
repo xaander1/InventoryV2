@@ -146,6 +146,7 @@ IDBExportImport.clearDatabase(idb_db, function(err) {
             icon: path.join(__dirname, './icons/icon.png'), 
             sound: true,
             });
+          document.querySelector('#add').click();
             }
           });
       });

@@ -2,6 +2,10 @@
 const mainProcess = remote.require('./app.js');
 //call database
 const { init_data} = require('./res/reusable');
+var db = init_data(Dexie);
+//export import database
+const fs = require('fs');
+var IDBExportImport = require("indexeddb-export-import");
 var stateQuery="";
 //nested default tab
 const { Tabs,listenForClicks,listenForNestedClicks } = require ('./src/tabsrouter.js');
@@ -66,6 +70,108 @@ notifier.notify(
 
 });
 
+
+/***********************Export Database ******************************************/
+document.querySelector('#export').addEventListener('click',()=>{
+  db.open().then(function() {
+  var idb_db = db.backendDB(); // get native IDBDatabase object from Dexie wrapper
+
+  // export to JSON, clear database, and import from JSON
+  IDBExportImport.exportToJsonString(idb_db, function(err, jsonString) {
+    if(err)
+      console.error(err);
+    else { 
+let options={
+      title: 'Export Database',
+                //defaultPath : '/home/alexander/Desktop',
+                buttonLabel:'save',
+                 filters: [
+                  { name: 'JSON', extensions: ['json'] },
+                   ] 
+  }
+  remote.dialog.showSaveDialog(options).then(response=>{
+        if(!response.canceled){
+            fs.writeFile(response.filePath,jsonString,err=>{
+                  if(err) {
+                        return console.log(err);
+                      }else{
+                         notifier.notify(
+          {
+            title: 'Export complete',
+            message: 'Export completed successfully',
+            icon: path.join(__dirname, './icons/icon.png'), 
+            sound: true,
+            });
+                  
+                    } 
+                });
+          
+        }
+
+});
+
+     
+    }
+  });
+}).catch(function(e) {
+  console.error("Could not connect. " + e);
+});
+    
+
+});
+/***********************Import Database ******************************************/
+document.querySelector('#import').addEventListener('click',()=>{ 
+let options={
+   properties: ['openFile'],
+    //defaultPath : '/home/alexander/Desktop',
+    buttonLabel:'open',
+    properties: ['openFile'],
+    filters: [
+          { name: 'JSON', extensions: ['json'] }
+        ] 
+}
+remote.dialog.showOpenDialog(options).then(result=>{
+  if(!result.canceled){
+  const content = fs.readFileSync(result.filePaths[0]).toString();
+  db.open().then(function() {
+var idb_db = db.backendDB(); // get native IDBDatabase object from Dexie wrapper
+IDBExportImport.clearDatabase(idb_db, function(err) {
+        if(!err) // cleared data successfully
+          IDBExportImport.importFromJsonString(idb_db,content, function(err) {
+            if (!err){
+          notifier.notify(
+          {
+            title: 'Import complete',
+            message: 'Import completed successfully',
+            icon: path.join(__dirname, './icons/icon.png'), 
+            sound: true,
+            });
+            }
+          });
+      });
+
+  }).catch(function(e) {
+  console.error("Could not connect. " + e);
+});
+
+
+}
+  });
+
+});
+/*******************************Save to excel*************************/
+
+
+
+
+
+
+
+
+
+
+
+
 document.querySelector('#create_excel').addEventListener('click',()=>{
     // Require library
 var xl = require('excel4node');
@@ -99,7 +205,8 @@ var ws_routers = wb.addWorksheet('Routers');
 var ws_accesspoints = wb.addWorksheet('Access Points');
 var ws_printers = wb.addWorksheet('Printers');
 var ws_extras = wb.addWorksheet('Other Devices');
-var db = init_data(Dexie);
+
+
 let desOuterCounter=1;
 let lapOuterCounter=1;
 let serOuterCounter=1;
@@ -419,8 +526,7 @@ ws_extras.cell(extOuterCounter,innerCounter)
 });
 
 
-
-
+//end of your code
 }); 
 
 

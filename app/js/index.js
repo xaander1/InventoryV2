@@ -1,5 +1,7 @@
 //ES6 javascript promises
 const mainProcess = remote.require('./app.js');
+//call database
+const { init_data} = require('./res/reusable');
 var stateQuery="";
 //nested default tab
 const { Tabs,listenForClicks,listenForNestedClicks } = require ('./src/tabsrouter.js');
@@ -97,8 +99,6 @@ var ws_routers = wb.addWorksheet('Routers');
 var ws_accesspoints = wb.addWorksheet('Access Points');
 var ws_printers = wb.addWorksheet('Printers');
 var ws_extras = wb.addWorksheet('Other Devices');
-//call database
-const { init_data} = require('./res/reusable');
 var db = init_data(Dexie);
 let desOuterCounter=1;
 let lapOuterCounter=1;

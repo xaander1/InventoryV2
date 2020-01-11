@@ -226,6 +226,7 @@ ws_servers.cell(serOuterCounter,innerCounter)
 }else{ innerCounter++; }
 }
 });
+/***************************************************************************/
 //work on Cameras sheet
 db.dvrs.each(device=>{
 camOuterCounter+=3;
@@ -236,8 +237,7 @@ ws_cameras.cell(camOuterCounter,index+1)
 .string(name)
 .style(head_style);
 });
-
-
+//Work on dvr
 let innerCounter=1;
 camOuterCounter++;
  for (const key of Object.keys(device)) {
@@ -262,7 +262,7 @@ ws_cameras.cell(camOuterCounter,index+1)
 .style(head_style);
 });
 
-
+//Function to work on cameras
 let setCameraTableRow = (identity,database,current_id)=>{
 db[database].where('id').equals(identity).each(camera=>{
 if(camera['cam_model'] ||camera['number'] ){
@@ -292,6 +292,7 @@ ws_cameras.cell(camOuterCounter,innerCounter)
 });
 }
 
+//Working on Cameras
 setCameraTableRow(device['id'],'cam_ext1','1');
 setCameraTableRow(device['id'],'cam_ext2','2');
 setCameraTableRow(device['id'],'cam_ext3','3');
@@ -309,8 +310,87 @@ setCameraTableRow(device['id'],'cam_ext14','14');
 setCameraTableRow(device['id'],'cam_ext15','15');
 
 });
+/***************************************************************************/
 
+//work on routers sheet
+db.routers.each(device=>{
+let innerCounter=1;
+rouOuterCounter++;
+ for (const key of Object.keys(device)) {
+  if(key == '__proto__' || key == 'id'){continue}
+  else if(typeof device[key] == 'string'){
+  ws_routers.cell(rouOuterCounter,innerCounter)
+  .string(device[key])
+  .style(normal);
+  innerCounter++;
+}else if(typeof device[key] == 'number'){
+ws_routers.cell(rouOuterCounter,innerCounter)
+  .number(device[key])
+  .style(normal);
+  innerCounter++;
+}else{ innerCounter++; }
+}
+});
 
+//work on accesspoints sheet
+db.accesspoints.each(device=>{
+let innerCounter=1;
+accOuterCounter++;
+ for (const key of Object.keys(device)) {
+  if(key == '__proto__' || key == 'id'){continue}
+  else if(typeof device[key] == 'string'){
+  ws_accesspoints.cell(accOuterCounter,innerCounter)
+  .string(device[key])
+  .style(normal);
+  innerCounter++;
+}else if(typeof device[key] == 'number'){
+ws_accesspoints.cell(accOuterCounter,innerCounter)
+  .number(device[key])
+  .style(normal);
+  innerCounter++;
+}else{ innerCounter++; }
+}
+});
+
+//work on printers sheet
+db.printers.each(device=>{
+let innerCounter=1;
+priOuterCounter++;
+ for (const key of Object.keys(device)) {
+  if(key == '__proto__' || key == 'id'){continue}
+  else if(typeof device[key] == 'string'){
+  ws_printers.cell(priOuterCounter,innerCounter)
+  .string(device[key])
+  .style(normal);
+  innerCounter++;
+}else if(typeof device[key] == 'number'){
+ws_printers.cell(priOuterCounter,innerCounter)
+  .number(device[key])
+  .style(normal);
+  innerCounter++;
+}else{ innerCounter++; }
+}
+});
+
+//work on extras sheet
+db.servers.each(device=>{
+let innerCounter=1;
+extOuterCounter++;
+ for (const key of Object.keys(device)) {
+  if(key == '__proto__' || key == 'id'){continue}
+  else if(typeof device[key] == 'string'){
+  ws_extras.cell(extOuterCounter,innerCounter)
+  .string(device[key])
+  .style(normal);
+  innerCounter++;
+}else if(typeof device[key] == 'number'){
+ws_extras.cell(extOuterCounter,innerCounter)
+  .number(device[key])
+  .style(normal);
+  innerCounter++;
+}else{ innerCounter++; }
+}
+});
 
 //end of transaction
 }).then(()=>{

@@ -66,12 +66,11 @@ const pdfMaxSave = exports.pdfMaxSave = ()=>{
          ]
   }
   dialog.showSaveDialog(mainWindow,options).then(response=>{
-        console.log(response.filePath)
         if(!response.canceled){
           mainWindow.webContents.printToPDF({marginsType: 1,pageSize:{width:680000,height:297000}}).then(data => {
             fs.writeFile(response.filePath, data, (error) => {
             if (error) throw error
-            console.log('Write PDF successfully.')
+            mainWindow.webContents.send('show-notification','PDF saved','Your pdf has been successfully saved');
           })
           }).catch(error => {
             console.log(error)
@@ -91,12 +90,11 @@ const pdfSave = exports.pdfSave = ()=>{
          ]
   }
   dialog.showSaveDialog(mainWindow,options).then(response=>{
-        console.log(response.filePath)
         if(!response.canceled){
           mainWindow.webContents.printToPDF({marginsType: 1,pageSize:'A3'}).then(data => {
             fs.writeFile(response.filePath, data, (error) => {
             if (error) throw error
-            console.log('Write PDF successfully.')
+            mainWindow.webContents.send('show-notification','PDF saved','Your pdf has been successfully saved');
           })
           }).catch(error => {
             console.log(error)

@@ -52,6 +52,18 @@ mainProcess.pdfMaxSave();
 
 });
 
+//Event listener
+ipcRenderer.on('show-notification', (event, title, body) => {
+notifier.notify(
+  {
+    title: title,
+    message: body,
+    icon: path.join(__dirname, './icons/icon.png'), 
+    sound: true,
+  });
+
+}); 
+
 
 })
 .catch(error=>console.log(error));

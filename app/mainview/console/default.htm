@@ -39,25 +39,25 @@
 
       		<div class ="row selectable-text" style="display: none" id='display_body2'>
       				<div class="col-md-12">
-      				<h3>Database Tables</h3>	
+      				<h3><strong>Database Tables</strong></h3>	
       				</div>
       				<div class="col-sm-6">
-      					<h4><strong>Table:</strong> desktops</h4>
+      					<h4><span class="icon icon-link icon-text icon-close-tab"></span><strong> Table:</strong> desktops</h4>
 						<p style="overflow-wrap: break-word;-webkit-user-select: text;">
 						++id, region, department, pc_model, pc_serial, monitor_model, monitor_serial, ip,keyboard, mouse,comp_name, os, os_status, processor, ram, ms_office, ms_status, rem_storage, printer_model, printer_serial, printer_ip, scanner_model, scanner_serial, ups_model, tech_name, date, log
 						</p>
 						
-						<h4><strong>Table:</strong> servers</h4>
+						<h4><span class="icon icon-link icon-text icon-close-tab"></span><strong> Table:</strong> servers</h4>
 						<p style="overflow-wrap: break-word;-webkit-user-select: text;">
 						++id, region, department, pc_model, pc_serial, monitor_model, monitor_serial, ip, keyboard, mouse, comp_name, os, os_status, processor, ram, ms_office, ms_status, rem_storage, ups_model, tech_name, date, log
 						</p>
 
-						<h4><strong>Table:</strong> accesspoints</h4>
+						<h4><span class="icon icon-link icon-text icon-close-tab"></span><strong> Table:</strong> accesspoints</h4>
 						<p style="overflow-wrap: break-word;-webkit-user-select: text;">
 						++id, region, department, ap_model, ap_serial, ip, ups_model, tech_name, date, log
 						</p>
 
-						<h4><strong>Table:</strong> extras</h4>
+						<h4><span class="icon icon-link icon-text icon-close-tab"></span><strong> Table:</strong> extras</h4>
 						<p style="overflow-wrap: break-word;-webkit-user-select: text;">
 						++id, region, department, device_name, device_model, device_serial, ip,tech_name, date, log
 						</p>
@@ -66,26 +66,115 @@
 
       				</div>
       				<div class="col-sm-6 selectable-text">
-      					<h4><strong>Table:</strong> laptops</h4>
+      					<h4><span class="icon icon-link icon-text icon-close-tab"></span><strong> Table:</strong> laptops</h4>
 						<p style="overflow-wrap: break-word;-webkit-user-select: text;">
 							++id, region, department, pc_model, pc_serial, keyboard, mouse, comp_name, os, os_status, processor, ram, ms_office, ms_status, ip, rem_storage, printer_model, printer_serial, printer_ip, scanner_model, scanner_serial, tech_name, date, log
 						</p>
-      				<h4><strong>Table:</strong> routers</h4>
+      				<h4><span class="icon icon-link icon-text icon-close-tab"></span><strong> Table:</strong> routers</h4>
 						<p style="overflow-wrap: break-word;-webkit-user-select: text;">
 							++id, region, department, router_model, router_serial, ip, ups_model, tech_name, date
 						</p>
 
-						<h4><strong>Table:</strong> printers</h4>
+						<h4><span class="icon icon-link icon-text icon-close-tab"></span><strong> Table:</strong> printers</h4>
 						<p style="overflow-wrap: break-word;-webkit-user-select: text;">
 						++id, region, department, printer_model, printer_serial, ip, tech_name, date,log
 					</p>
 
-					<h4><strong>Table:</strong>dvrs</h4>
+					<h4><span class="icon icon-link icon-text icon-close-tab"></span><strong> Table:</strong>dvrs</h4>
 						<p style="overflow-wrap: break-word;-webkit-user-select: text;">
 						++id, region, department, type, channels, model, serial, ip, storage, tech_name, date
 						</p>
 
       				</div>
+      			<div class="col-md-12">
+      				<h3><strong>Where Clauses</strong></h3>	
+      				</div>
+				<div class="col-sm-6">
+      					<h4><span class="icon icon-link icon-text icon-close-tab"></span><strong><u> Examples:</u></strong></h4>
+      					<div style="overflow-wrap: break-word;-webkit-user-select: text;">
+      						
+      						<ul>
+      							<li><strong style="overflow-wrap: break-word;-webkit-user-select: text;">desktops.where('department').equalsIgnoreCase('left_wing_department')</strong></li>
+								
+								<li><strong style="overflow-wrap: break-word;-webkit-user-select: text;">laptops.where('department').startsWithIgnoreCase('lef')</strong></li>
+
+								<li><strong style="overflow-wrap: break-word;-webkit-user-select: text;">dvrs.where('type').equalsIgnoreCase('nvr')</strong></li>
+      						</ul>
+							
+							<h4><span class="icon icon-link icon-text icon-close-tab"></span> Methods</h4>
+							<p style="overflow-wrap: break-word;"><strong style="-webkit-user-select: text;">above()</strong><br>
+							Returns a collection of objects where index is above given key
+							</p>
+							<p style="overflow-wrap: break-word;"><strong style="-webkit-user-select: text;">aboveOrEqual()</strong><br>
+							Returns a collection of objects where index is above or equal given key</p>
+
+							<p style="overflow-wrap: break-word;"><strong style="-webkit-user-select: text;">anyOf()</strong><br>
+							Returns a collection of objects where index is equal to any of the keys in given array</p>
+							<p style="overflow-wrap: break-word;"><strong style="-webkit-user-select: text;">anyOfIgnoreCase()</strong><br>
+							Returns a collection of objects where index matches any of given strings, ignoring case differences.</p>
+
+							<p style="overflow-wrap: break-word;"><strong style="-webkit-user-select: text;">below()</strong><br>
+							Returns a collection of objects where index is below given key</p>
+					<p style="overflow-wrap: break-word;"><strong style="-webkit-user-select: text;">belowOrEqual()</strong><br>
+						Returns a collection of objects where index is below or equal given key</p>
+				<p style="overflow-wrap: break-word;"><strong style="-webkit-user-select: text;">between()</strong><br>
+						Returns a collection of objects where index is between given boundaries</p>
+      						
+
+      					</div>
+      			</div>
+				<div class="col-sm-6">
+				<div style="overflow-wrap: break-word;-webkit-user-select: text;">
+
+				<p style="overflow-wrap: break-word;"><strong style="-webkit-user-select: text;">equals()</strong><br>
+						Returns a collection of objects where index equals given key</p>
+				<p style="overflow-wrap: break-word;"><strong style="-webkit-user-select: text;">equalsIgnoreCase()</strong><br>
+						Returns a collection of objects where index equals given string-key ignoring case differences</p>
+				<p style="overflow-wrap: break-word;"><strong style="-webkit-user-select: text;">inAnyRange()</strong><br>
+						Returns a collection where index is within any of the given ranges.</p>
+				<p style="overflow-wrap: break-word;"><strong style="-webkit-user-select: text;">noneOf()</strong><br>
+						Returns a collection where index equals anything but any of the keys in given array</p>
+				<p style="overflow-wrap: break-word;"><strong style="-webkit-user-select: text;">notEqual()</strong><br>
+						Returns a collection where index equals anything but given value</p>
+				<p style="overflow-wrap: break-word;"><strong style="-webkit-user-select: text;">startsWith()</strong><br>
+						Returns a collection of objects where index starts with given string-key</p>
+				<p style="overflow-wrap: break-word;"><strong style="-webkit-user-select: text;">startsWithAnyOf()</strong><br>
+						Returns a collection of objects where index starts with any of the given strings</p>
+				<p style="overflow-wrap: break-word;"><strong style="-webkit-user-select: text;">startsWithIgnoreCase()</strong><br>
+						Returns a collection of objects where index starts with given string-key ignoring case differences</p>
+				<p style="overflow-wrap: break-word;"><strong style="-webkit-user-select: text;">startsWithAnyOfIgnoreCase()</strong><br>
+						Returns a collection of objects where index starts with any of given strings, ignoring case differences</p>
+				</div>
+				</div>
+				
+				<div class="col-md-12">
+      				<h3><strong>Others</strong></h3>	
+      				</div>
+      			<div class="col-sm-6">
+      				<p style="overflow-wrap: break-word;"><strong style="-webkit-user-select: text;">reverse()</strong><br>
+						No matter if using sortBy() or natural sort order (orderBy or a where() clause), this method will reverse the sort order of the collection.</p>
+						<p style="overflow-wrap: break-word;"><strong style="-webkit-user-select: text;">sortBy()</strong><br>
+						No matter if using sortBy() or natural sort order (orderBy or a where() clause), this method will reverse the sort order of the collection.</p>
+						<p style="overflow-wrap: break-word;"><strong style="-webkit-user-select: text;">orderBy()</strong><br>
+						Return a collection of all items in table where the property is set to an indexable type ordered by given indexed property.</p>
+      			
+
+      			</div>
+
+				<div class="col-sm-6">
+					<h4><span class="icon icon-link icon-text icon-close-tab"></span><strong><u> Examples:</u></strong></h4>
+      					<div style="overflow-wrap: break-word;-webkit-user-select: text;">
+      						
+      						<ul>
+      							<li><strong style="overflow-wrap: break-word;-webkit-user-select: text;">desktops.where('id').above(25).reverse() .sortBy('comp_name')</strong></li>
+								
+								<li><strong style="overflow-wrap: break-word;-webkit-user-select: text;">desktops.where('id').above(25).orderBy('comp_name')</strong></li>
+								<li><strong style="overflow-wrap: break-word;-webkit-user-select: text;">desktops.orderBy('comp_name')</strong></li>
+      						</ul>
+      					</div>
+
+      			
+      			</div>	
      
 			</div>
 			

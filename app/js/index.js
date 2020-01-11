@@ -228,7 +228,7 @@ ws_servers.cell(serOuterCounter,innerCounter)
 });
 //work on Cameras sheet
 db.dvrs.each(device=>{
-
+camOuterCounter+=3;
 //Cameras
 let camera_names =['Region','Department','Type','Channels','Model','Serial','IP','Storage','Technician','Date'];
 camera_names.forEach((name,index)=>{

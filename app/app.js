@@ -10,7 +10,7 @@ const fs = require('fs');
 // be closed automatically when the JavaScript object is garbage collected.
 var mainWindow = null;
 //set only one app instance
-const gotTheLock = app.requestSingleInstanceLock()
+const gotTheLock = app.requestSingleInstanceLock();
 if (!gotTheLock) {
   app.quit()
 } else {

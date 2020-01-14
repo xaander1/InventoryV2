@@ -19,7 +19,10 @@
       "target": "deb"
     }
   },
-  "author": "alexander Njogu",
+  "author": {
+    "name": "alexander njogu",
+    "email": "alexnjogu52@gmail.com"
+  },
   "repository": {
     "url": "https://gitlab.com/xaander1/it-inventory"
   },

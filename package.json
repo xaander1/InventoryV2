@@ -13,22 +13,17 @@
     "inventory"
   ],
   "build": {
-    "appId": "it_inventory.version2",
+    "appId": "com.it_inventory.id",
     "linux": {
       "category": "Office",
       "target": "deb"
     }
   },
-  "author": {
-    "name": "alexander njogu",
-    "email": "alexnjogu52@gmail.com"
-  },
+  "author": "alexander Njogu",
   "repository": {
     "url": "https://gitlab.com/xaander1/it-inventory"
   },
   "homepage": "https://gitlab.com/xaander1/it-inventory",
-
-  "author": "alexander Njogu",
   "license": "MIT",
   "devDependencies": {
     "electron": "^7.1.2",

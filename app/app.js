@@ -1,6 +1,7 @@
 
 const { app,Menu, BrowserWindow, dialog, ipcMain, Notification,shell } = require("electron")
-Menu.setApplicationMenu(false)
+//Menu.setApplicationMenu(false)
+app.setAppUserModelId("com.it_inventory.id");
 const fs = require('fs');
 // var app = require('app');  // Module to control application life.
 // var BrowserWindow = require('browser-window');  // Module to create native browser window.

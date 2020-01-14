@@ -22,31 +22,6 @@ const { Tabs,listenForClicks,listenForNestedClicks } = require ('./src/tabsroute
 	listenForClicks('.tab','add');
   listenForNestedClicks('.header-tab','default.htm','.tab');
 }).then(()=>{
-//quit,minimise and maximize
-var window = remote.getCurrentWindow();
-window.on('maximize',()=>{
-  document.querySelector('.accessory').style.display='none';
-});
-window.on('unmaximize',()=>{
-  document.querySelector('.accessory').style.display='block';
-});
-const max = document.querySelector('#maximize');
-max.onclick=()=> {
-  if(window.isMaximized()) {
-    window.unmaximize();
-  } else {
-    window.maximize();
-  }
-}
-const min = document.querySelector('#minimize');
-min.onclick=()=>{
-  remote.getCurrentWindow().minimize();
-}
-const quit = document.querySelector('#quit');
-quit.onclick=()=>{
-  remote.getCurrentWindow().close();
-}
-
 //run save pdf
 document.querySelector('#print_to_pdf').addEventListener('click', () => { 
 mainProcess.pdfSave();

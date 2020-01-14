@@ -1,6 +1,6 @@
 
 const { app,Menu, BrowserWindow, dialog, ipcMain, Notification,shell } = require("electron")
-//Menu.setApplicationMenu(false)
+Menu.setApplicationMenu(false)
 const fs = require('fs');
 // var app = require('app');  // Module to control application life.
 // var BrowserWindow = require('browser-window');  // Module to create native browser window.
@@ -27,13 +27,6 @@ app.on('ready', function() {
     height: 600,
     'min-width': 900,
     'min-height': 600,
-    skipTaskbar: true,
-    toolbar: false,
-    frame: false,
-    transparent: true,
-    titleBarStyle: 'hidden',
-    'accept-first-mouse': true,
-    'title-bar-style': 'hidden',
      webPreferences: {
        // preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: true

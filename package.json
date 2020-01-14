@@ -1,16 +1,33 @@
 {
   "name": "Inventory-pro",
   "version": "1.0.0",
-  "description": "Electron Photonkit Boilerplate",
+  "description": "Get all organisation devices in one app. Export in pdf and excel",
   "main": "app/app.js",
   "scripts": {
-    "start": "electron .",
+    "start": "electron . --disable-gpu",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "linux": "electron-builder --linux AppImage "
+    "win": "electron-builder --windows nsis:ia32",
+    "linux": "electron-builder --linux deb"
   },
   "keywords": [
     "inventory"
   ],
+  "build": {
+    "appId": "it_inventory.version2",
+    "linux": {
+      "category": "Office",
+      "target": "deb"
+    }
+  },
+  "author": {
+    "name": "alexander njogu",
+    "email": "alexnjogu52@gmail.com"
+  },
+  "repository": {
+    "url": "https://gitlab.com/xaander1/it-inventory"
+  },
+  "homepage": "https://gitlab.com/xaander1/it-inventory",
+
   "author": "alexander Njogu",
   "license": "MIT",
   "devDependencies": {

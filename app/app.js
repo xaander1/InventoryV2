@@ -1,6 +1,6 @@
 
 const { app,Menu, BrowserWindow, dialog, ipcMain, Notification,shell } = require("electron")
-//Menu.setApplicationMenu(false)
+Menu.setApplicationMenu(false)
 app.setAppUserModelId("com.it_inventory.id");
 const fs = require('fs');
 // var app = require('app');  // Module to control application life.
@@ -9,6 +9,19 @@ const fs = require('fs');
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 var mainWindow = null;
+//set only one app instance
+const gotTheLock = app.requestSingleInstanceLock()
+if (!gotTheLock) {
+  app.quit()
+} else {
+  app.on('second-instance', (event, commandLine, workingDirectory) => {
+    // Someone tried to run a second instance, we should focus our window.
+    if (mainWindow) {
+      if (mainWindow.isMinimized()) mainWindow.restore()
+      mainWindow.focus()
+    }
+  })
+}
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function() {

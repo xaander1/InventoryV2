@@ -75,7 +75,7 @@ const pdfMaxSave = exports.pdfMaxSave = ()=>{
   }
   dialog.showSaveDialog(mainWindow,options).then(response=>{
         if(!response.canceled){
-          mainWindow.webContents.printToPDF({marginsType: 1,pageSize:{width:680000,height:297000}}).then(data => {
+          mainWindow.webContents.printToPDF({marginsType: 1,pageSize:{width:850000,height:297000}}).then(data => {
             fs.writeFile(response.filePath, data, (error) => {
             if (error) throw error
             mainWindow.webContents.send('show-notification','PDF saved','Your pdf has been successfully saved');

@@ -193,7 +193,7 @@ let priOuterCounter=1;
 let extOuterCounter=1;
 
 //desktops header
-let desktop_names =['Region','Department','PC Model','PC Serial','Monitor Model','Monitor Serial','IP','Keyboard','Mouse','Computer Name','OS','OS status','Processor','RAM','MS Office','MS status','Remaining Storage','Printer Model','Printer Serial','Printer IP','Scanner Model','Scanner Serial','UPS Model','Technician','Date','Log'];
+let desktop_names =['Region','Department','PC Model','PC Serial','Monitor Model','Monitor Serial','IP','Keyboard','Mouse','Computer Name','Client','OS','OS status','Processor','RAM','MS Office','MS status','Remaining Storage','Printer Model','Printer Serial','Printer IP','Scanner Model','Scanner Serial','UPS Model','Technician','Date','Log'];
 desktop_names.forEach((name,index)=>{
 ws_desktops.cell(desOuterCounter,index+1)
 .string(name)
@@ -201,7 +201,7 @@ ws_desktops.cell(desOuterCounter,index+1)
 });
 
 //Laptops header
-let laptop_names =['Region','Department','PC Model','PC Serial','Keyboard','Mouse','Computer Name','OS','OS status','Processor','RAM','MS Office','MS status','IP','Remaining Storage','Printer Model','Printer Serial','Printer IP','Scanner Model','Scanner Serial','Technician','Date','Log'];
+let laptop_names =['Region','Department','PC Model','PC Serial','Keyboard','Mouse','Computer Name','Client','OS','OS status','Processor','RAM','MS Office','MS status','IP','Remaining Storage','Printer Model','Printer Serial','Printer IP','Scanner Model','Scanner Serial','Technician','Date','Log'];
 laptop_names.forEach((name,index)=>{
 ws_laptops.cell(lapOuterCounter,index+1)
 .string(name)
@@ -209,7 +209,7 @@ ws_laptops.cell(lapOuterCounter,index+1)
 });
 
 //server header
-let server_names =['Region','Department','PC Model','PC Serial','Monitor Model','Monitor Serial','IP','Keyboard','Mouse','Computer Name','OS','OS status','Processor','RAM','MS Office','MS status','Remaining Storage','UPS Model','Technician','Date','Log'];
+let server_names =['Region','Department','PC Model','PC Serial','Monitor Model','Monitor Serial','IP','Keyboard','Mouse','Computer Name','Client','OS','OS status','Processor','RAM','MS Office','MS status','Remaining Storage','UPS Model','Technician','Date','Log'];
 server_names.forEach((name,index)=>{
 ws_servers.cell(serOuterCounter,index+1)
 .string(name)

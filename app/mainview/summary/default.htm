@@ -26,6 +26,10 @@
 	  					<td id='_printers'></td>
 	  				</tr>
 	  				<tr>
+	  					<th><strong>Scanners</strong></th>
+	  					<td id='_scanners'></td>
+	  				</tr>
+	  				<tr>
 	  					<th><strong>Routers</strong></th>
 	  					<td id='_routers'></td>
 	  				</tr>
@@ -74,6 +78,7 @@
  	let _accesspoints=0;
  	let _extras=0;
  	let _cameras=0;
+ 	let _scanners = 0;
  	db.transaction('rw',db.desktops,db.laptops,db.servers,db.dvrs,db.printers,db.routers,db.accesspoints,db.extras,db.cam_ext1,db.cam_ext2,db.cam_ext3,db.cam_ext4,db.cam_ext5,db.cam_ext6,db.cam_ext7,db.cam_ext8,db.cam_ext9,db.cam_ext10,db.cam_ext11,db.cam_ext12,db.cam_ext13,db.cam_ext14,db.cam_ext15, function () {
  		//count desktops
  		db.desktops.count()
@@ -85,6 +90,12 @@
  		.then((value)=>{
  			_printers+=value;
  		});
+ 		//count scanners in desktop
+ 		db.desktops.where('scanner_model').notEqual('').count()
+ 		.then((value)=>{
+ 			_scanners+=value;
+ 		});
+
  		//count laptops
  		db.laptops.count()
  		.then((value)=>{
@@ -95,6 +106,12 @@
  		db.laptops.where('printer_model').notEqual('').count()
  		.then((value)=>{
  			_printers+=value;
+ 		});
+
+ 		//count scanners in laptops
+ 		db.laptops.where('scanner_model').notEqual('').count()
+ 		.then((value)=>{
+ 			_scanners+=value;
  		});
 
  		//count servers
@@ -186,6 +203,7 @@ document.querySelector('#_desktops').innerHTML=_desktops;
 document.querySelector('#_laptops').innerHTML=_laptops;
 document.querySelector('#_servers').innerHTML=_servers;
 document.querySelector('#_printers').innerHTML=_printers;
+document.querySelector('#_scanners').innerHTML=_scanners;
 document.querySelector('#_routers').innerHTML=_routers;
 document.querySelector('#_accesspoints').innerHTML=_accesspoints;
 document.querySelector('#_extras').innerHTML=_extras;
@@ -203,6 +221,7 @@ document.querySelector('#_cameras').innerHTML=_cameras;
 				  ['Laptops', _laptops],
 				  ['Servers', _servers],
 				  ['Printers', _printers],
+				  ['Scanners', _scanners],
 				  ['Routers', _routers],
 				  ['Access Points', _accesspoints],
 				  ['Extras', _extras],

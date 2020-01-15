@@ -55,6 +55,10 @@
     		<label>Computer Name</label>
    	 		<input class="form-control input" placeholder="e.g server-54as">
   		</div>
+      <div class="form-group">
+        <label>Client</label>
+        <input class="form-control input" placeholder="e.g alex-desktop">
+      </div>
   		<div class="form-group">
    			<label>Operating System</label>
   			<select class="form-control input"  id="os_select">
@@ -81,14 +85,14 @@
     		<label><input type="radio" name="ofc-key" value="activated" id="_c" checked="checked">Activated</label>
     		<label><input type="radio" name="ofc-key" value="not-activated" id="_d">Not Activated</label>
     	</div>
-    	<div class="form-group">
-    		<label> <span class="icon icon-drive icon-text"></span> Remaining Storage</label>
-   	 		<input class="form-control input" placeholder="e.g 247gb">
-  		</div>
  	 
  </div>
  <!--Third Pane -->
  <div class="pane" style="padding:2rem;padding-top: 0">
+<div class="form-group">
+        <label> <span class="icon icon-drive icon-text"></span> Remaining Storage</label>
+        <input class="form-control input" placeholder="e.g 247gb">
+      </div>
   	<h3><u><span class="icon icon-cloud-thunder icon-text" style="color:#4e5851;padding-right:1rem "></span>UPS</u></h3>
   	<div class="form-group">
     	<label>UPS Model</label>
@@ -171,7 +175,7 @@ for(let i = 0; i < inputs_x.length; i++){
 
 //Module getting the database dirty
 let submitbtn = document.querySelector(".submit");
-let datatabe_names = ['region','department','pc_model','pc_serial','monitor_model','monitor_serial','ip','keyboard','mouse','comp_name','os','os_status','processor','ram','ms_office','ms_status','rem_storage','ups_model','tech_name','date','log'];
+let datatabe_names = ['region','department','pc_model','pc_serial','monitor_model','monitor_serial','ip','keyboard','mouse','comp_name','client','os','os_status','processor','ram','ms_office','ms_status','rem_storage','ups_model','tech_name','date','log'];
 let inputs_values = document.querySelectorAll('.input');
 inputs_values.forEach((item,index)=>{
   if(datatabe_names[index]=='os_status'){

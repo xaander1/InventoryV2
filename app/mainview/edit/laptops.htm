@@ -41,14 +41,18 @@
         <input class="form-control input" placeholder="e.g laptop-54as">
       </div>
       <div class="form-group">
-        <label>Operating System</label>
-        <select class="form-control input"  id="os_select">
-        </select>
-    </div>
+        <label>Client</label>
+        <input class="form-control input" placeholder="e.g alex-desktop">
+      </div>
  
 </div>
  <!--Second Pane-->
  <div class="pane" style="padding:2rem;padding-top: 0">
+  <div class="form-group">
+        <label>Operating System</label>
+        <select class="form-control input"  id="os_select">
+        </select>
+    </div>
   		<div class="radio input">
     		<label><input type="radio" name="os-key" value="activated" id='_a' checked="checked">Activated</label>
     		<label><input type="radio" name="os-key" value="not-activated" id="_b">Not Activated</label>
@@ -89,14 +93,14 @@
       <label>Printer Serial</label>
       <input class="form-control input" placeholder="e.g PHC6728322">
     </div>
-    <div class="form-group">
-      <label>IP</label>
-      <input class="form-control input" placeholder="e.g 192.168.124.40">
-    </div>
  	 
  </div>
  <!--Third Pane -->
  <div class="pane" style="padding:2rem;padding-top: 0">
+  <div class="form-group">
+      <label>IP</label>
+      <input class="form-control input" placeholder="e.g 192.168.124.40">
+    </div>
 	<h3><u><span class="icon icon-cc-share icon-text" style="color:#4e5851;padding-right:1rem "></span>Scanner</u></h3>
 	 <div class="form-group">
     	<label>Scanner Model</label>
@@ -184,7 +188,7 @@ for(let i = 0; i < inputs_x.length; i++){
 
 //Module getting the database dirty
 let submitbtn = document.querySelector(".submit");
-let datatabe_names = ['region','department','pc_model','pc_serial','keyboard','mouse','comp_name','os','os_status','processor','ram','ms_office','ms_status','ip','rem_storage','printer_model','printer_serial','printer_ip','scanner_model','scanner_serial','tech_name','date','log'];
+let datatabe_names = ['region','department','pc_model','pc_serial','keyboard','mouse','comp_name','client','os','os_status','processor','ram','ms_office','ms_status','ip','rem_storage','printer_model','printer_serial','printer_ip','scanner_model','scanner_serial','tech_name','date','log'];
 let inputs_values = document.querySelectorAll('.input');
 inputs_values.forEach((item,index)=>{
   if(datatabe_names[index]=='os_status'){

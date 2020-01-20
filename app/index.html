@@ -12,6 +12,21 @@
       const { remote, ipcRenderer } = require('electron');
       const  notifier = require('node-notifier');
       const path = require('path');
+      const {Menu, MenuItem} = remote;
+      const menu = new Menu();
+      // Build menu one item at a time, unlike
+         menu.append(new MenuItem ({role:'zoomin'}));
+         menu.append(new MenuItem ({role:'zoomout'}));
+         menu.append(new MenuItem({type: 'separator'}));
+         menu.append(new MenuItem ({role:'resetzoom'}));
+          // Prevent default action of right click in chromium. Replace with our menu.
+         window.addEventListener('contextmenu', (e) => {
+            e.preventDefault()
+            menu.popup(remote.getCurrentWindow())
+         }, false)
+
+
+
     </script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   </head>

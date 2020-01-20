@@ -78,7 +78,8 @@ const pdfMaxSave = exports.pdfMaxSave = ()=>{
           mainWindow.webContents.printToPDF({marginsType: 1,pageSize:{width:850000,height:297000}}).then(data => {
             fs.writeFile(response.filePath, data, (error) => {
             if (error) throw error
-            mainWindow.webContents.send('show-notification','PDF saved','Your pdf has been successfully saved');
+            shell.openItem(response.filePath);
+            //mainWindow.webContents.send('show-notification','PDF saved','Your pdf has been successfully saved');
           })
           }).catch(error => {
             console.log(error)
@@ -102,7 +103,8 @@ const pdfSave = exports.pdfSave = ()=>{
           mainWindow.webContents.printToPDF({marginsType: 1,pageSize:'A3'}).then(data => {
             fs.writeFile(response.filePath, data, (error) => {
             if (error) throw error
-            mainWindow.webContents.send('show-notification','PDF saved','Your pdf has been successfully saved');
+            shell.openItem(response.filePath);
+            //mainWindow.webContents.send('show-notification','PDF saved','Your pdf has been successfully saved');
           })
           }).catch(error => {
             console.log(error)

@@ -488,13 +488,14 @@ ws_extras.cell(extOuterCounter,innerCounter)
   remote.dialog.showSaveDialog(options).then(response=>{
         if(!response.canceled){
           wb.write(response.filePath); 
-           notifier.notify(
-          {
-            title: 'Excel Saved',
-            message: 'Excel workbook saved successfully',
-            icon: path.join(__dirname, './icons/icon.png'), 
-            sound: true,
-            });
+          //  notifier.notify(
+          // {
+          //   title: 'Excel Saved',
+          //   message: 'Excel workbook saved successfully',
+          //   icon: path.join(__dirname, './icons/icon.png'), 
+          //   sound: true,
+          //   });
+           remote.shell.openItem(response.filePath);
         }
 
 });

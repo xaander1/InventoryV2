@@ -7,7 +7,8 @@
     "start": "electron . --disable-gpu",
     "test": "echo \"Error: no test specified\" && exit 1",
     "win": "electron-builder --windows nsis:ia32",
-    "linux": "electron-builder --linux"
+    "linux": "electron-builder --linux",
+    "publish":"electron-builder -p onTag"
   },
   "keywords": [
     "inventory"

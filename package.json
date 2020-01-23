@@ -7,16 +7,30 @@
     "start": "electron . --disable-gpu",
     "test": "echo \"Error: no test specified\" && exit 1",
     "win": "electron-builder --windows nsis:ia32",
-    "linux": "electron-builder --linux deb"
+    "linux": "electron-builder --linux"
   },
   "keywords": [
     "inventory"
   ],
   "build": {
+    "publish": [
+      "github"
+    ],
     "appId": "com.it_inventory.id",
     "linux": {
       "category": "Office",
       "target": "deb"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ]
     }
   },
   "author": {
@@ -24,9 +38,9 @@
     "email": "alexnjogu52@gmail.com"
   },
   "repository": {
-    "url": "https://gitlab.com/xaander1/it-inventory"
+    "url": "https://github.com/xaander1/InventoryV2"
   },
-  "homepage": "https://gitlab.com/xaander1/it-inventory",
+  "homepage": "https://github.com/xaander1/InventoryV2/releases",
   "license": "MIT",
   "devDependencies": {
     "electron": "^7.1.2",

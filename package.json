@@ -4,10 +4,12 @@
   "description": "Get all organisation devices in one app. Export in pdf and excel",
   "main": "app/app.js",
   "scripts": {
-    "start": "electron . --disable-gpu",
+    "start": "electron-forge start",
     "test": "echo \"Error: no test specified\" && exit 1",
     "win": "electron-builder --windows nsis:ia32",
-    "linux": "electron-builder --linux deb"
+    "linux": "electron-builder --linux deb",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
   },
   "keywords": [
     "inventory"
@@ -24,17 +26,50 @@
     "email": "alexnjogu52@gmail.com"
   },
   "repository": {
-    "url": "https://gitlab.com/xaander1/it-inventory"
+    "url": "https://github.com/xaander1/InventoryV2"
   },
-  "homepage": "https://gitlab.com/xaander1/it-inventory",
+  "homepage": "https://github.com/xaander1/InventoryV2/releases",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^7.1.2",
-    "electron-builder": "^21.2.0"
+    "@electron-forge/cli": "^6.0.0-beta.47",
+    "@electron-forge/maker-deb": "^6.0.0-beta.47",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.47",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.47",
+    "@electron-forge/maker-zip": "^6.0.0-beta.47",
+    "electron": "^7.1.2"
   },
   "dependencies": {
+    "electron-squirrel-startup": "^1.0.0",
     "excel4node": "^1.7.2",
     "indexeddb-export-import": "^1.0.4",
-    "node-notifier": "^6.0.0"
+    "node-notifier": "^6.0.0",
+    "update-electron-app": "^1.5.0"
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "Inventory_pro"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
+    }
   }
 }

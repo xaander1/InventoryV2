@@ -39,7 +39,8 @@
     "email": "alexnjogu52@gmail.com"
   },
   "repository": {
-    "url": "https://github.com/xaander1/InventoryV2"
+     "type" : "git",
+    "url": "https://github.com/xaander1/InventoryV2.git"
   },
   "homepage": "https://github.com/xaander1/InventoryV2/releases",
   "license": "MIT",

@@ -456,7 +456,7 @@ ws_printers.cell(priOuterCounter,innerCounter)
 });
 
 //work on extras sheet
-db.servers.each(device=>{
+db.extras.each(device=>{
 let innerCounter=1;
 extOuterCounter++;
  for (const key of Object.keys(device)) {

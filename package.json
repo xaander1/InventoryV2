@@ -45,7 +45,7 @@
   "homepage": "https://github.com/xaander1/InventoryV2/releases",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^7.1.2",
+    "electron": "^15.5.5",
     "electron-builder": "^21.2.0"
   },
   "dependencies": {

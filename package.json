@@ -49,7 +49,7 @@
     "electron-builder": "^21.2.0"
   },
   "dependencies": {
-    "excel4node": "^1.7.2",
+    "excel4node": "^1.8.0",
     "indexeddb-export-import": "^1.0.4",
     "node-notifier": "^6.0.0"
   }

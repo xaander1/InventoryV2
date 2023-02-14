@@ -178,6 +178,7 @@ var ws_laptops = wb.addWorksheet('Laptops');
 var ws_servers = wb.addWorksheet('Servers');
 var ws_cameras = wb.addWorksheet('Cameras');
 var ws_routers = wb.addWorksheet('Routers');
+var ws_switches = wb.addWorksheet('Switches');
 var ws_accesspoints = wb.addWorksheet('Access Points');
 var ws_printers = wb.addWorksheet('Printers');
 var ws_extras = wb.addWorksheet('Other Devices');
@@ -189,6 +190,7 @@ let serOuterCounter=1;
 let camOuterCounter=1;
 let accOuterCounter=1;
 let rouOuterCounter=1;
+let swiOuterCounter=1;
 let priOuterCounter=1;
 let extOuterCounter=1;
 
@@ -225,6 +227,14 @@ ws_routers.cell(rouOuterCounter,index+1)
 .string(name)
 .style(head_style);
 });
+
+//Switches
+let switch_names =['Region','Department','Switch Model','Switch Serial','IP','UPS Model','Technician','Date','Log'];
+switch_names.forEach((name,index)=>{
+ws_switches.cell(swiOuterCounter,index+1)
+.string(name)
+.style(head_style);
+});
 //Access Points
 let accessP_names =['Region','Department','AP Model','AP Serial','IP','UPS Model','Technician','Date','Log'];
 accessP_names.forEach((name,index)=>{
@@ -248,7 +258,7 @@ ws_extras.cell(extOuterCounter,index+1)
 });
 
 //set transaction
-db.transaction('rw',db.desktops,db.laptops,db.servers,db.dvrs,db.printers,db.routers,db.accesspoints,db.extras,db.cam_ext1,db.cam_ext2,db.cam_ext3,db.cam_ext4,db.cam_ext5,db.cam_ext6,db.cam_ext7,db.cam_ext8,db.cam_ext9,db.cam_ext10,db.cam_ext11,db.cam_ext12,db.cam_ext13,db.cam_ext14,db.cam_ext15, function () {
+db.transaction('rw',db.desktops,db.laptops,db.servers,db.dvrs,db.printers,db.routers,db.switches,db.accesspoints,db.extras,db.cam_ext1,db.cam_ext2,db.cam_ext3,db.cam_ext4,db.cam_ext5,db.cam_ext6,db.cam_ext7,db.cam_ext8,db.cam_ext9,db.cam_ext10,db.cam_ext11,db.cam_ext12,db.cam_ext13,db.cam_ext14,db.cam_ext15, function () {
 //do my thing
 
 //work on desktop sheet
@@ -408,6 +418,26 @@ rouOuterCounter++;
   innerCounter++;
 }else if(typeof device[key] == 'number'){
 ws_routers.cell(rouOuterCounter,innerCounter)
+  .number(device[key])
+  .style(normal);
+  innerCounter++;
+}else{ innerCounter++; }
+}
+});
+
+//work on switches sheet
+db.switches.each(device=>{
+let innerCounter=1;
+swiOuterCounter++;
+ for (const key of Object.keys(device)) {
+  if(key == '__proto__' || key == 'id'){continue}
+  else if(typeof device[key] == 'string'){
+  ws_switches.cell(swiOuterCounter,innerCounter)
+  .string(device[key])
+  .style(normal);
+  innerCounter++;
+}else if(typeof device[key] == 'number'){
+ws_switches.cell(swiOuterCounter,innerCounter)
   .number(device[key])
   .style(normal);
   innerCounter++;

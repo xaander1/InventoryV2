@@ -15,6 +15,7 @@ db.version(1).stores({
          laptops:'++id,region,department,pc_model,pc_serial,keyboard,mouse,comp_name,client,os,os_status,processor,ram,ms_office,ms_status,ip,rem_storage,printer_model,printer_serial,printer_ip,scanner_model,scanner_serial,tech_name,date,log',
     	 servers:'++id,region,department,pc_model,pc_serial,monitor_model,monitor_serial,ip,keyboard,mouse,comp_name,client,os,os_status,processor,ram,ms_office,ms_status,rem_storage,ups_model,tech_name,date,log',
          routers:'++id,region,department,router_model,router_serial,ip,ups_model,tech_name,date',
+         firewalls:'++id,region,department,firewall_model,firewall_serial,ip,ups_model,tech_name,date',
          switches:'++id,region,department,switch_model,switch_serial,ip,ups_model,tech_name,date',
          accesspoints:'++id,region,department,ap_model,ap_serial,ip,ups_model,tech_name,date,log',
          printers:'++id,region,department,printer_model,printer_serial,ip,tech_name,date,log',

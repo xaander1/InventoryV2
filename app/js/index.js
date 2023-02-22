@@ -236,7 +236,7 @@ ws_routers.cell(rouOuterCounter,index+1)
 });
 
 // Phones
-let phone_names =['Region','Department','Phone Model','Phone Serial','IP','UPS Model','Technician','Date','Log'];
+let phone_names =['Region','Department','Phone Model','Phone Serial','IP','Technician','Date','Log'];
 phone_names.forEach((name,index)=>{
 ws_phones.cell(phoOuterCounter,index+1)
 .string(name)

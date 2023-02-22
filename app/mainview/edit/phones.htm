@@ -29,12 +29,12 @@
       <input class="form-control input" placeholder="e.g 192.168.124.40">
     </div>
 
-  	<h3><u><span class="icon icon-cloud-thunder icon-text" style="color:#4e5851;padding-right:1rem "></span>UPS</u></h3>
+<!--   	<h3><u><span class="icon icon-cloud-thunder icon-text" style="color:#4e5851;padding-right:1rem "></span>UPS</u></h3>
   	<div class="form-group">
     	<label>UPS Model</label>
     	<input class="form-control input" placeholder="e.g MECER -ME-650-VU">
   	</div>
-    
+     -->
 
 	  </div>
 	  	
@@ -117,7 +117,7 @@ for(let i = 0; i < inputs_x.length; i++){
 
 //Module getting the database dirty
 let submitbtn = document.querySelector(".submit");
-let datatabe_names = ['region','department','phone_model','phone_serial','ip','ups_model','tech_name','date','log'];
+let datatabe_names = ['region','department','phone_model','phone_serial','ip','tech_name','date','log'];
 let inputs_values = document.querySelectorAll('.input');
 inputs_values.forEach((item,index)=>{
   if(datatabe_names[index]=='os_status'){

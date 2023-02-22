@@ -176,6 +176,7 @@ var normal = wb.createStyle({
 var ws_desktops = wb.addWorksheet('Desktops');
 var ws_laptops = wb.addWorksheet('Laptops');
 var ws_phones = wb.addWorksheet('Phones');
+var ws_tablets = wb.addWorksheet('Tablets');
 var ws_servers = wb.addWorksheet('Servers');
 var ws_cameras = wb.addWorksheet('Cameras');
 var ws_routers = wb.addWorksheet('Routers');
@@ -197,6 +198,7 @@ let swiOuterCounter=1;
 let priOuterCounter=1;
 let extOuterCounter=1;
 let phoOuterCounter=1;
+let tabOuterCounter=1;
 
 
 //desktops header
@@ -241,6 +243,14 @@ ws_phones.cell(phoOuterCounter,index+1)
 .style(head_style);
 });
 
+// Tablets
+let tablet_names =['Region','Department','Tablet Model','Tablet Serial','IP','Technician','Date','Log'];
+tablet_names.forEach((name,index)=>{
+ws_tablets.cell(tabOuterCounter,index+1)
+.string(name)
+.style(head_style);
+});
+
 // Firewall
 let firewall_names =['Region','Department','Firewall Model','Firewall Serial','IP','UPS Model','Technician','Date','Log'];
 firewall_names.forEach((name,index)=>{
@@ -279,7 +289,7 @@ ws_extras.cell(extOuterCounter,index+1)
 });
 
 //set transaction
-db.transaction('rw',db.desktops,db.laptops,db.phones,db.servers,db.dvrs,db.printers,db.routers,db.firewalls,db.switches,db.accesspoints,db.extras,db.cam_ext1,db.cam_ext2,db.cam_ext3,db.cam_ext4,db.cam_ext5,db.cam_ext6,db.cam_ext7,db.cam_ext8,db.cam_ext9,db.cam_ext10,db.cam_ext11,db.cam_ext12,db.cam_ext13,db.cam_ext14,db.cam_ext15, function () {
+db.transaction('rw',db.desktops,db.laptops,db.tablets,db.phones,db.servers,db.dvrs,db.printers,db.routers,db.firewalls,db.switches,db.accesspoints,db.extras,db.cam_ext1,db.cam_ext2,db.cam_ext3,db.cam_ext4,db.cam_ext5,db.cam_ext6,db.cam_ext7,db.cam_ext8,db.cam_ext9,db.cam_ext10,db.cam_ext11,db.cam_ext12,db.cam_ext13,db.cam_ext14,db.cam_ext15, function () {
 //do my thing
 
 //work on desktop sheet
@@ -459,6 +469,26 @@ phoOuterCounter++;
   innerCounter++;
 }else if(typeof device[key] == 'number'){
 ws_phones.cell(phoOuterCounter,innerCounter)
+  .number(device[key])
+  .style(normal);
+  innerCounter++;
+}else{ innerCounter++; }
+}
+});
+
+//work on tablets sheet
+db.tablets.each(device=>{
+let innerCounter=1;
+tabOuterCounter++;
+ for (const key of Object.keys(device)) {
+  if(key == '__proto__' || key == 'id'){continue}
+  else if(typeof device[key] == 'string'){
+  ws_tablets.cell(tabOuterCounter,innerCounter)
+  .string(device[key])
+  .style(normal);
+  innerCounter++;
+}else if(typeof device[key] == 'number'){
+ws_phones.cell(tabOuterCounter,innerCounter)
   .number(device[key])
   .style(normal);
   innerCounter++;

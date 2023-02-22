@@ -175,6 +175,7 @@ var normal = wb.createStyle({
 //Create Workbooks
 var ws_desktops = wb.addWorksheet('Desktops');
 var ws_laptops = wb.addWorksheet('Laptops');
+var ws_phones = wb.addWorksheet('Phones');
 var ws_servers = wb.addWorksheet('Servers');
 var ws_cameras = wb.addWorksheet('Cameras');
 var ws_routers = wb.addWorksheet('Routers');
@@ -195,6 +196,7 @@ let firOuterCounter=1;
 let swiOuterCounter=1;
 let priOuterCounter=1;
 let extOuterCounter=1;
+let phoOuterCounter=1;
 
 
 //desktops header
@@ -227,6 +229,14 @@ ws_servers.cell(serOuterCounter,index+1)
 let router_names =['Region','Department','Router Model','Router Serial','IP','UPS Model','Technician','Date','Log'];
 router_names.forEach((name,index)=>{
 ws_routers.cell(rouOuterCounter,index+1)
+.string(name)
+.style(head_style);
+});
+
+// Phones
+let phone_names =['Region','Department','Phone Model','Phone Serial','IP','UPS Model','Technician','Date','Log'];
+phone_names.forEach((name,index)=>{
+ws_phones.cell(phoOuterCounter,index+1)
 .string(name)
 .style(head_style);
 });
@@ -269,7 +279,7 @@ ws_extras.cell(extOuterCounter,index+1)
 });
 
 //set transaction
-db.transaction('rw',db.desktops,db.laptops,db.servers,db.dvrs,db.printers,db.routers,db.firewalls,db.switches,db.accesspoints,db.extras,db.cam_ext1,db.cam_ext2,db.cam_ext3,db.cam_ext4,db.cam_ext5,db.cam_ext6,db.cam_ext7,db.cam_ext8,db.cam_ext9,db.cam_ext10,db.cam_ext11,db.cam_ext12,db.cam_ext13,db.cam_ext14,db.cam_ext15, function () {
+db.transaction('rw',db.desktops,db.laptops,db.phones,db.servers,db.dvrs,db.printers,db.routers,db.firewalls,db.switches,db.accesspoints,db.extras,db.cam_ext1,db.cam_ext2,db.cam_ext3,db.cam_ext4,db.cam_ext5,db.cam_ext6,db.cam_ext7,db.cam_ext8,db.cam_ext9,db.cam_ext10,db.cam_ext11,db.cam_ext12,db.cam_ext13,db.cam_ext14,db.cam_ext15, function () {
 //do my thing
 
 //work on desktop sheet
@@ -429,6 +439,26 @@ rouOuterCounter++;
   innerCounter++;
 }else if(typeof device[key] == 'number'){
 ws_routers.cell(rouOuterCounter,innerCounter)
+  .number(device[key])
+  .style(normal);
+  innerCounter++;
+}else{ innerCounter++; }
+}
+});
+
+//work on phones sheet
+db.phones.each(device=>{
+let innerCounter=1;
+phoOuterCounter++;
+ for (const key of Object.keys(device)) {
+  if(key == '__proto__' || key == 'id'){continue}
+  else if(typeof device[key] == 'string'){
+  ws_phones.cell(phoOuterCounter,innerCounter)
+  .string(device[key])
+  .style(normal);
+  innerCounter++;
+}else if(typeof device[key] == 'number'){
+ws_phones.cell(phoOuterCounter,innerCounter)
   .number(device[key])
   .style(normal);
   innerCounter++;

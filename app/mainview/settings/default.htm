@@ -74,6 +74,45 @@
 
    	</div>
    </div>
+
+   <div class="window-content">
+	  <div class="pane-group" style="padding-top: 1.5rem">
+   	<div class="pane" style="padding: 0.8rem;padding-top: 0">
+   				<h4><u><span class="icon icon-user icon-text" style="color: #4e5851;padding-right:1rem "></span>Extra's Device Type</u></h4>	 
+    <table class="table-striped" id="dev_type_body">
+			
+		</table>
+		<button class="btn btn-primary pull-right noprint" id="add_dev_type">Add</button>
+
+   	</div>
+   	<div class="pane" style="padding: 0.8rem;padding-top: 0">
+<!--    				<h4><u><span class="icon icon-eye icon-text" style="color: #4e5851;padding-right:1rem "></span>Resolution</u></h4>	 
+    <table class="table-striped" id="res_body">
+			
+		</table>
+		<button class="btn btn-primary pull-right noprint" id="add_res">Add</button> -->
+
+
+   	</div>
+   	<div class="pane" style="padding: 0.8rem;padding-top: 0">
+	<!-- 	<h4><u><span class="icon icon-eye icon-text" style="color: #4e5851;padding-right:1rem "></span>Focal Length</u></h4>	 
+    <table class="table-striped" id="foc_body">
+			
+		</table>
+		<button class="btn btn-primary pull-right noprint" id="add_foc">Add</button>   --> 		
+
+   	</div>
+   	<div class="pane" style="padding: 0.8rem;padding-top: 0">
+ <!--   	<h4><u><span class="icon icon-feather icon-text" style="color:#4e5851;padding-right:1rem "></span>Megapixels</u></h4>	 
+    <table class="table-striped" id="mp_body">
+			
+		</table>
+		<button class="btn btn-primary pull-right noprint" id="add_mp">Add</button>    -->		
+
+   	</div>
+
+   	</div>
+   </div>
 </div>
 </div>
 
@@ -118,6 +157,11 @@ db.focals.each(result=>{
 //megapixels
 db.megapixels.each(result=>{
 	create_table_row(result,db,'megapixels','#mp_body');
+});
+
+// device type
+db.device_type.each(result=>{
+	create_table_row(result,db,'device_type','#dev_type_body');
 });
 
 /*----------------------------------done-------------------------------------------*/
@@ -236,6 +280,21 @@ buttonAdd8.onclick = event => {
 			};
 			
 			create_table_row(fake_result,db,'megapixels','#mp_body');
+	});
+}
+
+//Button9
+let buttonAdd9 = document.querySelector('#add_dev_type')
+buttonAdd9.onclick = event => {
+ 	db.device_type.add({
+		name: '',
+	}).then((id)=>{
+			let fake_result = {
+				id : id,
+				name: ""
+			};
+			
+			create_table_row(fake_result,db,'device_type','#dev_type_body');
 	});
 }
 

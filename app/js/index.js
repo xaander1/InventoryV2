@@ -281,7 +281,7 @@ ws_printers.cell(priOuterCounter,index+1)
 .style(head_style);
 });
 //Extras
-let extra_names =['Region','Department','Name','Model','Serial','IP','Technician','Date','Log'];
+let extra_names =['Region','Department','Device Type','Name','Model','Serial','IP','Technician','Date','Log'];
 extra_names.forEach((name,index)=>{
 ws_extras.cell(extOuterCounter,index+1)
 .string(name)

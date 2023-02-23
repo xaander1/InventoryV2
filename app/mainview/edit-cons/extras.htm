@@ -112,7 +112,7 @@ for(let i = 0; i < inputs_x.length; i++){
 
 //Module getting the database dirty
 let submitbtn = document.querySelector(".submit");
-let datatabe_names = ['region','department','device_name','device_model','device_serial','ip','tech_name','date','log'];
+let datatabe_names = ['region','department','device_type','device_name','device_model','device_serial','ip','tech_name','date','log'];
 let inputs_values = document.querySelectorAll('.input');
 inputs_values.forEach((item,index)=>{
   if(datatabe_names[index]=='os_status'){
@@ -136,6 +136,10 @@ inputs_values.forEach((item,index)=>{
     });
   }else if(item.id=="dept_select"){
     automate(db,'departments','#dept_select',()=>{
+      item.value=window.data[datatabe_names[index]];   
+    });
+  }else if(item.id=="type_select"){
+    automate(db,'device_type','#type_select',()=>{
       item.value=window.data[datatabe_names[index]];   
     });
   }else if(item.id=="os_select"){

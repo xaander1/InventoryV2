@@ -14,6 +14,11 @@
   		<select class="form-control input"  id="dept_select">
   		</select>
  	</div>
+  <div class="form-group">
+      <label>Device Type</label>
+      <select class="form-control input"  id="type_select">
+      </select>
+  </div>
 <div class="form-group">
       <label>Device Name</label>
       <input class="form-control input focus_to" placeholder="e.g Shredder">
@@ -83,8 +88,9 @@ const { init_data} = require('../res/reusable');
 automate(db,'regions','#region_select');
 automate(db,'departments','#dept_select');
 automate(db,'tech_name','#tech_name_select');
+automate(db,'device_type','#type_select');
 let submitbtn = document.querySelector(".submit");
-let datatabe_names = ['region','department','device_name','device_model','device_serial','ip','tech_name','date','log'];
+let datatabe_names = ['region','department','device_type','device_name','device_model','device_serial','ip','tech_name','date','log'];
 
 submitbtn.onclick = event => {
 let inputs_values = document.querySelectorAll('.input');

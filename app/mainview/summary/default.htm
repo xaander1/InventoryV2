@@ -18,6 +18,14 @@
 	  					<td id='_laptops'></td>
 	  				</tr>
 	  				<tr>
+	  					<th><strong>Phones</strong></th>
+	  					<td id='_phones'></td>
+	  				</tr>
+	  				<tr>
+	  					<th><strong>Tablets</strong></th>
+	  					<td id='_tablets'></td>
+	  				</tr>
+	  				<tr>
 	  					<th><strong>Servers</strong></th>
 	  					<td id='_servers'></td>
 	  				</tr>
@@ -32,6 +40,14 @@
 	  				<tr>
 	  					<th><strong>Routers</strong></th>
 	  					<td id='_routers'></td>
+	  				</tr>
+	  				<tr>
+	  					<th><strong>Switches</strong></th>
+	  					<td id='_switches'></td>
+	  				</tr>
+	  				<tr>
+	  					<th><strong>Firewalls</strong></th>
+	  					<td id='_firewalls'></td>
 	  				</tr>
 	  				<tr>
 	  					<th><strong>Access Points</strong></th>
@@ -86,8 +102,12 @@
  	let _extras=0;
  	let _cameras=0;
  	let _scanners = 0;
+ 	let _phones = 0;
+ 	let _tablets = 0;
+ 	let _firewalls = 0;
+ 	let _switches = 0;
  	let _ups = 0;
- 	db.transaction('rw',db.desktops,db.laptops,db.servers,db.dvrs,db.printers,db.routers,db.accesspoints,db.extras,db.cam_ext1,db.cam_ext2,db.cam_ext3,db.cam_ext4,db.cam_ext5,db.cam_ext6,db.cam_ext7,db.cam_ext8,db.cam_ext9,db.cam_ext10,db.cam_ext11,db.cam_ext12,db.cam_ext13,db.cam_ext14,db.cam_ext15, function () {
+ 	db.transaction('rw',db.desktops,db.laptops,db.phones,db.tablets,db.switches,db.firewalls,db.servers,db.dvrs,db.printers,db.routers,db.accesspoints,db.extras,db.cam_ext1,db.cam_ext2,db.cam_ext3,db.cam_ext4,db.cam_ext5,db.cam_ext6,db.cam_ext7,db.cam_ext8,db.cam_ext9,db.cam_ext10,db.cam_ext11,db.cam_ext12,db.cam_ext13,db.cam_ext14,db.cam_ext15, function () {
  		//count desktops
  		db.desktops.count()
  		.then((value)=>{
@@ -156,6 +176,26 @@
  		db.extras.count()
  		.then((value)=>{
  			_extras+=value;
+ 		});
+ 		//count phones
+ 		db.phones.count()
+ 		.then((value)=>{
+ 			_phones+=value;
+ 		});
+ 		//count tablets
+ 		db.tablets.count()
+ 		.then((value)=>{
+ 			_tablets+=value;
+ 		});
+ 		//count firewalls
+ 		db.firewalls.count()
+ 		.then((value)=>{
+ 			_firewalls+=value;
+ 		});
+ 		//count switches
+ 		db.switches.count()
+ 		.then((value)=>{
+ 			_switches+=value;
  		});
 
  		/*------------------Count ups's------------------*/
@@ -232,6 +272,10 @@ document.querySelector('#_accesspoints').innerHTML=_accesspoints;
 document.querySelector('#_extras').innerHTML=_extras;
 document.querySelector('#_dvrs').innerHTML=_dvrs;
 document.querySelector('#_cameras').innerHTML=_cameras;
+document.querySelector('#_phones').innerHTML=_phones;
+document.querySelector('#_tablets').innerHTML=_tablets;
+document.querySelector('#_firewalls').innerHTML=_firewalls;
+document.querySelector('#_switches').innerHTML=_switches;
 	// Load google charts
 				 google.charts.load('current', {'packages':['corechart']});
 				 google.charts.setOnLoadCallback(drawChart);
@@ -248,6 +292,10 @@ document.querySelector('#_cameras').innerHTML=_cameras;
 				  ['Routers', _routers],
 				  ['Access Points', _accesspoints],
 				  ['Extras', _extras],
+				  ['Phones', _phones],
+				  ['Tablets', _tablets],
+				  ['Firewalls', _firewalls],
+				  ['Switches', _switches],
 				  ["DVR/NVR's", _dvrs]
 				]);
 

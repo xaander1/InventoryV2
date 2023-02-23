@@ -1,6 +1,6 @@
 {
   "name": "Inventory-pro",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Get all organisation devices in one app. Export in pdf and excel",
   "main": "app/app.js",
   "scripts": {
